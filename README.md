@@ -1,6 +1,6 @@
 # D<span style="color: #3772FF;">A</span>S<span style="color: #3772FF;">I</span>-GPT <img src="./readme-files/Dasi logo.png" alt="Logo" style="width: auto; height: 35px; vertical-align: middle;">
 
-D<span style="color: #3772FF;">A</span>S<span style="color: #3772FF;">I</span> GPT er laget av utviklerne [Simen Evenrud Blien](https://github.com/GorraCaps) og [Daniel Johan Sørby](https://github.com/Loliskrem).
+D<span style="color: #3772FF;">A</span>S<span style="color: #3772FF;">I</span> GPT er laget av utviklerne [Simen Evenrud Blien](https://github.com/GorraCaps) og [Daniel Johan Sørby](https://github.com/DanielJSorby).
 
 ## Hvorfor ble D<span style="color: #3772FF;">A</span>S<span style="color: #3772FF;">I</span> Laget?
 
