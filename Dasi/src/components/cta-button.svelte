@@ -7,9 +7,7 @@
 </button>
 
 <style>
-  @import url("https://use.typekit.net/tzv3rms.css");
-
-  :root {
+    :root {
       --shiny-cta-bg: #000000;
       --shiny-cta-bg-subtle: #1a1818;
       --shiny-cta-fg: #ffffff;
