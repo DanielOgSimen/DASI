@@ -1,5 +1,7 @@
 <script>
     import { onMount } from 'svelte';
+    import '/src/styles/global.css';
+
     let loggedIn = false;
 
     // Initialiserer variabler for å spore siste scroll-posisjon og synligheten til navbar
@@ -39,7 +41,7 @@
     <div class="logo-container">
         <img src="/src/images/Dasi logo.png" alt="Home" class="logo" id="logo">
     </div>
-    <div class="nav-links">
+    <div class="nav-links thin">
         <a href="/try-us">Try Us</a>
         <a href="/prices">Prices</a>
         <a href="/about">About Us</a>
