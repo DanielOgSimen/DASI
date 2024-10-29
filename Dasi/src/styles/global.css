@@ -1,0 +1,49 @@
+@import url("https://use.typekit.net/tzv3rms.css");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "darkmode-on-cc", sans-serif;
+	font-style: normal;
+}
+
+.hair {
+	font-weight: 100;
+}
+
+.thin {
+	font-weight: 200;
+}
+
+.light {
+	font-weight: 300;
+}
+
+.regular {
+	font-weight: 400;
+}
+
+.medium {
+	font-weight: 500;
+}
+
+.semibold {
+	font-weight: 600;
+}
+
+.bold {
+	font-weight: 700;
+}
+
+.xbold {
+	font-weight: 800;
+}
+
+.black {
+	font-weight: 900;
+}
+
+.italic {
+	font-style: italic;
+}
