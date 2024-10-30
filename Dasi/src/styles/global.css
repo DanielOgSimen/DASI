@@ -52,3 +52,17 @@
 .accent-blue {
 	color: #00b8d4;
 }
+
+/* Components */
+
+.purple-button {
+	background-color: #565ade;
+	color: #e0e0e0;
+	width: fit-content;
+	min-width: 200px;
+	padding: 16px;
+	max-height: 70px;
+	border-radius: 100px;
+	font-size: 20px;
+	border: none;
+}
