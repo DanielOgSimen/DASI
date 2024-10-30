@@ -98,7 +98,7 @@
     .logo-container {
         display: flex;
         align-items: center;
-        height: 100%;
+        height: var(--nav-heigt);
     }
     
 
