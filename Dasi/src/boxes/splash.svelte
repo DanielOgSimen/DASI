@@ -40,6 +40,7 @@
 
     .info {
         width: 50%;
+        min-width: 800px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -69,5 +70,20 @@
 
     .logo img {
         width: 80%;
+    }
+
+    @media screen and (max-width: 800px) {
+        .info {
+            width: 100%;
+            padding: 0 5%;
+        }
+
+        #paragraph {
+            width: 100%;
+        }
+
+        .logo {
+            display: none;
+        }
     }
 </style>
