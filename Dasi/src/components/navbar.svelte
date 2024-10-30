@@ -42,13 +42,13 @@
         <img src="/src/images/Dasi logo.png" alt="Home" class="logo" id="logo">
     </div>
     <div class="nav-links thin">
-        <a href="/try-us">Try Us</a>
-        <a href="/prices">Prices</a>
-        <a href="/about">About Us</a>
+            <a href="/try-us" class="effect-underline">Try Us</a>
+            <a href="/prices" class="effect-underline">Prices</a>
+            <a href="/about" class="effect-underline">About Us</a>
         {#if loggedIn}
              <img src="https://placehold.co/400" alt="" class="profile-picture">
         {:else}
-            <a href="/log-in">Log In</a>
+            <a href="/log-in" class="effect-underline">Log In</a>
         {/if}
         
     </div>
@@ -58,11 +58,39 @@
     /* Variables */
     :root {
         --nav-heigt: 80px;
+        --text-size: 20px;
+    }
+
+    /*effect-underline*/
+    a.effect-underline {
+        position: relative;
+        display: inline-block;
+    }
+
+    a.effect-underline:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        display: inline-block;
+        height: 1em;
+        width: 100%;
+        border-bottom: 1px solid;
+        margin-top: 10px;
+        opacity: 0;
+        -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+        transition: opacity 0.35s, transform 0.35s;
+        -webkit-transform: scale(0,1);
+        transform: scale(0,1);
+    }
+
+    a.effect-underline:hover:after {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
     }
 
     #logo {
         height: 90%;
-        filter: drop-shadow(5px 5px 5px #222);
     }
 
     .logo-container {
@@ -76,7 +104,6 @@
         border-radius: 100%;
     }
     .navbar {
-        text-shadow: 2px 3px 5px rgba(0,0,0,0.3);
         transition: top 0.3s;
         position: fixed;
         height: var(--nav-heigt);
@@ -86,7 +113,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 0 20px;
-        font-size: 30px;
+        font-size: var(--text-size);
         color: #E0E0E0;
         background-color: #121212;
         z-index: 10000;
