@@ -8,6 +8,7 @@
 	font-style: normal;
 }
 
+/* Text Styles */
 .hair {
 	font-weight: 100;
 }
@@ -46,4 +47,8 @@
 
 .italic {
 	font-style: italic;
+}
+
+.accent-blue {
+	color: #00b8d4;
 }
