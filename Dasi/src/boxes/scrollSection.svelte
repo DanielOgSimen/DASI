@@ -7,6 +7,7 @@
     <div class="OneClickText">
         <div class="input_wrap">
             <input type="text" required />
+            <!-- svelte-ignore a11y-label-has-associated-control -->
             <label>Your Name</label>
         </div>
     </div>
