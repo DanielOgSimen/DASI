@@ -1,6 +1,7 @@
 <script>
-
+    import '/src/styles/global.css';
 </script>
+
 <div class="imgOneClick">
     <img src="" alt="">
     <div class="OneClickText">
@@ -10,36 +11,46 @@
         </div>
     </div>
 </div>
+
 <style>
-.input_wrap {
-    margin-top: 20rem;
-}    
+    .input_wrap {
+        margin-top: 20rem;
+        width: auto;
+        height: auto;
+        position: relative;
+    }
 
-input:focus + label, input:valid + label{
-  font-size: 12px;
-  top: -5px;
-  left:10px;
-  background: #ffffff;
-  padding: 0px 5px 0px 5px;
-}
+    .input_wrap input {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 
-.input_wrap {width:auto; height:auto; position:relative;
-}
+    .input_wrap label {
+        font-family: arial;
+        font-size: 16px;
+        position: absolute;
+        top: 50%;
+        left: 14px;
+        transform: translateY(-50%);
+        transition: 0.2s ease all;
+        pointer-events: none;
+        background: #ffffff;
+        padding: 0 5px;
+    }
 
-.input_wrap label {
-  font-family:arial;
-  font-size:16px;
-  padding: 14px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
-  -webkit-transition:0.2s ease all;
-  pointer-events: none;
+    input:focus + label,
+    input:valid + label {
+        font-size: 12px;
+        top: -5px;
+        left: 10px;
+        background: #ffffff;
+        padding: 0 5px;
+    }
 
-}
-
-input[type="text"]:focus {outline:none;}
-
+    input[type="text"]:focus {
+        outline: none;
+    }
 </style>
