@@ -8,6 +8,11 @@
 	font-style: normal;
 }
 
+::selection {
+	color: white;
+	background-color: #00b8d4;
+}
+
 /* Text Styles */
 .hair {
 	font-weight: 100;
