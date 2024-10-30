@@ -56,8 +56,6 @@
 
     .buttons {
         display: flex;
-        justify-content: space-around;
-        width: 50%;
         padding-top: 10px;
     }
 
