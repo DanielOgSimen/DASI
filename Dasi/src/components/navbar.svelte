@@ -38,9 +38,11 @@
 
 </script>
 <div class="navbar" class:hide={!navbarVisible}>
-    <div class="logo-container">
-        <img src="/src/images/Dasi logo.png" alt="Home" class="logo" id="logo">
-    </div>
+    <a href="/">
+        <div class="logo-container">
+            <img src="/src/images/Dasi logo.png" alt="Home" class="logo" id="logo">
+        </div>
+    </a>
     <div class="nav-links thin">
             <a href="/try-us" class="effect-underline">Try Us</a>
             <a href="/prices" class="effect-underline">Prices</a>
@@ -96,7 +98,7 @@
     .logo-container {
         display: flex;
         align-items: center;
-        height: 100%;
+        height: var(--nav-heigt);
     }
     
 
