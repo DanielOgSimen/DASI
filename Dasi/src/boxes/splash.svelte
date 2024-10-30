@@ -57,6 +57,7 @@
     .buttons {
         display: flex;
         padding-top: 10px;
+        gap: 16px;
     }
 
     .logo {
