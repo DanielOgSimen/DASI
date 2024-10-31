@@ -73,6 +73,9 @@
     }
 
     @media screen and (max-width: 800px) {
+        .splash {
+            width: 100vw;
+        }
         .info {
             width: 100%;
             padding: 0 5%;
