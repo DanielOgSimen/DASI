@@ -3,9 +3,9 @@
 </script>
 
 <div class="imgOneClick">
-    <img src="" alt="">  
+    <img style="width: 27rem;" src="/src/Images/OneClickPic.png" alt="">  
     <div class="OneClickText">
-        <h1 class="medium" color="#E0E0E0">Available in one<br><span class="accent-blue">click</span></h1>
+        <h1 style="color: #E0E0E0;" class="medium">Available in one<br><span class="accent-blue">click</span></h1>
         <div class="input_wrap">
             <input type="text" required />
             <!-- svelte-ignore a11y-label-has-associated-control -->
@@ -23,6 +23,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 
 }
 
@@ -31,6 +32,8 @@
     margin-bottom: 10rem;
     display: flex; 
     flex-direction: row;
+    justify-content: center;
+    gap: 10rem;
 }
 
 .input_wrap .input_icon {
