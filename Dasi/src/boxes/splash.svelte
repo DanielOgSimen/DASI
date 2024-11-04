@@ -1,6 +1,5 @@
 <script>
     import CtaButton from "../components/cta-button.svelte";
-    /* import '/src/styles/global.css'; */
 </script>
 
 <div class="splash">

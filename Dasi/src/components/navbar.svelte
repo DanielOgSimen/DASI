@@ -1,6 +1,5 @@
 <script>
     import { onMount } from 'svelte';
-    import '/src/styles/global.css';
 
     let loggedIn = false;
 
