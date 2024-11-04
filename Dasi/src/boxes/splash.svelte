@@ -1,6 +1,6 @@
 <script>
     import CtaButton from "../components/cta-button.svelte";
-    import '/src/styles/global.css';
+    /* import '/src/styles/global.css'; */
 </script>
 
 <div class="splash">
@@ -32,6 +32,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 20px;
+        /* flex-wrap: wrap; /* Legg til flex-wrap for å håndtere overflyt */
     }
 
     .splash h1 {
@@ -39,17 +41,18 @@
     }
 
     .info {
-        width: 50%;
-        min-width: 800px;
+        width: 100%;
+        max-width: 800px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        justify-content: space-around;
+        justify-content: space-around; /* Fjern dobbel justify-content */
         padding-left: 5%;
+        box-sizing: border-box; /* Sørg for at padding ikke påvirker bredden */
     }
 
     #paragraph {
-        width: 50%;
+        width: 100%;
+        max-width: 500px;
         margin-top: 2%;
         font-size: 20px;
         color: #B0B0B0;
@@ -62,31 +65,60 @@
     }
 
     .logo {
-        width: 50%;
+        width: 100%;
+        max-width: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
     .logo img {
-        width: 80%;
+        height: 30vw;
+        object-fit: contain;
     }
 
-    @media screen and (max-width: 800px) {
-        .splash {
-            width: 100vw;
+    @media screen and (max-width: 1300px) {
+        .logo img {
+            height: 25vw;
         }
+
+        .splash h1 {
+            font-size: 40px;
+        }
+
+        #paragraph {
+            font-size: 18px;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        .splash {
+            justify-content: space-between;
+        }
+
         .info {
             width: 100%;
             padding: 0 5%;
+            max-width: 600px; /* Juster max-width for bedre responsivitet */
         }
 
         #paragraph {
             width: 100%;
+            max-width: 500px;
         }
 
         .logo {
             display: none;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .splash h1 {
+            font-size: 30px;
+        }
+
+        #paragraph {
+            font-size: 16px;
         }
     }
 </style>
