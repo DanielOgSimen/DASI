@@ -6,6 +6,10 @@
     import '/src/styles/global.css';
 </script>
 
+<svelte:head>
+    <title>Dasi-GPT | Home</title>
+</svelte:head>
+
 <Navbar/>
 <Splash/>
 <ScrollSelection/>
