@@ -1,18 +1,4 @@
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var Card = document.querySelector('.card');
-        var cardContent = document.querySelector('.card-content');
-        
-        if (Card) {
-            Card.addEventListener('mouseenter', function () {
-                cardContent?.classList.add('display-card');
-            });
-            Card.addEventListener('mouseleave', function () {
-                cardContent?.classList.remove('display-card');
-            });
-        }
-    });
-</script>
+<script></script>
 
 <div class="card">
     <div class="card-content display-card">
