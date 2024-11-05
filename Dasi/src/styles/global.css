@@ -60,9 +60,9 @@
 
 /* Components */
 
-.purple-button {
-	background-color: #565ade;
-	color: #e0e0e0;
+/* Button */
+
+.button {
 	width: fit-content;
 	min-width: 200px;
 	padding: 16px;
@@ -71,12 +71,30 @@
 	font-size: 20px;
 	border: none;
 	cursor: pointer;
+	color: white;
+	background-color: black;
 }
 
-.purple-button:hover {
-	background-color: #81c784;
+.button:hover {
 	transition: 0.3s;
 	transform: translateY(1px);
+}
+
+.button.purple {
+	background-color: #565ade;
+	color: #e0e0e0;
+}
+
+.button.purple:hover {
+	background-color: #81c784;
+}
+
+.button.error {
+	background-color: #ff5252;
+}
+
+.button.error:hover {
+	background-color: #ff8a80;
 }
 
 /*effect-underline*/
