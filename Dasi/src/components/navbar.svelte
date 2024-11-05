@@ -43,6 +43,7 @@
         </div>
     </a>
     <div class="nav-links thin">
+            <a href="/chat" class="effect-underline">Chat</a>
             <a href="/try-us" class="effect-underline">Try Us</a>
             <a href="/prices" class="effect-underline">Prices</a>
             <a href="/about" class="effect-underline">About Us</a>
