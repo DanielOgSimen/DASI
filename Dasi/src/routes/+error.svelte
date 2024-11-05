@@ -10,7 +10,7 @@
 <div class="bg">
 <h1 class="accent-blue xbold">{status}</h1>
 <p>{error.message}</p>
-<a href="/"><button class="purple-button">Go back to Home</button></a>
+<a href="/"><button class="error button">Go back to Home</button></a>
 </div>
 
 <style>
@@ -26,6 +26,7 @@
 
     .bg h1 {
         font-size: 256px;
+        color: #FF5252;
     }
 
     .bg p {

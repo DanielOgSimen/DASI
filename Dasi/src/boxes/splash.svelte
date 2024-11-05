@@ -14,7 +14,7 @@
         whenever you need it.</p>
         <div class="buttons">
             <CtaButton text="Get started"/>
-            <button class="purple-button regular">Log in</button>
+            <button class="purple button regular">Log in</button>
         </div>
     </div>
     <div class="logo">
