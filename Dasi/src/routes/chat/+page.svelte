@@ -17,11 +17,11 @@
             "messages": [
                 {
                     "sender": "user",
-                    "message": "Hello"
+                    "message": "Hello, how do i make an algorithm?"
                 },
                 {
                     "sender": "bot",
-                    "message": "Hi"
+                    "message": "You can start by learning the basics of programming. Do you have any experience with programming?"
                 }
             ],
             "editTitle": false
@@ -69,23 +69,25 @@
     <div class="chat-space">
         {#if currentChat === "New Chat"}
             <div class="new-chat">
-                <InputPromt />
+                <InputPromt Width={"35rem"}/>
                 <button class="button purple">Send Message</button>
             </div>
         {:else}
             <div class="normal-chat">
-                {#each chats[currentChat].messages as message}
-                        {#if message.sender === "user"}
-                            <div class="user-sent">
-                                <Message message={message.message}/>
-                            </div>
-                        {:else}
-                            <div class="bot-sent">
-                                <Message message={message.message}/>
-                            </div>
-                        {/if}
-                {/each}
-                <InputPromt />
+                <div class="normal-chats">
+                    {#each chats[currentChat].messages as message}
+                            {#if message.sender === "user"}
+                                <div class="user-sent">
+                                    <Message message={message.message}/>
+                                </div>
+                            {:else}
+                                <div class="bot-sent">
+                                    <Message message={message.message}/>
+                                </div>
+                            {/if}
+                    {/each}
+                </div>
+                <InputPromt Width={"35rem"}/>
             </div>
         {/if}
     </div>
@@ -135,11 +137,20 @@
         justify-content: flex-end;
         gap: 20px;
         padding: 0 20px;
+        padding-bottom: 40px;
+    }
+
+    .normal-chats {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
     }
 
     .user-sent {
         align-self: flex-end;
-        background-color: #007bff;
         color: white;
         padding: 10px;
         border-radius: 10px;
@@ -149,7 +160,6 @@
 
     .bot-sent {
         align-self: flex-start;
-        background-color: #e0e0e0;
         color: black;
         padding: 10px;
         border-radius: 10px;
