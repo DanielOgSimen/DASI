@@ -40,6 +40,7 @@
       font-size: 16px;
       border-radius: 10px;
       border: none;
+      color: #B0B0B0;
   }
 
   .input_wrap label {
