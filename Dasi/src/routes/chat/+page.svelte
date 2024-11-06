@@ -21,7 +21,7 @@
                 },
                 {
                     "sender": "bot",
-                    "message": "You can start by learning the basics of programming. Do you have any experience with programming?"
+                    "message": "To create an algorithm, start by clearly defining the problem and identifying its goal and constraints. Break down the problem into smaller parts, then choose an approach, like brute force, greedy, or divide and conquer. Write out the steps in pseudocode, optimizing for efficiency by reducing unnecessary work or using efficient data structures. Translate the pseudocode into actual code in your chosen language and test it on a range of inputs, including edge cases. Refine the algorithm as needed to ensure it meets both the goal and constraints effectively."
                 }
             ],
             "editTitle": false
@@ -78,11 +78,11 @@
                     {#each chats[currentChat].messages as message}
                             {#if message.sender === "user"}
                                 <div class="user-sent">
-                                    <Message message={message.message}/>
+                                    <Message message={message.message} messenger={message.sender}/>
                                 </div>
                             {:else}
                                 <div class="bot-sent">
-                                    <Message message={message.message}/>
+                                    <Message message={message.message} messenger={message.sender}/>
                                 </div>
                             {/if}
                     {/each}
