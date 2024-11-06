@@ -53,6 +53,7 @@
     .chat-title:hover {
         cursor: pointer;
     }
+
     p, input {
         font-size: 25px;
         color: #B0B0B0;
@@ -60,5 +61,13 @@
         border: none;
         text-align: center;
         outline: none;
+        text-overflow: ellipsis;
+        width: 90%; /* Sett ønsket bredde her */
+    }
+
+    .regular {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 </style>
