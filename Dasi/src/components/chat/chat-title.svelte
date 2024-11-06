@@ -1,18 +1,27 @@
 <script>
     import { createEventDispatcher } from 'svelte';
+
+    // Props som sendes til komponenten
     export let title = "New Chat";
     export let editTitle;
+
+    // Opprett en event dispatcher
     const dispatch = createEventDispatcher();
+
+    // Lokal variabel for å holde på tittelverdien
     let localTitle = title;
 
+    // Reaktivt utsagn for å oppdatere localTitle når editTitle er false
     $: if (!editTitle) {
         localTitle = title;
     }
 
+    // Funksjon for å håndtere klikkhendelse og sende 'click'-hendelse
     function handleClick() {
         dispatch('click');
     }
 
+    // Funksjon for å håndtere tittelendringshendelse og sende 'titleChange'-hendelse
     // @ts-ignore
     function handleTitleChange(event) {
         localTitle = event.target.value;
@@ -50,5 +59,6 @@
         background-color: transparent;
         border: none;
         text-align: center;
+        outline: none;
     }
 </style>
