@@ -1,45 +1,70 @@
-<script></script>
+<script>
+    export let imgUrl = 'src/Images/cards-homepage/Climate-friendly.png';
+    export let cardTopic = 'Climate-friendly';
+    export let cardContent = 'DASI-GPT saves 50% more water than other systems.';
+</script>
 
-<div class="card">
+<div class="card" style="background-image: url({imgUrl});">
+    <h1 class="cardTopic medium">{cardTopic}</h1>
     <div class="card-content display-card">
-        <h1>Climate-friendly</h1>
-        <p>DASI-GPT is designed with sustainability in mind. By optimizing our data centers and using renewable energy sources, we significantly reduce our carbon footprint. Additionally, our efficient algorithms minimize energy consumption, making DASI-GPT a climate-friendly AI solution.</p>
+        <h3 class="italic regular" style="font-size:16px; margin-bottom:1rem;">{cardContent}</h3>
+        <button class="button purple">Read more</button>
     </div>
 </div>
 
 <style>
+    .cardTopic {
+        text-align: center;
+        transform: translateY(1300%); /* Start fra bunnen */
+        transition: transform 0.4s; /* Overgang på 2 sekunder */
+        color: #121212;
+        text-shadow: white 0px 0px 10px;
+
+    }
+
+    .card:hover .cardTopic {
+        transform: translateY(750%); /* Flytt til dit den skal */
+        color: #E0E0E0;
+    }
+
     .card-content {
         display: none; /* Skjul ved default */
         opacity: 0%; /* Start med opacity 0 */
-        transform: translateY(100%); /* Start fra bunnen */
-        transition: opacity 2s, transform 2s; /* Overgang på 2 sekunder */
+        transform: translateY(170%); /* Start fra bunnen */
+        transition: opacity 0.3s, transform 0.4s; /* Overgang på 2 sekunder */
     }
 
     .card:hover .card-content {
         display: block; /* Vis ved hover på card */
         opacity: 100%; /* Endre til opacity 1 */
-        transform: translateY(0); /* Flytt til midten */
+        transform: translateY(130%); /* Flytt til dit den skal */
     }
 
     .card {
         height: 30rem;
-        display: flex;
+        display: block;
         width: 20rem;
-        background-image: url("../Images/cards-homepage/Climate-friendly.png");
         background-size: cover;
-        position: relative; /* For å posisjonere card-content absolutt */
+        position: relative; /* For å posisjonere pseudo-elementet absolutt */
+
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transition: background-color 0.4s; /* Overgangseffekt for bakgrunnsfarge */
+    }
+
+    .card:hover::before {
+        background-color: rgba(0, 0, 0, 0.5); /* Mørkere bakgrunn ved hover */
     }
 
     .card-content {
-        position: absolute; /* Posisjoner absolutt innenfor kortet */
-        bottom: 0; /* Start fra bunnen */
-        top: 0;
-        width: 100%; /* Full bredde */
-        justify-content: center; /* Sentrer innhold horisontalt */
-        align-items: center; /* Sentrer innhold vertikalt */
-        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent bakgrunn for bedre tekstkontrast */
-        color: white; /* Sørg for at teksten er lesbar på bakgrunnsbildet */
-        padding: 1rem;
-        border-radius: 10px;
+        display: block;
+        color: #B0B0B0; /* Sørg for at teksten er lesbar på bakgrunnsbildet */
+        text-align: center;
+        padding: 2rem;
     }
 </style>

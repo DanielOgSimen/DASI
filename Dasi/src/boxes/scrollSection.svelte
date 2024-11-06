@@ -15,6 +15,9 @@
         <div class="pin-wrap" style="display: flex; flex-direction: row;">
             <div class="selection1">
                 <Cards></Cards>
+                <Cards cardTopic="Efficent" cardContent="DASI-GPT are efficent and gives you the answer quick!" imgUrl="src/Images/cards-homepage/Efficent.png"></Cards>
+                <Cards cardTopic="Clean" cardContent="DASI-GPT gives a clean look, and are easy to navigate." imgUrl="src/Images/cards-homepage/Clean.png"></Cards>
+                <Cards cardTopic="Safe" cardContent="DASI-GPT are 100% safe to use, we care about you saftey." imgUrl="src/Images/cards-homepage/Safe.png"></Cards>
             </div>
             <div class="selection2"></div>
         </div>
@@ -25,7 +28,9 @@
 .selection1 {
     display: flex;
     flex-direction: row;
-    gap: 5rem;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
 }
 
@@ -77,6 +82,7 @@
 .pin-wrap {
 	height: 100vh;
 	width: 200vmax;
+    background-color:#242424;
 
 	/* Hook animation */
 	will-change: transform;
