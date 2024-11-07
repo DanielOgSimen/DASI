@@ -64,11 +64,11 @@
 
 .button {
 	width: fit-content;
-	min-width: 200px;
-	padding: 16px;
+	min-width: 150px;
+	padding: 10px;
 	max-height: 70px;
 	border-radius: 100px;
-	font-size: 20px;
+	font-size: 17px;
 	border: none;
 	cursor: pointer;
 	color: white;

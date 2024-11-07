@@ -1,6 +1,7 @@
 <script>
-    import Cards from "../components/cards-homepage.svelte";
+    import Cards from "../components/boxes/cards-homepage.svelte";
     import PromtInput from "../components/input-promt.svelte";
+    import SubCards from "../components/boxes/subscribtionCard.svelte";
 </script>
 
 <div class="imgOneClick">
@@ -19,12 +20,29 @@
                 <Cards cardTopic="Clean" cardContent="DASI-GPT gives a clean look, and are easy to navigate." imgUrl="src/Images/cards-homepage/Clean.png"></Cards>
                 <Cards cardTopic="Safe" cardContent="DASI-GPT are 100% safe to use, we care about you saftey." imgUrl="src/Images/cards-homepage/Safe.png"></Cards>
             </div>
-            <div class="selection2"></div>
+            <div class="selection2">
+                <div class="subscribtionInfo">
+                    <h1 class="medium"><span class="accent-blue">Explore </span>more of<br>
+                        our amazing<br><span class="accent-blue">subscriptions</span>
+                    </h1>
+                    <button class="button purple">More subscriptions</button>
+                </div>
+                <div class="subscribtionBox">
+                    <SubCards></SubCards>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <style>
+.selection2 {
+    color: #E0E0E0;
+    font-size: 26px;
+    display: flex;
+    flex-direction: row;
+}
+
 .selection1 {
     display: flex;
     flex-direction: row;
