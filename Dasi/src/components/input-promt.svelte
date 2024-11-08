@@ -1,13 +1,19 @@
-<script>
+<script lang="ts">
     export let label = "Ask a promt";
     export let color = "#242424";
     export let HideSvg = false;
     export let height = "3rem";
     export let Width = "20rem";
+
+    let inputElement: HTMLInputElement;
+
+    export function getPrompt() {
+        return inputElement.value;
+    }
 </script>
 
 <div class="input_wrap">
-    <input style="background-color: {color}; height: {height}; width:{Width};" type="text" required />
+    <input bind:this={inputElement} style="background-color: {color}; height: {height}; width:{Width};" type="text" required />
     <!-- svelte-ignore a11y-label-has-associated-control -->
     <label>{label}</label>
     <svg class:display={HideSvg} class=input_icon xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 41.621 41.621">
