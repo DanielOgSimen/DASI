@@ -22,7 +22,7 @@
             </div>
             <div class="selection2">
                 <div class="subscribtionInfo">
-                    <h1 class="medium"><span class="accent-blue">Explore </span>more of<br>
+                    <h1 style="margin-bottom: 1rem;" class="medium"><span class="accent-blue">Explore </span>more of<br>
                         our amazing<br><span class="accent-blue">subscriptions</span>
                     </h1>
                     <button class="button purple">More subscriptions</button>
@@ -35,12 +35,66 @@
     </div>
 </section>
 
+<div class="sloganDisplay">
+    <span class="text1">WE DO THE WORK FOR YOU</span>
+    <span class="text2">RELAX</span>
+</div>
+
+
 <style>
+.sloganDisplay {
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #1A1A1A;
+}
+
+.sloganDisplay span {
+  display: block; 
+}
+
+.text1 {
+  color: #CCCCCC;
+  font-size: 50px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  background: #1A1A1A;
+  position: relative;
+  animation-name: slogan;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+}
+
+.text2 {
+  font-size: 25px;
+  color: #81C784;
+}
+
+@keyframes slogan {
+  0% {
+    margin-bottom: -40px;
+  }
+  30% {
+    letter-spacing: 25px;
+    margin-bottom: -40px;
+  }
+  85% {
+    letter-spacing: 8px;
+    margin-bottom: -40px;
+  }
+  100% {
+
+  }
+}    
 .selection2 {
     color: #E0E0E0;
     font-size: 26px;
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
+    justify-content: center;
+    width: 100vw;
+    align-items: center;
+    gap: 10rem;
 }
 
 .selection1 {
