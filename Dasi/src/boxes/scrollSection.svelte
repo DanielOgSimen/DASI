@@ -2,6 +2,25 @@
     import Cards from "../components/boxes/cards-homepage.svelte";
     import PromtInput from "../components/input-promt.svelte";
     import SubCards from "../components/boxes/subscribtionCard.svelte";
+    
+    import { onMount } from 'svelte';
+
+onMount(function() {
+    const section = document.querySelector('.sloganDisplay'); // henter ut section og setter den lik klassen
+    if (section) { // sjekker om section eksisterer
+        const observer = new IntersectionObserver(function(entries) { // lager en observer som ser om section vises. funskjonen i observeren kjøres hver gang observer ser en endring
+            entries.forEach(function(entry) { // kjøres hver gang observer ser en endring, for hver endring som observer ser
+                if (entry.isIntersecting) { // hvis section vises er den true, eller så er den false. Dette er her fordi den ikek skal legge til klassen om det skjer en endring og den ikke er vises. 
+                    section.classList.add('in-view');
+                } else {
+                    section.classList.remove('in-view');
+                }
+            });
+        });
+
+        observer.observe(section); // starter observeringen ac section
+    }
+});
 </script>
 
 <div class="imgOneClick">
@@ -35,7 +54,7 @@
     </div>
 </section>
 
-<div class="sloganDisplay">
+<div class="sloganDisplay in-view">
     <span class="text1">WE DO THE <span class="blueColor">WORK</span> FOR <span class="blueColor">YOU</span></span>
     <span class="text2">RELAX</span>
 </div>
@@ -69,11 +88,15 @@
   letter-spacing: 8px;
   background: #1A1A1A;
   position: relative;
-  animation-name: slogan;
   animation-duration: 4s;
   animation-iteration-count: 1;
   white-space: nowrap;
 }
+
+.in-view .text1 {
+  animation: slogan 2s linear forwards;
+}
+
 
 .text2 {
   font-size: 25px;
