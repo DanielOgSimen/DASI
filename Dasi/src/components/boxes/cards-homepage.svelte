@@ -16,7 +16,7 @@
     .cardTopic {
         text-align: center;
         transform: translateY(1300%); /* Start fra bunnen */
-        transition: transform 0.4s; /* Overgang på 2 sekunder */
+        transition: transform 0.4s;
         color: #121212;
         text-shadow: white 0px 0px 10px;
 

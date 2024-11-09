@@ -36,21 +36,30 @@
 </section>
 
 <div class="sloganDisplay">
-    <span class="text1">WE DO THE WORK FOR YOU</span>
+    <span class="text1">WE DO THE <span class="blueColor">WORK</span> FOR <span class="blueColor">YOU</span></span>
     <span class="text2">RELAX</span>
 </div>
 
 
 <style>
+.blueColor {
+    color: #00B8D4;
+    display: inline;
+}
+
 .sloganDisplay {
   text-align: center;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-color: #1A1A1A;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .sloganDisplay span {
-  display: block; 
+  display: inline; 
 }
 
 .text1 {
@@ -63,6 +72,7 @@
   animation-name: slogan;
   animation-duration: 4s;
   animation-iteration-count: 1;
+  white-space: nowrap;
 }
 
 .text2 {
@@ -125,24 +135,20 @@
 }
 
 
-  @keyframes move {
+@keyframes move {
 	to {
-		/* Move horizontally so that right edge is aligned against the viewport */
 		transform: translateX(calc(-100% + 100vw));
 	}
 }
 
 #sectionPin {
-	/* Stretch it out, so that we create room for the horizontal scroll animation */
 	height: 500vh;
-	overflow: visible; /* To make position sticky work … */
-
+	overflow: visible;
 	view-timeline-name: --section-pin-tl;
 	view-timeline-axis: block;
 }
 
 .pin-wrap-sticky {
-	/* Stick to Top */
 	height: 100vh;
 	width: 100vw;
 	position: sticky;
@@ -154,7 +160,7 @@
 .pin-wrap {
 	height: 100vh;
 	width: 200vmax;
-    background-color:#242424;
+    background: linear-gradient(to right, #242424 0%, #242424 10%, #121212 100%);
 
 	/* Hook animation */
 	will-change: transform;
