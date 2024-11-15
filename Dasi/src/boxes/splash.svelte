@@ -1,9 +1,11 @@
 <script>
+	import AiAssistant from './../components/ai-assistant.svelte';
     import CtaButton from "../components/cta-button.svelte";
 </script>
 
 <div class="splash">
     <div class="info">
+        <AiAssistant />
         <h1 class="medium"><span class="accent-blue">DASI</span>-gpt
             <br>explore the <span class="accent-blue">future</span>
             <br>with your own assistant
