@@ -8,8 +8,8 @@
 onMount(function() {
     const section = document.querySelector('.sloganDisplay'); // henter ut section og setter den lik klassen
     if (section) { // sjekker om section eksisterer
-        const observer = new IntersectionObserver(function(entries) { // lager en observer som ser om section vises. funskjonen i observeren kjøres hver gang observer ser en endring
-            entries.forEach(function(entry) { // kjøres hver gang observer ser en endring, for hver endring som observer ser
+        const observer = new IntersectionObserver(function(entries) { // lager en observer. funskjonen i observeren kjøres hver gang observer ser en endring
+            entries.forEach(function(entry) { // kjøres hver gang observer ser en endring, for hver endring som observer ser. endringer skjer når man scroller
                 if (entry.isIntersecting) { // hvis section vises er den true, eller så er den false. Dette er her fordi den ikek skal legge til klassen om det skjer en endring og den ikke er vises. 
                     section.classList.add('in-view');
                 } else {
@@ -18,7 +18,7 @@ onMount(function() {
             });
         });
 
-        observer.observe(section); // starter observeringen ac section
+        observer.observe(section); // starter observeringen av section
     }
 });
 </script>
