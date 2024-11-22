@@ -3,21 +3,19 @@ import { env } from "$env/dynamic/private"; // Importerer miljøvariabler fra en
 // Funksjon som håndterer POST-forespørsler
 export async function POST({ request }) {
 	try {
-		// Henter form data fra forespørselen
-		const form = await request.formData();
-		// Henter 'prompt' verdien fra form data
-		const prompt = form.get("prompt");
+		// Henter JSON data fra forespørselen
+		const { messages } = await request.json();
 		// Henter OpenAI API-nøkkelen fra .env
 		const openai_key = env.OPENAI_KEY;
 
-		// Logger prompt og API-nøkkelen for debugging
-		console.log(prompt);
+		// Logger meldingshistorikken og API-nøkkelen for debugging
+		console.log(messages);
 		console.log(openai_key);
 
 		// Oppretter body for forespørselen til OpenAI API
 		const body = {
 			model: "gpt-3.5-turbo", // Spesifiserer hvilken modell som skal brukes
-			messages: [{ role: "user", content: prompt }], // Inkluderer brukerens melding i forespørselen
+			messages: messages, // Inkluderer meldingshistorikken i forespørselen
 		};
 
 		// Sender forespørselen til OpenAI API

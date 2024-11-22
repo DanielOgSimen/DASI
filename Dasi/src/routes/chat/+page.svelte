@@ -81,14 +81,23 @@
                 }
             };
 
-            // Send brukerens melding til API-et og få svaret
-            try {
-                const formData = new FormData();
-                formData.append('prompt', prompt);
+            // Bygg opp meldingshistorikken for å sende til API-en
+            const messages = chats[currentChat].messages.map(msg => ({
+                role: msg.sender === "user" ? "user" : "assistant",
+                content: msg.message
+            }));
 
+            // Legg til den nye meldingen fra brukeren
+            messages.push({ role: "user", content: prompt });
+
+            // Send brukerens melding og meldingshistorikken til API-et og få svaret
+            try {
                 const response = await fetch('/api', {
                     method: 'POST',
-                    body: formData
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ messages })
                 });
 
                 const data = await response.json();
