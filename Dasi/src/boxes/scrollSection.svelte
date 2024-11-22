@@ -45,7 +45,9 @@ let isSmallScreen = false;
     <img class="promtImg" src="/src/Images/OneClickPic.png" alt="">  
     <div class="OneClickText">
         <h1 style="color: #E0E0E0; margin-bottom: 1rem;" class="medium">Available in one<br><span class="accent-blue">click</span></h1>
-        <InputPrompt onEnter={handleKeyDown} />
+        <div class="inpPromt">
+            <InputPrompt onEnter={handleKeyDown} />
+        </div>
     </div>
 </div>
 <section id="sectionPin">
