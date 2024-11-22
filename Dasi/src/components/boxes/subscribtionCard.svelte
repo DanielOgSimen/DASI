@@ -39,4 +39,9 @@
         padding: 80px 80px 120px 80px; 
         border-radius: 40px;
     }
+    @media (max-width: 700px) {
+        .subCard {
+            padding: 40px 40px 60px 40px; 
+        }
+    }
 </style>
