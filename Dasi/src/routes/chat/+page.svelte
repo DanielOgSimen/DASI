@@ -60,13 +60,13 @@
         return inputPromtComponent.getPrompt();
     }
 
-    function handlePrompt() {
+    async function handlePrompt() {
         // Hent prompten fra input-feltet ved å kalle findPrompt-funksjonen
         let prompt = findPrompt();
     
         // Sjekk om det finnes en gjeldende chat og at den er definert i chats-objektet
         if (currentChat && chats[currentChat]) {
-            // Oppdater chats-objektet med den nye meldingen
+            // Oppdater chats-objektet med den nye meldingen fra brukeren
             chats = {
                 ...chats, // Behold eksisterende chats
                 [currentChat]: {
@@ -80,13 +80,39 @@
                     ]
                 }
             };
+
+            // Send brukerens melding til API-et og få svaret
+            try {
+                const formData = new FormData();
+                formData.append('prompt', prompt);
+
+                const response = await fetch('/api', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                // Oppdater chats-objektet med svaret fra API-et
+                chats = {
+                    ...chats, // Behold eksisterende chats
+                    [currentChat]: {
+                        ...chats[currentChat], // Behold eksisterende data for gjeldende chat
+                        messages: [
+                            ...chats[currentChat].messages, // Behold eksisterende meldinger
+                            {
+                                sender: "bot", // Legg til ny melding fra boten
+                                message: data.message
+                            }
+                        ]
+                    }
+                };
+            } catch (error) {
+                console.error('Error fetching data from API:', error);
+            }
         }
     }
 </script>
-
-<svelte:head>
-    <title>{currentChat} | Dasi GPT</title>
-</svelte:head>
 
 <Navbar />
 <div class="chat-page">
