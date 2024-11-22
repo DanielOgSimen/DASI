@@ -84,6 +84,10 @@
     }
 </script>
 
+<svelte:head>
+    <title>{currentChat} | Dasi GPT</title>
+</svelte:head>
+
 <Navbar />
 <div class="chat-page">
     <div class="chats">
