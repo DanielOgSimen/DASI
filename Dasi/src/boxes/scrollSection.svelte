@@ -8,8 +8,8 @@
 onMount(function() {
     const section = document.querySelector('.sloganDisplay'); // henter ut section og setter den lik klassen
     if (section) { // sjekker om section eksisterer
-        const observer = new IntersectionObserver(function(entries) { // lager en observer som ser om section vises. funskjonen i observeren kjøres hver gang observer ser en endring
-            entries.forEach(function(entry) { // kjøres hver gang observer ser en endring, for hver endring som observer ser
+        const observer = new IntersectionObserver(function(entries) { // lager en observer. funskjonen i observeren kjøres hver gang observer ser en endring
+            entries.forEach(function(entry) { // kjøres hver gang observer ser en endring, for hver endring som observer ser. endringer skjer når man scroller
                 if (entry.isIntersecting) { // hvis section vises er den true, eller så er den false. Dette er her fordi den ikek skal legge til klassen om det skjer en endring og den ikke er vises. 
                     section.classList.add('in-view');
                 } else {
@@ -18,25 +18,39 @@ onMount(function() {
             });
         });
 
-        observer.observe(section); // starter observeringen ac section
+        observer.observe(section); // starter observeringen av section
     }
 });
 
 function handleKeyDown() {
     console.log(`Hei`)
 }
+let isSmallScreen = false;
+
+    const checkScreenSize = () => {
+        isSmallScreen = window.innerWidth < 1050;
+    };
+
+    onMount(() => {
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+
+        return () => {
+            window.removeEventListener('resize', checkScreenSize);
+        };
+    });
 </script>
 
 <div class="imgOneClick">
-    <img style="width: 27rem; object-fit: contain;" src="/src/Images/OneClickPic.png" alt="">  
+    <img class="promtImg" src="/src/Images/OneClickPic.png" alt="">  
     <div class="OneClickText">
         <h1 style="color: #E0E0E0; margin-bottom: 1rem;" class="medium">Available in one<br><span class="accent-blue">click</span></h1>
         <InputPrompt onEnter={handleKeyDown} />
     </div>
 </div>
 <section id="sectionPin">
-    <div class="pin-wrap-sticky">
-        <div class="pin-wrap" style="display: flex; flex-direction: row;">
+    <div class:pin-wrap-sticky={!isSmallScreen}>
+        <div class:pin-wrap={!isSmallScreen} class="pin-wrapDefault">
             <div class="selection1">
                 <Cards></Cards>
                 <Cards cardTopic="Efficent" cardContent="DASI-GPT are efficent and gives you the answer quick!" imgUrl="src/Images/cards-homepage/Efficent.png"></Cards>
@@ -45,20 +59,22 @@ function handleKeyDown() {
             </div>
             <div class="selection2">
                 <div class="subscribtionInfo">
-                    <h1 style="margin-bottom: 1rem;" class="medium"><span class="accent-blue">Explore </span>more of<br>
+                    <h1 style="margin-bottom: 1rem; margin-top:2rem;" class="medium"><span class="accent-blue">Explore </span>more of<br>
                         our amazing<br><span class="accent-blue">subscriptions</span>
                     </h1>
                     <button class="button purple">More subscriptions</button>
                 </div>
                 <div class="subscribtionBox">
-                    <SubCards></SubCards>
+                    <div class="subRes">
+                        <SubCards></SubCards>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<div class="sloganDisplay in-view">
+<div class="sloganDisplay" class:in-view={!isSmallScreen}>
     <span class="text1">WE DO THE <span class="blueColor">WORK</span> FOR <span class="blueColor">YOU</span></span>
     <span class="text2">RELAX</span>
 </div>
@@ -87,7 +103,7 @@ function handleKeyDown() {
 
 .text1 {
   color: #CCCCCC;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 700;
   letter-spacing: 8px;
   background: #1A1A1A;
@@ -112,7 +128,7 @@ function handleKeyDown() {
     margin-bottom: -40px;
   }
   30% {
-    letter-spacing: 25px;
+    letter-spacing: 20px;
     margin-bottom: -40px;
   }
   85% {
@@ -148,8 +164,6 @@ function handleKeyDown() {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    
 }
 
 .imgOneClick {
@@ -196,5 +210,97 @@ function handleKeyDown() {
 	/* Link animation to view-timeline */
 	animation-timeline: --section-pin-tl;
 	animation-range: contain 0% contain 100%;
+}
+
+.promtImg {
+    width: 27rem;
+    object-fit: contain;
+}
+
+.pin-wrapDefault {
+    display: flex;
+    flex-direction: row;
+}
+
+/* responsive */
+@media (max-width: 1050px) {
+        .imgOneClick {
+            flex-direction: column;
+            height: 100%;
+            align-items: center;
+            gap: 2rem;
+        }
+        .promtImg {
+            margin: 0 auto;
+            margin-top: 2rem;
+            width: 60vw;
+        }
+        .inpPromt {
+            margin-bottom: 2rem;
+        }
+        .pin-wrapDefault {
+            flex-direction: column;
+        }
+        #sectionPin {
+            height: 100%;
+            background-color: #242424;  
+        }
+        .selection1 {
+            flex-wrap: wrap;
+            height: 100%;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            background-color: #242424;
+        }
+        .selection2 {
+            background-color: #1A1A1A;
+        }
+        .sloganDisplay {
+            background-color: #121212;
+        }
+        .text1 {
+            background-color: #121212;
+            font-size: 30px;
+        }
+        .subRes {
+            margin-bottom: 3rem;
+            margin-top: 3rem;
+        }
+    }
+@media (max-width: 940px) {
+    .selection2 {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .subscribtionBox {
+        margin-bottom: 4rem;
+    }
+    .text1 {
+        font-size: 30px;
+        letter-spacing: 8px;
+    }
+    .in-view .text1 {
+        animation: none;
+    }
+}
+
+@media (max-width: 620px) {
+    .text1 {
+        font-size: 25px;
+        letter-spacing: 5px;
+    }
+    .text2 {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 470px) {
+    .text1 {
+        font-size: 20px;
+        letter-spacing: 3px;
+    }
+    .text2 {
+        font-size: 10px;
+    }
 }
 </style>
