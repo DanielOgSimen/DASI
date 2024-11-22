@@ -53,6 +53,74 @@
     function updateChatTitle(chat, newTitle) {
         chats[chat].title = newTitle;
     }
+
+    let inputPromtComponent;
+
+    function findPrompt() {
+        return inputPromtComponent.getPrompt();
+    }
+
+    async function handlePrompt() {
+        // Hent prompten fra input-feltet ved å kalle findPrompt-funksjonen
+        let prompt = findPrompt();
+    
+        // Sjekk om det finnes en gjeldende chat og at den er definert i chats-objektet
+        if (currentChat && chats[currentChat]) {
+            // Oppdater chats-objektet med den nye meldingen fra brukeren
+            chats = {
+                ...chats, // Behold eksisterende chats
+                [currentChat]: {
+                    ...chats[currentChat], // Behold eksisterende data for gjeldende chat
+                    messages: [
+                        ...chats[currentChat].messages, // Behold eksisterende meldinger
+                        {
+                            sender: "user", // Legg til ny melding fra brukeren
+                            message: prompt
+                        }
+                    ]
+                }
+            };
+
+            // Bygg opp meldingshistorikken for å sende til API-en
+            const messages = chats[currentChat].messages.map(msg => ({
+                role: msg.sender === "user" ? "user" : "assistant",
+                content: msg.message
+            }));
+
+            // Legg til den nye meldingen fra brukeren
+            messages.push({ role: "user", content: prompt });
+
+            // Send brukerens melding og meldingshistorikken til API-et og få svaret
+            try {
+                const response = await fetch('/api', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ messages })
+                });
+
+                const data = await response.json();
+
+                // Oppdater chats-objektet med svaret fra API-et
+                chats = {
+                    ...chats, // Behold eksisterende chats
+                    [currentChat]: {
+                        ...chats[currentChat], // Behold eksisterende data for gjeldende chat
+                        messages: [
+                            ...chats[currentChat].messages, // Behold eksisterende meldinger
+                            {
+                                sender: "bot", // Legg til ny melding fra boten
+                                message: data.message
+                            }
+                        ]
+                    }
+                };
+            } catch (error) {
+                console.error('Error fetching data from API:', error);
+            }
+        }
+    }
 </script>
 
 <Navbar />
@@ -69,8 +137,8 @@
     <div class="chat-space">
         {#if currentChat === "New Chat"}
             <div class="new-chat">
-                <InputPromt Width={"35rem"}/>
-                <button class="button purple">Send Message</button>
+                <InputPromt bind:this={inputPromtComponent} Width={"35rem"} onEnter={handlePrompt}/>
+                <button class="button purple" on:click={handlePrompt}>Send Message</button>
             </div>
         {:else}
             <div class="normal-chat">
@@ -87,7 +155,7 @@
                             {/if}
                     {/each}
                 </div>
-                <InputPromt Width={"35rem"}/>
+                <InputPromt bind:this={inputPromtComponent} Width={"35rem"} onEnter={handlePrompt}/>
             </div>
         {/if}
     </div>

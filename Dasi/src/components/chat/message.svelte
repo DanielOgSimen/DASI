@@ -10,7 +10,7 @@
 {:else}
      <div class="bot">
         <img src="/src/Images/Dasi logo.png" alt="" id="bot-logo">
-        <p>{message}</p>
+        <p style="white-space: pre-wrap;">{message}</p>
      </div>
 {/if}
 <style>
