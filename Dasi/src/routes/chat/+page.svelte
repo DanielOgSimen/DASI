@@ -53,6 +53,12 @@
     function updateChatTitle(chat, newTitle) {
         chats[chat].title = newTitle;
     }
+
+    let inputPromtComponent;
+    // Funksjonen som henter prompten
+    function findPrompt() {
+        console.log(inputPromtComponent.getPrompt());
+    }
 </script>
 
 <Navbar />
@@ -69,8 +75,8 @@
     <div class="chat-space">
         {#if currentChat === "New Chat"}
             <div class="new-chat">
-                <InputPromt Width={"35rem"}/>
-                <button class="button purple">Send Message</button>
+                <InputPromt bind:this={inputPromtComponent} Width={"35rem"} onEnter={findPrompt}/>
+                <button class="button purple" on:click={findPrompt}>Send Message</button>
             </div>
         {:else}
             <div class="normal-chat">
@@ -87,7 +93,7 @@
                             {/if}
                     {/each}
                 </div>
-                <InputPromt Width={"35rem"}/>
+                <InputPromt bind:this={inputPromtComponent} Width={"35rem"} onEnter={findPrompt}/>
             </div>
         {/if}
     </div>

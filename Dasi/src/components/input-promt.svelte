@@ -4,19 +4,28 @@
     export let HideSvg = false;
     export let height = "3rem";
     export let Width = "20rem";
+    export let onEnter: () => void; // Tar inn en funksjon som kjøres når man trykker enter
 
     let inputElement: HTMLInputElement;
 
     export function getPrompt() {
         return inputElement.value;
     }
+    // Funksjonen som sjekker om man trykker enter
+    function handleKeyDown(event: KeyboardEvent) {
+        if (event.key === 'Enter') {
+            onEnter();
+        }
+    }
 </script>
 
 <div class="input_wrap">
-    <input bind:this={inputElement} style="background-color: {color}; height: {height}; width:{Width};" type="text" required />
+    <input bind:this={inputElement} style="background-color: {color}; height: {height}; width:{Width};" type="text" required on:keydown={handleKeyDown} />
     <!-- svelte-ignore a11y-label-has-associated-control -->
     <label>{label}</label>
-    <svg class:display={HideSvg} class=input_icon xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 41.621 41.621">
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <svg class:display={HideSvg} class=input_icon xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 41.621 41.621" on:click={onEnter}>
         <path id="Icon_feather-send" data-name="Icon feather-send" d="M41,3,20.1,23.9M41,3,27.7,41,20.1,23.9,3,16.3Z" transform="translate(-1.5 -0.879)" fill="none" stroke="#00b8d4" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
       </svg>    
 </div>
@@ -33,6 +42,7 @@
     right: 15px;
     transform: translateY(-50%);
     pointer-events: none; /* Ensure the SVG does not interfere with input interactions */
+    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
 }
 
   .input_wrap {
