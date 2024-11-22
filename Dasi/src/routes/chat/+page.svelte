@@ -55,9 +55,32 @@
     }
 
     let inputPromtComponent;
-    // Funksjonen som henter prompten
+
     function findPrompt() {
-        console.log(inputPromtComponent.getPrompt());
+        return inputPromtComponent.getPrompt();
+    }
+
+    function handlePrompt() {
+        // Hent prompten fra input-feltet ved å kalle findPrompt-funksjonen
+        let prompt = findPrompt();
+    
+        // Sjekk om det finnes en gjeldende chat og at den er definert i chats-objektet
+        if (currentChat && chats[currentChat]) {
+            // Oppdater chats-objektet med den nye meldingen
+            chats = {
+                ...chats, // Behold eksisterende chats
+                [currentChat]: {
+                    ...chats[currentChat], // Behold eksisterende data for gjeldende chat
+                    messages: [
+                        ...chats[currentChat].messages, // Behold eksisterende meldinger
+                        {
+                            sender: "user", // Legg til ny melding fra brukeren
+                            message: prompt
+                        }
+                    ]
+                }
+            };
+        }
     }
 </script>
 
@@ -75,8 +98,8 @@
     <div class="chat-space">
         {#if currentChat === "New Chat"}
             <div class="new-chat">
-                <InputPromt bind:this={inputPromtComponent} Width={"35rem"} onEnter={findPrompt}/>
-                <button class="button purple" on:click={findPrompt}>Send Message</button>
+                <InputPromt bind:this={inputPromtComponent} Width={"35rem"} onEnter={handlePrompt}/>
+                <button class="button purple" on:click={handlePrompt}>Send Message</button>
             </div>
         {:else}
             <div class="normal-chat">
@@ -93,7 +116,7 @@
                             {/if}
                     {/each}
                 </div>
-                <InputPromt bind:this={inputPromtComponent} Width={"35rem"} onEnter={findPrompt}/>
+                <InputPromt bind:this={inputPromtComponent} Width={"35rem"} onEnter={handlePrompt}/>
             </div>
         {/if}
     </div>
