@@ -1,6 +1,6 @@
 <script>
     import Cards from "../components/boxes/cards-homepage.svelte";
-    import PromtInput from "../components/input-promt.svelte";
+    import InputPrompt from "../components/input-promt.svelte";
     import SubCards from "../components/boxes/subscribtionCard.svelte";
     
     import { onMount } from 'svelte';
@@ -21,13 +21,17 @@ onMount(function() {
         observer.observe(section); // starter observeringen ac section
     }
 });
+
+function handleKeyDown() {
+    console.log(`Hei`)
+}
 </script>
 
 <div class="imgOneClick">
     <img style="width: 27rem; object-fit: contain;" src="/src/Images/OneClickPic.png" alt="">  
     <div class="OneClickText">
         <h1 style="color: #E0E0E0; margin-bottom: 1rem;" class="medium">Available in one<br><span class="accent-blue">click</span></h1>
-        <PromtInput></PromtInput>
+        <InputPrompt onEnter={handleKeyDown} />
     </div>
 </div>
 <section id="sectionPin">
