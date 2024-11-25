@@ -1,6 +1,6 @@
 <script>
     import Cards from "../components/boxes/cards-homepage.svelte";
-    import PromtInput from "../components/input-promt.svelte";
+    import InputPrompt from "../components/input-promt.svelte";
     import SubCards from "../components/boxes/subscribtionCard.svelte";
     
     import { onMount } from 'svelte';
@@ -22,6 +22,9 @@ onMount(function() {
     }
 });
 
+function handleKeyDown() {
+    console.log(`Hei`)
+}
 let isSmallScreen = false;
 
     const checkScreenSize = () => {
@@ -43,7 +46,7 @@ let isSmallScreen = false;
     <div class="OneClickText">
         <h1 style="color: #E0E0E0; margin-bottom: 1rem;" class="medium">Available in one<br><span class="accent-blue">click</span></h1>
         <div class="inpPromt">
-            <PromtInput></PromtInput>
+            <InputPrompt onEnter={handleKeyDown} />
         </div>
     </div>
 </div>

@@ -1,6 +1,11 @@
 <script>
+    import { marked } from "marked";
+
     export let message = "Message not found";
     export let messenger = "Unknown";
+
+    // Konverter meldingen til HTML ved hjelp av marked
+    let formattedMessage = marked(message);
 </script>
 
 {#if messenger === "user"}
@@ -8,11 +13,12 @@
         <p>{message}</p>
     </div>
 {:else}
-     <div class="bot">
+    <div class="bot">
         <img src="/src/Images/Dasi logo.png" alt="" id="bot-logo">
-        <p style="white-space: pre-wrap;">{message}</p>
-     </div>
+        <p style="white-space: pre-wrap;">{@html formattedMessage}</p>
+    </div>
 {/if}
+
 <style>
     .message {
         max-width: 300px;

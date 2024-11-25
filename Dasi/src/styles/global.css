@@ -124,3 +124,10 @@ a.effect-underline:hover:after {
 	-webkit-transform: scale(1);
 	transform: scale(1);
 }
+
+/* Markdown */
+code {
+	background-color: #1a1a1a;
+	padding: 2px 5px;
+	border-radius: 5px;
+}
