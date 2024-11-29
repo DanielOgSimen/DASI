@@ -15,12 +15,13 @@
     function handleKeyDown(event: KeyboardEvent) {
         if (event.key === 'Enter') {
             onEnter();
+            inputElement.value = "";
         }
     }
 </script>
 
 <div class="input_wrap">
-    <input bind:this={inputElement} style="background-color: {color}; height: {height}; width:{Width};" type="text" required on:keydown={handleKeyDown} />
+    <input bind:this={inputElement} style="background-color: {color}; height: {height}; width:{Width};" type="text" id="input" required on:keydown={handleKeyDown} />
     <!-- svelte-ignore a11y-label-has-associated-control -->
     <label>{label}</label>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
