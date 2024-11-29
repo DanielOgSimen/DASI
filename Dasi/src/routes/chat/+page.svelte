@@ -1,5 +1,8 @@
 <script>
 // @ts-nocheck
+    import { onMount } from 'svelte';
+    import { page } from '$app/stores';
+
     import ChatTitle from './../../components/chat/chat-title.svelte';
     import Navbar from "../../components/navbar.svelte";
     import InputPromt from '../../components/input-promt.svelte';
@@ -66,39 +69,20 @@
     
         // Sjekk om det finnes en gjeldende chat og at den er definert i chats-objektet
         if (currentChat && chats[currentChat]) {
-            // Hvis currentChat er "New Chat", opprett en ny chat
-            if (currentChat === "New Chat") {
-                const newChatId = `chat${Object.keys(chats).length + 1}`;
-                chats = {
-                    ...chats,
-                    [newChatId]: {
-                        title: "New Chat",
-                        messages: [
-                            {
-                                sender: "user",
-                                message: prompt
-                            }
-                        ],
-                        editTitle: false
-                    }
-                };
-                currentChat = newChatId;
-            } else {
-                // Oppdater chats-objektet med den nye meldingen fra brukeren
-                chats = {
-                    ...chats, // Behold eksisterende chats
-                    [currentChat]: {
-                        ...chats[currentChat], // Behold eksisterende data for gjeldende chat
-                        messages: [
-                            ...chats[currentChat].messages, // Behold eksisterende meldinger
-                            {
-                                sender: "user", // Legg til ny melding fra brukeren
-                                message: prompt
-                            }
-                        ]
-                    }
-                };
-            }
+            // Oppdater chats-objektet med den nye meldingen fra brukeren
+            chats = {
+                ...chats, // Behold eksisterende chats
+                [currentChat]: {
+                    ...chats[currentChat], // Behold eksisterende data for gjeldende chat
+                    messages: [
+                        ...chats[currentChat].messages, // Behold eksisterende meldinger
+                        {
+                            sender: "user", // Legg til ny melding fra brukeren
+                            message: prompt
+                        }
+                    ]
+                }
+            };
 
             // Bygg opp meldingshistorikken for å sende til API-en
             const messages = chats[currentChat].messages.map(msg => ({
@@ -140,6 +124,30 @@
             }
         }
     }
+
+    onMount(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const message = urlParams.get('message');
+
+        if (message) {
+            // Generer en unik tittel for den nye chatten
+            const newChatTitle = `Chat ${Object.keys(chats).length + 1}`;
+            currentChat = newChatTitle;
+            chats[newChatTitle] = {
+                title: newChatTitle,
+                messages: [
+                    {
+                        sender: "user",
+                        message: message
+                    }
+                ],
+                editTitle: false
+            };
+
+            // Kall handlePrompt for å sende meldingen og få svar
+            handlePrompt();
+        }
+    });
 </script>
 
 <Navbar />

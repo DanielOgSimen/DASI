@@ -1,9 +1,11 @@
 <script lang="ts">
+    import { goto } from '$app/navigation';
     export let label = "Ask a promt";
     export let color = "#242424";
     export let HideSvg = false;
     export let height = "3rem";
     export let Width = "20rem";
+    export let external = false;
     export let onEnter: () => void; // Tar inn en funksjon som kjøres når man trykker enter
 
     let inputElement: HTMLInputElement;
@@ -12,9 +14,12 @@
         return inputElement.value;
     }
     // Funksjonen som sjekker om man trykker enter
-    function handleKeyDown(event: KeyboardEvent) {
+    async function handleKeyDown(event: KeyboardEvent) {
         if (event.key === 'Enter') {
             onEnter();
+            if (external) {
+                await goto(`/chat?message=${encodeURIComponent(inputElement.value)}`);
+            }
             inputElement.value = "";
         }
     }
