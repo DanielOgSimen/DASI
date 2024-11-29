@@ -66,20 +66,39 @@
     
         // Sjekk om det finnes en gjeldende chat og at den er definert i chats-objektet
         if (currentChat && chats[currentChat]) {
-            // Oppdater chats-objektet med den nye meldingen fra brukeren
-            chats = {
-                ...chats, // Behold eksisterende chats
-                [currentChat]: {
-                    ...chats[currentChat], // Behold eksisterende data for gjeldende chat
-                    messages: [
-                        ...chats[currentChat].messages, // Behold eksisterende meldinger
-                        {
-                            sender: "user", // Legg til ny melding fra brukeren
-                            message: prompt
-                        }
-                    ]
-                }
-            };
+            // Hvis currentChat er "New Chat", opprett en ny chat
+            if (currentChat === "New Chat") {
+                const newChatId = `chat${Object.keys(chats).length + 1}`;
+                chats = {
+                    ...chats,
+                    [newChatId]: {
+                        title: "New Chat",
+                        messages: [
+                            {
+                                sender: "user",
+                                message: prompt
+                            }
+                        ],
+                        editTitle: false
+                    }
+                };
+                currentChat = newChatId;
+            } else {
+                // Oppdater chats-objektet med den nye meldingen fra brukeren
+                chats = {
+                    ...chats, // Behold eksisterende chats
+                    [currentChat]: {
+                        ...chats[currentChat], // Behold eksisterende data for gjeldende chat
+                        messages: [
+                            ...chats[currentChat].messages, // Behold eksisterende meldinger
+                            {
+                                sender: "user", // Legg til ny melding fra brukeren
+                                message: prompt
+                            }
+                        ]
+                    }
+                };
+            }
 
             // Bygg opp meldingshistorikken for å sende til API-en
             const messages = chats[currentChat].messages.map(msg => ({
