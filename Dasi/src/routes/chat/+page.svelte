@@ -45,6 +45,8 @@
         }
     };
 
+    let waitigForResponse = true;
+
     // Funksjon for å sette gjeldende chat og aktivere redigering av tittelen
     function setCurrentChat(chat) {
         currentChat = chat;
@@ -66,6 +68,17 @@
     async function handlePrompt() {
         // Hent prompten fra input-feltet ved å kalle findPrompt-funksjonen
         let prompt = findPrompt();
+
+        // Generer en unik tittel for den nye chatten hvis vi er i "New Chat"
+        if (currentChat === "New Chat") {
+            const newChatTitle = `Chat ${Object.keys(chats).length + 1}`;
+            currentChat = newChatTitle;
+            chats[newChatTitle] = {
+                title: newChatTitle,
+                messages: [],
+                editTitle: false
+            };
+        }
     
         // Sjekk om det finnes en gjeldende chat og at den er definert i chats-objektet
         if (currentChat && chats[currentChat]) {
@@ -95,6 +108,7 @@
 
             // Send brukerens melding og meldingshistorikken til API-et og få svaret
             try {
+                waitigForResponse = true;
                 const response = await fetch('/api', {
                     method: 'POST',
                     headers: {
@@ -104,6 +118,7 @@
                 });
 
                 const data = await response.json();
+                waitigForResponse = false;
 
                 // Oppdater chats-objektet med svaret fra API-et
                 chats = {
@@ -181,6 +196,9 @@
                                 </div>
                             {/if}
                     {/each}
+                    {#if waitigForResponse}
+                        <div class="dot-pulse">Heio</div>
+                    {/if}
                 </div>
                 <InputPromt bind:this={inputPromtComponent} Width={"35rem"} onEnter={handlePrompt}/>
             </div>
@@ -260,6 +278,74 @@
         border-radius: 10px;
         margin-left: 10px;
         width: fit-content;
+    }
+
+    .dot-pulse {
+    position: relative;
+    left: -9999px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #00b8d4;
+    color: #00b8d4;
+    box-shadow: 9999px 0 0 -5px;
+    animation: dot-pulse 1.5s infinite linear;
+    animation-delay: 0.25s;
+    }
+    .dot-pulse::before, .dot-pulse::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #00b8d4;
+    color: #00b8d4;
+    }
+    .dot-pulse::before {
+    box-shadow: 9984px 0 0 -5px;
+    animation: dot-pulse-before 1.5s infinite linear;
+    animation-delay: 0s;
+    }
+    .dot-pulse::after {
+    box-shadow: 10014px 0 0 -5px;
+    animation: dot-pulse-after 1.5s infinite linear;
+    animation-delay: 0.5s;
+    }
+
+    @keyframes dot-pulse-before {
+    0% {
+        box-shadow: 9984px 0 0 -5px;
+    }
+    30% {
+        box-shadow: 9984px 0 0 2px;
+    }
+    60%, 100% {
+        box-shadow: 9984px 0 0 -5px;
+    }
+    }
+    @keyframes dot-pulse {
+    0% {
+        box-shadow: 9999px 0 0 -5px;
+    }
+    30% {
+        box-shadow: 9999px 0 0 2px;
+    }
+    60%, 100% {
+        box-shadow: 9999px 0 0 -5px;
+    }
+    }
+    @keyframes dot-pulse-after {
+    0% {
+        box-shadow: 10014px 0 0 -5px;
+    }
+    30% {
+        box-shadow: 10014px 0 0 2px;
+    }
+    60%, 100% {
+        box-shadow: 10014px 0 0 -5px;
+    }
     }
     
 </style>
