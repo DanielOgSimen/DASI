@@ -50,7 +50,7 @@
         {#if loggedIn}
              <img src="https://placehold.co/400" alt="" class="profile-picture">
         {:else}
-            <a href="/log-in" class="effect-underline">Log In</a>
+            <a href="/loggInn" class="effect-underline">Log In</a>
         {/if}
         
     </div>
