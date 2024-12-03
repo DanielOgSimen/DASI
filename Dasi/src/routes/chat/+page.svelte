@@ -1,62 +1,36 @@
 <script>
-// @ts-nocheck
+    // @ts-nocheck
     import { onMount } from 'svelte';
-    import { page } from '$app/stores';
-
+    import { get } from 'svelte/store';
+    import { chatStore } from '../../store/chatStore'; // Importer chatStore
     import ChatTitle from './../../components/chat/chat-title.svelte';
     import Navbar from "../../components/navbar.svelte";
     import InputPromt from '../../components/input-promt.svelte';
     import Message from '../../components/chat/message.svelte';
 
     let currentChat = "New Chat";
-    let chats = {
-        "New Chat": {
-            "title": "New Chat",
-            "messages": [],
-            "editTitle": false
-        },
-        "chat1": {
-            "title": "Chat 1",
-            "messages": [
-                {
-                    "sender": "user",
-                    "message": "Hello, how do i make an algorithm?"
-                },
-                {
-                    "sender": "bot",
-                    "message": "To create an algorithm, start by clearly defining the problem and identifying its goal and constraints. Break down the problem into smaller parts, then choose an approach, like brute force, greedy, or divide and conquer. Write out the steps in pseudocode, optimizing for efficiency by reducing unnecessary work or using efficient data structures. Translate the pseudocode into actual code in your chosen language and test it on a range of inputs, including edge cases. Refine the algorithm as needed to ensure it meets both the goal and constraints effectively."
-                }
-            ],
-            "editTitle": false
-        },
-        "chat2": {
-            "title": "Chat 2",
-            "messages": [
-                {
-                    "sender": "user",
-                    "message": "Hello"
-                },
-                {
-                    "sender": "bot",
-                    "message": "Hi"
-                }
-            ],
-            "editTitle": false
-        }
-    };
+    let waitigForResponse = false;
 
-    let waitigForResponse = true;
+    // Les data fra store
+    let chats;
+    chatStore.subscribe(value => {
+        chats = value;
+    });
 
-    // Funksjon for å sette gjeldende chat og aktivere redigering av tittelen
+    // Funksjon for å oppdatere store
+    function updateStore(updatedChats) {
+        chatStore.set(updatedChats);
+    }
+
     function setCurrentChat(chat) {
         currentChat = chat;
         chats[chat].editTitle = true;
-        console.log(currentChat);
+        updateStore(chats);
     }
 
-    // Funksjon for å oppdatere tittelen på en chat
     function updateChatTitle(chat, newTitle) {
         chats[chat].title = newTitle;
+        updateStore(chats);
     }
 
     let inputPromtComponent;
@@ -66,10 +40,7 @@
     }
 
     async function handlePrompt() {
-        // Hent prompten fra input-feltet ved å kalle findPrompt-funksjonen
         let prompt = findPrompt();
-
-        // Generer en unik tittel for den nye chatten hvis vi er i "New Chat"
         if (currentChat === "New Chat") {
             const newChatTitle = `Chat ${Object.keys(chats).length + 1}`;
             currentChat = newChatTitle;
@@ -79,34 +50,29 @@
                 editTitle: false
             };
         }
-    
-        // Sjekk om det finnes en gjeldende chat og at den er definert i chats-objektet
+
         if (currentChat && chats[currentChat]) {
-            // Oppdater chats-objektet med den nye meldingen fra brukeren
             chats = {
-                ...chats, // Behold eksisterende chats
+                ...chats,
                 [currentChat]: {
-                    ...chats[currentChat], // Behold eksisterende data for gjeldende chat
+                    ...chats[currentChat],
                     messages: [
-                        ...chats[currentChat].messages, // Behold eksisterende meldinger
+                        ...chats[currentChat].messages,
                         {
-                            sender: "user", // Legg til ny melding fra brukeren
+                            sender: "user",
                             message: prompt
                         }
                     ]
                 }
             };
 
-            // Bygg opp meldingshistorikken for å sende til API-en
             const messages = chats[currentChat].messages.map(msg => ({
                 role: msg.sender === "user" ? "user" : "assistant",
                 content: msg.message
             }));
 
-            // Legg til den nye meldingen fra brukeren
             messages.push({ role: "user", content: prompt });
 
-            // Send brukerens melding og meldingshistorikken til API-et og få svaret
             try {
                 waitigForResponse = true;
                 const response = await fetch('/api', {
@@ -120,20 +86,22 @@
                 const data = await response.json();
                 waitigForResponse = false;
 
-                // Oppdater chats-objektet med svaret fra API-et
                 chats = {
-                    ...chats, // Behold eksisterende chats
+                    ...chats,
                     [currentChat]: {
-                        ...chats[currentChat], // Behold eksisterende data for gjeldende chat
+                        ...chats[currentChat],
                         messages: [
-                            ...chats[currentChat].messages, // Behold eksisterende meldinger
+                            ...chats[currentChat].messages,
                             {
-                                sender: "bot", // Legg til ny melding fra boten
+                                sender: "bot",
                                 message: data.message
                             }
                         ]
                     }
                 };
+
+                // Oppdater store
+                updateStore(chats);
             } catch (error) {
                 console.error('Error fetching data from API:', error);
             }
@@ -145,7 +113,6 @@
         const message = urlParams.get('message');
 
         if (message) {
-            // Generer en unik tittel for den nye chatten
             const newChatTitle = `Chat ${Object.keys(chats).length + 1}`;
             currentChat = newChatTitle;
             chats[newChatTitle] = {
@@ -159,7 +126,7 @@
                 editTitle: false
             };
 
-            // Kall handlePrompt for å sende meldingen og få svar
+            updateStore(chats);
             handlePrompt();
         }
     });
@@ -197,7 +164,7 @@
                             {/if}
                     {/each}
                     {#if waitigForResponse}
-                        <div class="dot-pulse">Heio</div>
+                        <div class="dot-pulse">Laget av Daniel og Simen</div>
                     {/if}
                 </div>
                 <InputPromt bind:this={inputPromtComponent} Width={"35rem"} onEnter={handlePrompt}/>
