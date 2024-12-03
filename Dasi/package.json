@@ -22,6 +22,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"google-auth-library": "^9.15.0",
 		"marked": "^15.0.2"
 	}
 }
