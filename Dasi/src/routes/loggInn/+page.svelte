@@ -1,49 +1,70 @@
 <svelte:head>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="684634493497-2ena2p1qdk7jcfe1ef1hr2b8r3d8ip3r.apps.googleusercontent.com">
+    <script src="https://accounts.google.com/gsi/client" async defer></script> 
 </svelte:head>
+<script context="module" lang="ts">
+    declare const google: any;
+</script>
 <script lang="ts">
-    import Navbar from "../../components/navbar.svelte";
 
+    import Navbar from "../../components/navbar.svelte";
     import { onMount } from 'svelte';
 
-    function onSignIn(googleUser: gapi.auth2.GoogleUser) {
-        const profile = googleUser.getBasicProfile();
-        const userDetails = {
-            id: profile.getId(),
-            name: profile.getName(),
-            imageUrl: profile.getImageUrl(),
-            email: profile.getEmail()
-        };
-        console.log(userDetails);
-    }
-
-    function signOut(event: Event) {
-        event.preventDefault();
-        const auth2 = window.gapi.auth2.getAuthInstance();
-        auth2.signOut().then(() => {
-            console.log('User signed out.');
-        });
-    }
-
     onMount(() => {
-        window.gapi.signin2.render('google-signin-button', {
-            scope: 'profile email',
-            width: 200,
-            height: 35,
-            longtitle: true,
-            theme: 'light',
-            onsuccess: onSignIn
-        });
+        // Last inn GIS-biblioteket
+        const script = document.createElement('script');
+        script.src = 'https://accounts.google.com/gsi/client';
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+
+        script.onload = () => {
+            // Initialiser GIS
+            google.accounts.id.initialize({
+                client_id: '684634493497-2ena2p1qdk7jcfe1ef1hr2b8r3d8ip3r.apps.googleusercontent.com', // Erstatt med din klient-ID
+                callback: onSignIn,
+            });
+
+            // Opprett en Sign-In-knapp
+            google.accounts.id.renderButton(
+                document.getElementById('signIn'), // Elementet hvor knappen skal vises
+                { theme: 'outline', size: 'large' }  // Tilpasningsalternativer
+            );
+        };
     });
+
+    // Callback-funksjonen som kjøres etter vellykket innlogging
+    import { user } from "../../store/userStore";
+    // @ts-ignore
+    function onSignIn(response) {
+        const id_token = response.credential;
+        // Dekoder fra Base64Url til en UTF-8 streng
+        const base64UrlPayload = id_token.split('.')[1];
+        const base64Payload = base64UrlPayload.replace(/-/g, '+').replace(/_/g, '/');
+        const payload = JSON.parse(decodeURIComponent(atob(base64Payload).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join('')));
+
+        // Oppdaterer Svelte store med brukerinformasjon
+        user.set({
+            id: payload.sub,
+            name: payload.name,
+            email: payload.email,
+            picture: payload.picture
+        });
+
+        console.log('Logged in as: ' + payload.name);
+    }
 </script>
 <Navbar />
 <div class="contentSignIn">
     <div class="signIn">
         <img class="LoggInLogo" src="src/Images/Dasi logo.png" alt="LogInnLogo">
         <p class="normal" style="color: #E0E0E0; font-size:14px;">Sign inn to get the full experience of DASI-gpt</p>
-        <div id="google-signin-button" class="g-signin2" data-onsuccess="onSignIn"></div>
+        <div id="signIn"></div>
 <!--         <a href="../" on:click={signOut}>Sign out</a> -->
+         
     </div>
 </div>
 
