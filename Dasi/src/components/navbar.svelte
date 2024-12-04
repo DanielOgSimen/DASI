@@ -1,7 +1,6 @@
 <script>
     import { onMount } from 'svelte';
-
-    let loggedIn = false;
+    import { user } from '../store/userStore';
 
     // Initialiserer variabler for å spore siste scroll-posisjon og synligheten til navbar
     let lastScrollTop = 0;
@@ -47,10 +46,10 @@
             <a href="/try-us" class="effect-underline">Try Us</a>
             <a href="/prices" class="effect-underline">Prices</a>
             <a href="/about" class="effect-underline">About Us</a>
-        {#if loggedIn}
-             <img src="https://placehold.co/400" alt="" class="profile-picture">
-        {:else}
+        {#if !$user.picture}
             <a href="/loggInn" class="effect-underline">Log In</a>
+        {:else}
+            <a href="/loggInn"><img src="{$user.picture}" alt="" class="profile-picture"></a>
         {/if}
         
     </div>
@@ -75,7 +74,11 @@
     
 
     .profile-picture {
-        border-radius: 100%;
+        border-radius: 50%;
+        height: 58px;
+        padding: 5px;
+        display: flex;
+        background-color: #242424;
     }
     .navbar {
         transition: top 0.3s;

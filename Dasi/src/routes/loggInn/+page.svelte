@@ -46,7 +46,7 @@
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         }).join('')));
 
-        // Oppdaterer Svelte store med brukerinformasjon
+        // Oppdaterer Svelte store med brukerinformasjon ved logg in 
         user.set({
             id: payload.sub,
             name: payload.name,
@@ -61,9 +61,13 @@
 <div class="contentSignIn">
     <div class="signIn">
         <img class="LoggInLogo" src="src/Images/Dasi logo.png" alt="LogInnLogo">
-        <p class="normal" style="color: #E0E0E0; font-size:14px;">Sign inn to get the full experience of DASI-gpt</p>
-        <div id="signIn"></div>
-<!--         <a href="../" on:click={signOut}>Sign out</a> -->
+        {#if !$user.id}
+            <p class="normal" style="color: #E0E0E0; font-size:14px;">Sign inn to get the full experience of DASI-gpt</p>
+            <div id="signIn"></div>
+        {:else}
+            <p class="normal" style="color: #E0E0E0; font-size:14px;">Sign out of DASI-gpt</p>
+            <a href="../">Sign out</a>
+        {/if}
          
     </div>
 </div>
@@ -84,7 +88,7 @@
         background-color: #1A1A1A;
     }
     .signIn {
-        padding: 100px 25px;
+        padding: 8rem 7rem;
         background-color:#242424 ;
         border-radius: 14px;
         display: flex;
