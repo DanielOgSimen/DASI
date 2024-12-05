@@ -16,6 +16,7 @@
     let chats;
     chatStore.subscribe(value => {
         chats = value;
+        console.log(chats);
     });
 
     // Funksjon for å oppdatere store
