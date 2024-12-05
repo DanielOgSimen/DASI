@@ -1,5 +1,5 @@
 <script>
-    // @ts-nocheck
+// @ts-nocheck
     import { onMount } from 'svelte';
     import { get } from 'svelte/store';
     import { chatStore } from '../../store/chatStore'; // Importer chatStore
@@ -10,6 +10,7 @@
 
     let currentChat = "New Chat";
     let waitigForResponse = false;
+    let isChecked = false;
 
     // Les data fra store
     let chats;
@@ -26,6 +27,7 @@
         currentChat = chat;
         chats[chat].editTitle = true;
         updateStore(chats);
+        isChecked = false; // Fjern checked status når en chat-title blir trykket
     }
 
     function updateChatTitle(chat, newTitle) {
@@ -108,7 +110,15 @@
         }
     }
 
+    // Finner skjermlengden
+    let isSmallScreen = false;
+
+    const checkScreenSize = () => {
+        isSmallScreen = window.innerWidth < 1050;
+        console.log(isSmallScreen);
+    };
     onMount(() => {
+        checkScreenSize();
         const urlParams = new URLSearchParams(window.location.search);
         const message = urlParams.get('message');
 
@@ -130,11 +140,16 @@
             handlePrompt();
         }
     });
+
 </script>
 
-<Navbar />
+<!-- <Navbar /> -->
 <div class="chat-page">
-    <div class="chats">
+    <div class="chat-titles" class:checked={isChecked}>
+        <input type="checkbox" id="toggle" bind:checked={isChecked} />
+        <label for="toggle" class="arrow">{'>'}</label>
+    </div>
+    <div class="chats" class:checked={isChecked}>
         {#each Object.keys(chats) as chat, index}
             {#if chat === currentChat}
                 <ChatTitle editTitle={true} title={chats[chat].title} on:titleChange={(e) => updateChatTitle(chat, e.detail)} />
@@ -146,7 +161,11 @@
     <div class="chat-space">
         {#if currentChat === "New Chat"}
             <div class="new-chat">
-                <InputPromt bind:this={inputPromtComponent} Width={"35rem"} onEnter={handlePrompt}/>
+                {#if isSmallScreen}
+                    <InputPromt bind:this={inputPromtComponent} Width={"90vw"} onEnter={handlePrompt}/>
+                {:else}
+                    <InputPromt bind:this={inputPromtComponent} Width={"35rem"} onEnter={handlePrompt}/>
+                {/if}
                 <button class="button purple" on:click={handlePrompt}>Send Message</button>
             </div>
         {:else}
@@ -164,10 +183,14 @@
                             {/if}
                     {/each}
                     {#if waitigForResponse}
-                        <div class="dot-pulse">Laget av Daniel og Simen</div>
+                        <div class="dot-pulse"></div>
                     {/if}
                 </div>
-                <InputPromt bind:this={inputPromtComponent} Width={"35rem"} onEnter={handlePrompt}/>
+                {#if isSmallScreen}
+                    <InputPromt bind:this={inputPromtComponent} Width={"90vw"} onEnter={handlePrompt}/>
+                {:else}
+                    <InputPromt bind:this={inputPromtComponent} Width={"35rem"} onEnter={handlePrompt}/>
+                {/if}
             </div>
         {/if}
     </div>
@@ -175,22 +198,89 @@
 
 <style>
     :root {
-        --chat-width: 366px;
+        --chat-width: 20vw;
+        --responsive-chat-width: 230px;
     }
+
+    .chat-titles {
+        display: none;
+    }
+
+    .chat-titles.checked {
+        transform: translateX(var(--responsive-chat-width));
+    }
+
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    .arrow {
+        font-size: 2rem;
+        cursor: pointer;
+        transition: transform 0.5s ease;
+    }
+
+    input[type="checkbox"]:checked + .arrow {
+        transform: rotate(180deg);
+    }
+
     .chat-page {
         background-color: #121212;
         display: flex;
+        height: 100vh; /* Sørg for at chat-page fyller hele høyden */
     }
-    .chats {
-        width: var(--chat-width);
-        height: 100vh;
-        background-color: #1A1A1A;
-        padding-top: 100px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        overflow-y: scroll;
+        .chats {
+            width: var(--chat-width);
+            max-width: 366px;
+            height: 100%; /* Sørg for at chat-titlene fyller hele høyden */
+            background-color: #1A1A1A;
+            padding-top: 100px;
+            overflow-y: auto; /* Aktiver skrolling når nødvendig */
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 20px; /* Legg til 20px mellomrom mellom alle elementene */
+            justify-items: center; /* Sentrer elementene horisontalt */
+        }
+
+    @media (max-width: 1050px) {
+        .chat-titles {
+            display: block;
+            padding: 10px 15px;
+            border-radius: 0 0 26px 2px;
+            background-color: #00b8d4;
+            color: white;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.5s ease;
+        }
+
+        .chats {
+            position: absolute;
+            top: 0;
+            left: calc(-1 * var(--responsive-chat-width));
+            width: var(--responsive-chat-width);
+            z-index: 100;
+            transition: left 0.5s ease;
+        }
+
+        .chats.checked {
+            left: 0;
+        }
+
+        .chat-space {
+            width: 100vw;
+            padding-top: 0;
+        }
+
+        .chat-space {
+            width: 100% !important;
+            height: 100vh;
+            padding-top: 100px;
+            overflow-y: scroll;
+        }
     }
     .chat-space {
         width: calc(100% - var(--chat-width));
@@ -248,71 +338,68 @@
     }
 
     .dot-pulse {
-    position: relative;
-    left: -9999px;
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
-    background-color: #00b8d4;
-    color: #00b8d4;
-    box-shadow: 9999px 0 0 -5px;
-    animation: dot-pulse 1.5s infinite linear;
-    animation-delay: 0.25s;
+        position: relative;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: #00b8d4;
+        color: #00b8d4;
+        animation: dot-pulse 1.5s infinite linear;
+        animation-delay: 0.25s;
     }
     .dot-pulse::before, .dot-pulse::after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
-    background-color: #00b8d4;
-    color: #00b8d4;
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: #00b8d4;
+        color: #00b8d4;
     }
     .dot-pulse::before {
-    box-shadow: 9984px 0 0 -5px;
-    animation: dot-pulse-before 1.5s infinite linear;
-    animation-delay: 0s;
+        left: -15px;
+        animation: dot-pulse-before 1.5s infinite linear;
+        animation-delay: 0s;
     }
     .dot-pulse::after {
-    box-shadow: 10014px 0 0 -5px;
-    animation: dot-pulse-after 1.5s infinite linear;
-    animation-delay: 0.5s;
+        left: 15px;
+        animation: dot-pulse-after 1.5s infinite linear;
+        animation-delay: 0.5s;
     }
 
     @keyframes dot-pulse-before {
-    0% {
-        box-shadow: 9984px 0 0 -5px;
-    }
-    30% {
-        box-shadow: 9984px 0 0 2px;
-    }
-    60%, 100% {
-        box-shadow: 9984px 0 0 -5px;
-    }
+        0% {
+            transform: scale(1);
+        }
+        30% {
+            transform: scale(1.5);
+        }
+        60%, 100% {
+            transform: scale(1);
+        }
     }
     @keyframes dot-pulse {
-    0% {
-        box-shadow: 9999px 0 0 -5px;
-    }
-    30% {
-        box-shadow: 9999px 0 0 2px;
-    }
-    60%, 100% {
-        box-shadow: 9999px 0 0 -5px;
-    }
+        0% {
+            transform: scale(1);
+        }
+        30% {
+            transform: scale(1.5);
+        }
+        60%, 100% {
+            transform: scale(1);
+        }
     }
     @keyframes dot-pulse-after {
-    0% {
-        box-shadow: 10014px 0 0 -5px;
+        0% {
+            transform: scale(1);
+        }
+        30% {
+            transform: scale(1.5);
+        }
+        60%, 100% {
+            transform: scale(1);
+        }
     }
-    30% {
-        box-shadow: 10014px 0 0 2px;
-    }
-    60%, 100% {
-        box-shadow: 10014px 0 0 -5px;
-    }
-    }
-    
 </style>

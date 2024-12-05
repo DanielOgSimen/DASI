@@ -39,7 +39,7 @@
 
 <style>
     .chat-title {
-        width: 286px;
+        width: 85%;
         height: 70px;
         background-color: #242424;
         border-radius: 20px;
