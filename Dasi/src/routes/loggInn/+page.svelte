@@ -25,15 +25,16 @@
                 client_id: '684634493497-2ena2p1qdk7jcfe1ef1hr2b8r3d8ip3r.apps.googleusercontent.com', // Erstatt med din klient-ID
                 callback: onSignIn,
             });
-
-            // Opprett en Sign-In-knapp
-            google.accounts.id.renderButton(
-                document.getElementById('signIn'), // Elementet hvor knappen skal vises
-                { theme: 'outline', size: 'large' }  // Tilpasningsalternativer
-            );
+            renderButton();
         };
     });
-
+    function renderButton(){
+        // Opprett en Sign-In-knapp
+        google.accounts.id.renderButton(
+            document.getElementById('signIn'), // Elementet hvor knappen skal vises
+            { theme: 'outline', size: 'large' }  // Tilpasningsalternativer
+        );
+    }
     // Callback-funksjonen som kjøres etter vellykket innlogging
     import { user } from "../../store/userStore";
     // @ts-ignore
@@ -56,6 +57,19 @@
 
         console.log('Logged in as: ' + payload.name);
     }
+     // Funksjon for å logge ut av Google-kontoen
+     function signOut(event: Event) {
+        event.preventDefault();
+        google.accounts.id.disableAutoSelect();
+        user.set({
+            id: null,
+            name: null,
+            email: null,
+            picture: null
+        });
+        location.reload();
+        console.log('User signed out.');
+    }
 </script>
 <Navbar />
 <div class="contentSignIn">
@@ -66,7 +80,7 @@
             <div id="signIn"></div>
         {:else}
             <p class="normal" style="color: #E0E0E0; font-size:14px;">Sign out of DASI-gpt</p>
-            <a href="../">Sign out</a>
+            <a class="button error" on:click={signOut} href="../">Sign out</a>
         {/if}
          
     </div>

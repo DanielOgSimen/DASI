@@ -91,6 +91,8 @@
 
 .button.error {
 	background-color: #ff5252;
+	text-align: center;
+	text-decoration: none;
 }
 
 .button.error:hover {
