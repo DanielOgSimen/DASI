@@ -34,6 +34,13 @@
         };
     });
 
+    const links = [
+        {name: 'Chat', href: '/chat'},
+        {name: 'Try Us', href: '/try-us'},
+        {name: 'Prices', href: '/prices'},
+        {name: 'About Us', href: '/about'},
+    ];
+
 </script>
 <div class="navbar" class:hide={!navbarVisible}>
     <a href="/">
@@ -42,18 +49,35 @@
         </div>
     </a>
     <div class="nav-links thin">
-            <a href="/chat" class="effect-underline">Chat</a>
-            <a href="/try-us" class="effect-underline">Try Us</a>
-            <a href="/prices" class="effect-underline">Prices</a>
-            <a href="/about" class="effect-underline">About Us</a>
+        {#each links as link}
+            <a href={link.href} class="effect-underline">{link.name}</a>
+        {/each}
         {#if !$user.picture}
             <a href="/loggInn" class="effect-underline">Log In</a>
         {:else}
             <a href="/loggInn"><img src="{$user.picture}" alt="" class="profile-picture"></a>
         {/if}
-        
     </div>
 </div>
+
+<nav class="menu--right">
+    <div class="menuToggle">
+        <input type="checkbox"/>
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul class="menuItem">
+            {#if !$user.picture}
+                <li><a href="/loggInn" class="effect-underline">Log In</a></li>
+            {:else}
+                <li><a href="/loggInn"><img src="{$user.picture}" alt="" class="profile-picture"></a></li>
+            {/if}
+            {#each links as link}
+                <li><a href={link.href} class="effect-underline">{link.name}</a></li>
+            {/each}
+        </ul>
+    </div>
+</nav>
 
 <style>
     /* Variables */
@@ -116,5 +140,109 @@
 
     .navbar.hide {
         top: calc(-1 * var(--nav-heigt));
+    }
+
+    .menu--right {
+        display: none;
+    }
+
+    @media screen and (max-width: 1050px) {
+        .navbar {
+            display: none;
+        }
+
+        .menu--right {
+            display: block;
+            z-index: 100000;
+        }
+        .menuToggle {
+            display: block;
+            position: relative;
+            top: 50px;
+            z-index: 1;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        .menuToggle a {
+            text-decoration: none;
+            color: #232323;
+            transition: all 0.3s ease;
+        }
+        .menuToggle input {
+            display: block;
+            width: 40px;
+            height: 32px;
+            position: absolute;
+            top: -7px;
+            cursor: pointer;
+            opacity: 0;
+            /* hide this */
+            z-index: 2;
+            /* and place it over the hamburger */
+            -webkit-touch-callout: none;
+        }
+        .menuToggle span {
+            position: relative;
+            display: block;
+            width: 33px;
+            height: 4px;
+            margin-bottom: 5px;
+            position: relative;
+            background: #cdcdcd;
+            border-radius: 3px;
+            z-index: 1;
+            transform-origin: 4px 0px;
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+        }
+        .menuToggle span:first-child {
+            transform-origin: 0% 0%;
+        }
+        .menuToggle span:nth-last-child(2) {
+            transform-origin: 0% 100%;
+        }
+        .menuToggle input:checked ~ span {
+            opacity: 1;
+            transform: rotate(45deg) translate(-2px, -1px);
+            background: #232323;
+        }
+        .menuToggle input:checked ~ span:nth-last-child(3) {
+            opacity: 0;
+            transform: rotate(0deg) scale(0.2, 0.2);
+        }
+        .menuToggle input:checked ~ span:nth-last-child(2) {
+            transform: rotate(-45deg) translate(0, -1px);
+        }
+        .menuToggle input:checked ~ .menuItem {
+            transform: none;
+        }
+        .menuItem {
+            position: absolute;
+            width: 300px;
+            padding: 50px;
+            padding-top: 125px;
+            background: #ededed;
+            list-style-type: none;
+            transform-origin: 0% 0%;
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+        }
+        .menuItem li {
+            padding: 10px 0;
+            font-size: 22px;
+        }
+        .menu--right .menuToggle {
+            position: fixed;
+            right: 0;
+        }
+        .menu--right .menuToggle input {
+            right: 50px;
+        }
+        .menu--right .menuToggle span {
+            right: 50px;
+        }
+        .menu--right .menuItem {
+            right: 0;
+            margin: -100px 0 0 0;
+            transform: translate(100%, 0);
+        }
     }
 </style>

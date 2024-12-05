@@ -143,7 +143,7 @@
 
 </script>
 
-<!-- <Navbar /> -->
+<Navbar />
 <div class="chat-page">
     <div class="chat-titles" class:checked={isChecked}>
         <input type="checkbox" id="toggle" bind:checked={isChecked} />
@@ -229,18 +229,18 @@
         display: flex;
         height: 100vh; /* Sørg for at chat-page fyller hele høyden */
     }
-        .chats {
-            width: var(--chat-width);
-            max-width: 366px;
-            height: 100%; /* Sørg for at chat-titlene fyller hele høyden */
-            background-color: #1A1A1A;
-            padding-top: 100px;
-            overflow-y: auto; /* Aktiver skrolling når nødvendig */
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-gap: 20px; /* Legg til 20px mellomrom mellom alle elementene */
-            justify-items: center; /* Sentrer elementene horisontalt */
-        }
+    .chats {
+        width: var(--chat-width);
+        max-width: 366px;
+        height: 100%; /* Sørg for at chat-titlene fyller hele høyden */
+        background-color: #1A1A1A;
+        padding-top: 100px;
+        overflow-y: auto; /* Aktiver skrolling når nødvendig */
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 20px; /* Legg til 20px mellomrom mellom alle elementene */
+        justify-items: center; /* Sentrer elementene horisontalt */
+    }
 
     @media (max-width: 1050px) {
         .chat-titles {
