@@ -1,6 +1,6 @@
 <script>
 // @ts-nocheck
-    import { onMount } from 'svelte';
+    import { onMount, afterUpdate, tick } from 'svelte';
     import { get } from 'svelte/store';
     import { chatStore } from '../../store/chatStore'; // Importer chatStore
     import ChatTitle from './../../components/chat/chat-title.svelte';
@@ -27,13 +27,16 @@
     function setCurrentChat(chat) {
         currentChat = chat;
         chats[chat].editTitle = true;
+        console.log(currentChat)
         updateStore(chats);
         isChecked = false; // Fjern checked status når en chat-title blir trykket
+        Prism.highlightAll();
     }
 
     function updateChatTitle(chat, newTitle) {
         chats[chat].title = newTitle;
         updateStore(chats);
+        Prism.highlightAll();
     }
 
     let inputPromtComponent;
@@ -118,10 +121,17 @@
         isSmallScreen = window.innerWidth < 1050;
         console.log(isSmallScreen);
     };
-    onMount(() => {
+    onMount(async () => {
+        Prism.highlightAll();
         checkScreenSize();
         const urlParams = new URLSearchParams(window.location.search);
         const message = urlParams.get('message');
+        const chat = urlParams.get('chat');
+
+        /* Hvis du vil på chat 12, så er det ?chat=Chat%2012 */
+        if (chat) {
+            setCurrentChat(chat);
+        }
 
         if (message) {
             const newChatTitle = `Chat ${Object.keys(chats).length + 1}`;
@@ -140,8 +150,13 @@
             updateStore(chats);
             handlePrompt();
         }
+        await tick();
+        Prism.highlightAll();
     });
 
+    afterUpdate(() => {
+        Prism.highlightAll();
+    });
 </script>
 
 <Navbar />
@@ -196,7 +211,6 @@
         {/if}
     </div>
 </div>
-
 <style>
     :root {
         --chat-width: 20vw;

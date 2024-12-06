@@ -154,8 +154,3 @@ a.effect-underline:hover:after {
 }
 
 /* Markdown */
-code {
-	background-color: #1a1a1a;
-	padding: 2px 5px;
-	border-radius: 5px;
-}
