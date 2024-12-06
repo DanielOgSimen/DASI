@@ -23,6 +23,7 @@
 	"type": "module",
 	"dependencies": {
 		"google-auth-library": "^9.15.0",
-		"marked": "^15.0.2"
+		"marked": "^15.0.2",
+		"prismjs": "^1.29.0"
 	}
 }

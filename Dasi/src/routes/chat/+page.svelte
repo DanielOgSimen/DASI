@@ -8,6 +8,17 @@
     import InputPromt from '../../components/input-promt.svelte';
     import Message from '../../components/chat/message.svelte';
 
+    import Prism from 'prismjs';
+    import 'prismjs/themes/prism-tomorrow.css'; // Importer ønsket tema
+    import 'prismjs/components/prism-python';
+    import 'prismjs/components/prism-javascript';
+    import 'prismjs/components/prism-css';
+    import 'prismjs/components/prism-markup';
+    import 'prismjs/components/prism-json';
+    import 'prismjs/components/prism-bash';
+    import 'prismjs/components/prism-sql';
+    // Importer flere språk etter behov
+
     let currentChat = "New Chat";
     let waitigForResponse = false;
     let isChecked = false;
@@ -30,13 +41,17 @@
         console.log(currentChat)
         updateStore(chats);
         isChecked = false; // Fjern checked status når en chat-title blir trykket
-        Prism.highlightAll();
+        tick().then(() => {
+            Prism.highlightAll();
+        });
     }
 
     function updateChatTitle(chat, newTitle) {
         chats[chat].title = newTitle;
         updateStore(chats);
-        Prism.highlightAll();
+        tick().then(() => {
+            Prism.highlightAll();
+        });
     }
 
     let inputPromtComponent;
@@ -108,6 +123,9 @@
 
                 // Oppdater store
                 updateStore(chats);
+                tick().then(() => {
+                    Prism.highlightAll();
+                });
             } catch (error) {
                 console.error('Error fetching data from API:', error);
             }
@@ -121,8 +139,8 @@
         isSmallScreen = window.innerWidth < 1050;
         console.log(isSmallScreen);
     };
+
     onMount(async () => {
-        Prism.highlightAll();
         checkScreenSize();
         const urlParams = new URLSearchParams(window.location.search);
         const message = urlParams.get('message');
@@ -154,7 +172,8 @@
         Prism.highlightAll();
     });
 
-    afterUpdate(() => {
+    afterUpdate(async () => {
+        await tick();
         Prism.highlightAll();
     });
 </script>
@@ -174,7 +193,7 @@
             {/if}
         {/each}
     </div>
-    <div class="chat-space">
+    <div class="chat-space" key={currentChat}>
         {#if currentChat === "New Chat"}
             <div class="new-chat">
                 {#if isSmallScreen}
