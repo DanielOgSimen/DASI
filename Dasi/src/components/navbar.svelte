@@ -72,6 +72,7 @@
             {:else}
                 <li><a href="/loggInn"><img src="{$user.picture}" alt="" class="profile-picture"></a></li>
             {/if}
+            <li><a href="/" class="effect-underline">Home</a></li>
             {#each links as link}
                 <li><a href={link.href} class="effect-underline">{link.name}</a></li>
             {/each}
