@@ -136,48 +136,54 @@
     let isSmallScreen = false;
 
     const checkScreenSize = () => {
-        isSmallScreen = window.innerWidth < 1050;
-        console.log(isSmallScreen);
+        if (typeof window !== 'undefined') {
+            isSmallScreen = window.innerWidth < 1050;
+            console.log(isSmallScreen);
+        }
     };
 
     onMount(async () => {
-        window.addEventListener('resize', checkScreenSize);
-        checkScreenSize();
-        const urlParams = new URLSearchParams(window.location.search);
-        const message = urlParams.get('message');
-        const chat = urlParams.get('chat');
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', checkScreenSize);
+            checkScreenSize();
+            const urlParams = new URLSearchParams(window.location.search);
+            const message = urlParams.get('message');
+            const chat = urlParams.get('chat');
 
-        /* Hvis du vil på chat 12, så er det ?chat=Chat%2012 */
-        if (chat) {
-            setCurrentChat(chat);
-        }
+            /* Hvis du vil på chat 12, så er det ?chat=Chat%2012 */
+            if (chat) {
+                setCurrentChat(chat);
+            }
 
-        if (message) {
-            const newChatTitle = `Chat ${Object.keys(chats).length + 1}`;
-            currentChat = newChatTitle;
-            chats[newChatTitle] = {
-                title: newChatTitle,
-                messages: [
-                    {
-                        sender: "user",
-                        message: message
-                    }
-                ],
-                editTitle: false
+            if (message) {
+                const newChatTitle = `Chat ${Object.keys(chats).length + 1}`;
+                currentChat = newChatTitle;
+                chats[newChatTitle] = {
+                    title: newChatTitle,
+                    messages: [
+                        {
+                            sender: "user",
+                            message: message
+                        }
+                    ],
+                    editTitle: false
+                };
+
+                updateStore(chats);
+                handlePrompt();
+            }
+            await tick();
+            Prism.highlightAll();
+            return () => {
+                window.removeEventListener('resize', checkScreenSize);
             };
-
-            updateStore(chats);
-            handlePrompt();
         }
-        await tick();
-        Prism.highlightAll();
-        return () => {
-            window.removeEventListener('resize', checkScreenSize);
-        };
     });
 
     onDestroy(() => {
-        window.removeEventListener('resize', checkScreenSize);
+        if (typeof window !== 'undefined') {
+            window.removeEventListener('resize', checkScreenSize);
+        }
     });
 
     afterUpdate(async () => {
