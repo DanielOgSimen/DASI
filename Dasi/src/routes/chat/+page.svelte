@@ -175,6 +175,7 @@
     afterUpdate(async () => {
         await tick();
         Prism.highlightAll();
+        checkScreenSize();
     });
 </script>
 
