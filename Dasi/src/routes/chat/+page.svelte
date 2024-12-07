@@ -1,6 +1,6 @@
 <script>
-// @ts-nocheck
-    import { onMount, afterUpdate, tick } from 'svelte';
+    // @ts-nocheck
+    import { onMount, afterUpdate, tick, onDestroy } from 'svelte';
     import { get } from 'svelte/store';
     import { chatStore } from '../../store/chatStore'; // Importer chatStore
     import ChatTitle from './../../components/chat/chat-title.svelte';
@@ -141,6 +141,7 @@
     };
 
     onMount(async () => {
+        window.addEventListener('resize', checkScreenSize);
         checkScreenSize();
         const urlParams = new URLSearchParams(window.location.search);
         const message = urlParams.get('message');
@@ -170,12 +171,18 @@
         }
         await tick();
         Prism.highlightAll();
+        return () => {
+            window.removeEventListener('resize', checkScreenSize);
+        };
+    });
+
+    onDestroy(() => {
+        window.removeEventListener('resize', checkScreenSize);
     });
 
     afterUpdate(async () => {
         await tick();
         Prism.highlightAll();
-        checkScreenSize();
     });
 </script>
 
