@@ -7,17 +7,9 @@
     import Navbar from "../../components/navbar.svelte";
     import InputPromt from '../../components/input-promt.svelte';
     import Message from '../../components/chat/message.svelte';
-
-    import Prism from 'prismjs';
+    import '../../scripts/Prism.js'
+    import '../../styles/Prism.css'
     import 'prismjs/themes/prism-tomorrow.css'; // Importer ønsket tema
-    import 'prismjs/components/prism-python';
-    import 'prismjs/components/prism-javascript';
-    import 'prismjs/components/prism-css';
-    import 'prismjs/components/prism-markup';
-    import 'prismjs/components/prism-json';
-    import 'prismjs/components/prism-bash';
-    import 'prismjs/components/prism-sql';
-    // Importer flere språk etter behov
 
     let currentChat = "New Chat";
     let waitigForResponse = false;
