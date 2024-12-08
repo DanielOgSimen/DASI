@@ -24812,7 +24812,8 @@ Prism.languages.yang = {
 
 		var settings = getSettings(element);
 
-		var linkCopy = document.createElement("button");
+		var linkCopy = document.createElement("img");
+		linkCopy.setAttribute("src", "src/Images/Copy Icon.svg");
 		linkCopy.className = "copy-to-clipboard-button";
 		linkCopy.setAttribute("type", "button");
 		var linkSpan = document.createElement("span");
@@ -24826,6 +24827,10 @@ Prism.languages.yang = {
 			},
 			success: function () {
 				setState("copy-success");
+				linkCopy.setAttribute(
+					"src",
+					"https://uxwing.com/wp-content/themes/uxwing/download/checkmark-cross/checkmark-white-round-icon.png"
+				);
 
 				resetText();
 			},

@@ -154,3 +154,12 @@ a.effect-underline:hover:after {
 }
 
 /* Markdown */
+.copy-to-clipboard-button {
+	height: 24px;
+	cursor: pointer;
+}
+
+pre code {
+	width: 100% !important;
+	overflow-x: hidden;
+}
