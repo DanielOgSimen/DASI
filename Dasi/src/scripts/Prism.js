@@ -24849,6 +24849,7 @@ Prism.languages.yang = {
 
 		function resetText() {
 			setTimeout(function () {
+				linkCopy.setAttribute("src", "src/Images/Copy Icon.svg");
 				setState("copy");
 			}, settings["copy-timeout"]);
 		}
