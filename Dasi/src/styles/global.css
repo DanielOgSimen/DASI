@@ -160,6 +160,5 @@ a.effect-underline:hover:after {
 }
 
 pre code {
-	width: 100% !important;
-	overflow-x: hidden;
+	white-space: pre-wrap !important;
 }
