@@ -54,7 +54,6 @@
             email: payload.email,
             picture: payload.picture
         });
-
         console.log('Logged in as: ' + payload.name);
     }
      // Funksjon for å logge ut av Google-kontoen
