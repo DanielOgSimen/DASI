@@ -37,7 +37,7 @@
     const links = [
         {name: 'Chat', href: '/chat'},
         {name: 'Try Us', href: '/try-us'},
-        {name: 'Prices', href: '/prices'},
+        {name: 'Prices', href: '/Prices'},
         {name: 'About Us', href: '/about'},
     ];
 

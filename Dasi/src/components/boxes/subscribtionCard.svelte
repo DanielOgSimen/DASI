@@ -11,9 +11,10 @@
     <li>Limited customization and integrations</li>
     <li>Suitable for small websites or simple customer service tasks.</li>
     <li>Limited number of messages or interactions per month.</li>`;
+    export const Padding = "80px 80px 120px 80px";
 </script>
 
-<div class="subCard">
+<div class="subCard" style="padding: {Padding};">
     <h1 class="bigText bold">{SubscriptionType}</h1>
     <p style="font-size: 15px; margin-bottom:0.5rem;">{SubscriptionIntro}</p>
     <div class="price">
@@ -51,10 +52,8 @@
     .subCard {
         background-color: #E0E0E0;
         color: #242424;
-        padding: 80px 80px 120px 80px; 
         border-radius: 40px;
-        margin-left: 2rem;
-        max-width: 70%;
+        width: 400px;
     }
     @media (max-width: 700px) {
         .subCard {
@@ -64,7 +63,11 @@
     @media (max-width: 940px) {
         .subCard {
             margin-left: 0;
-            max-width: 100%;
+        }
+    }
+    @media (max-width: 500px) {
+        .subCard {
+            max-width: 350px;
         }
     }
 </style>
