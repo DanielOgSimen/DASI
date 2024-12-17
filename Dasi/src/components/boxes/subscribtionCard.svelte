@@ -54,6 +54,7 @@
         padding: 80px 80px 120px 80px; 
         border-radius: 40px;
         margin-left: 2rem;
+        max-width: 70%;
     }
     @media (max-width: 700px) {
         .subCard {
@@ -63,6 +64,7 @@
     @media (max-width: 940px) {
         .subCard {
             margin-left: 0;
+            max-width: 100%;
         }
     }
 </style>
