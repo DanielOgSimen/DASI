@@ -193,7 +193,7 @@
     <div class="chats" class:checked={isChecked}>
         {#each Object.keys(chats) as chat, index}
             {#if chat === currentChat}
-                <ChatTitle editTitle={true} title={chats[chat].title} on:titleChange={(e) => updateChatTitle(chat, e.detail)} />
+                <ChatTitle editTitle={true} currentChat={currentChat} title={chats[chat].title} activeChat={true} on:titleChange={(e) => updateChatTitle(chat, e.detail)} />
             {:else}
                 <ChatTitle editTitle={false} title={chats[chat].title} on:click={() => setCurrentChat(chat)} />
             {/if}
@@ -212,7 +212,7 @@
         {:else}
             <div class="normal-chat">
                 <div class="normal-chats">
-                    {#each chats[currentChat].messages as message}
+                    {#each chats[currentChat].messages as message, index}
                             {#if message.sender === "user"}
                                 <div class="user-sent">
                                     <Message message={message.message} messenger={message.sender}/>
