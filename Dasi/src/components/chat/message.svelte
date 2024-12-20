@@ -5,7 +5,7 @@
     export let messenger = "Unknown";
 
     // Konverter meldingen til HTML ved hjelp av marked
-    let formattedMessage = marked(message);
+    $: formattedMessage = marked(message);
 </script>
 
 {#if messenger === "user"}
