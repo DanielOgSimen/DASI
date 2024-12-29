@@ -75,6 +75,7 @@
 
     .logo img {
         height: 30vw;
+        max-height: 630px;
         object-fit: contain;
     }
 
