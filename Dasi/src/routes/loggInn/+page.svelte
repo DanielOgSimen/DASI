@@ -75,10 +75,10 @@
     <div class="signIn">
         <img class="LoggInLogo" src="src/Images/Dasi logo.png" alt="LogInnLogo">
         {#if !$user.id}
-            <p class="normal" style="color: #E0E0E0; font-size:14px;">Sign inn to get the full experience of DASI-gpt</p>
+            <p class="normal" style="color: var(--primary-text); font-size:14px;">Sign inn to get the full experience of DASI-gpt</p>
             <div id="signIn"></div>
         {:else}
-            <p class="normal" style="color: #E0E0E0; font-size:14px;">Sign out of DASI-gpt</p>
+            <p class="normal" style="color: var(--primary-text); font-size:14px;">Sign out of DASI-gpt</p>
             <a class="button error" on:click={signOut} href="../">Sign out</a>
         {/if}
          
@@ -98,11 +98,11 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-color: #1A1A1A;
+        background-color: var(--border-divider);
     }
     .signIn {
         padding: 8rem 7rem;
-        background-color:#242424 ;
+        background-color: var(--secondary-border-divider);
         border-radius: 14px;
         display: flex;
         flex-direction: column;

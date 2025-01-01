@@ -265,7 +265,7 @@
     }
 
     .chat-page {
-        background-color: #121212;
+        background-color: var(--background);
         display: flex;
         height: 100vh; /* Sørg for at chat-page fyller hele høyden */
     }
@@ -273,7 +273,7 @@
         width: var(--chat-width);
         max-width: 366px;
         height: 100%; /* Sørg for at chat-titlene fyller hele høyden */
-        background-color: #1A1A1A;
+        background-color: var(--border-divider);
         padding-top: 100px;
         overflow-y: auto; /* Aktiver skrolling når nødvendig */
         display: grid;
@@ -287,7 +287,7 @@
             display: block;
             padding: 10px 15px;
             border-radius: 0 0 26px 2px;
-            background-color: #00b8d4;
+            background-color: var(--accent);
             color: white;
             display: flex;
             align-items: center;
@@ -382,8 +382,8 @@
         width: 10px;
         height: 10px;
         border-radius: 5px;
-        background-color: #00b8d4;
-        color: #00b8d4;
+        background-color: var(--accent);
+        color: var(--accent);
         animation: dot-pulse 1.5s infinite linear;
         animation-delay: 0.25s;
     }
@@ -395,8 +395,8 @@
         width: 10px;
         height: 10px;
         border-radius: 5px;
-        background-color: #00b8d4;
-        color: #00b8d4;
+        background-color: var(--accent);
+        color: var(--accent);
     }
     .dot-pulse::before {
         left: -15px;

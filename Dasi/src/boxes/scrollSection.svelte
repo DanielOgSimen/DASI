@@ -84,7 +84,7 @@ let isSmallScreen = false;
 
 <style>
 .blueColor {
-    color: #00B8D4;
+    color: var(--accent-blue);
     display: inline;
 }
 
@@ -92,7 +92,7 @@ let isSmallScreen = false;
   text-align: center;
   width: 100vw;
   height: 100vh;
-  background-color: #1A1A1A;
+  background-color: var(--border-divider);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -122,7 +122,7 @@ let isSmallScreen = false;
 
 .text2 {
   font-size: 25px;
-  color: #81C784;
+  color: var(--secondary-accent);
 }
 
 @keyframes slogan {
@@ -142,7 +142,7 @@ let isSmallScreen = false;
   }
 }    
 .selection2 {
-    color: #E0E0E0;
+    color: var(--primary-text);
     font-size: 26px;
     display: flex;
     flex-direction: row-reverse;
@@ -169,7 +169,7 @@ let isSmallScreen = false;
 }
 
 .imgOneClick {
-    background-color: #1A1A1A;
+    background-color: var(--border-divider);
     display: flex; 
     flex-direction: row;
     justify-content: center;
@@ -203,7 +203,7 @@ let isSmallScreen = false;
 .pin-wrap {
 	height: 100vh;
 	width: 200vmax;
-    background: linear-gradient(to right, #242424 0%, #242424 10%, #121212 100%);
+    background: linear-gradient(to right, var(--secondary-border-divider) 0%, var(--secondary-border-divider) 10%, var(--background) 100%);
 
 	/* Hook animation */
 	will-change: transform;
@@ -245,23 +245,23 @@ let isSmallScreen = false;
         }
         #sectionPin {
             height: 100%;
-            background-color: #242424;  
+            background-color: var(--secondary-border-divider);  
         }
         .selection1 {
             flex-wrap: wrap;
             height: 100%;
             margin-top: 2rem;
             margin-bottom: 2rem;
-            background-color: #242424;
+            background-color: var(--secondary-border-divider);
         }
         .selection2 {
-            background-color: #1A1A1A;
+            background-color: var(--border-divider);
         }
         .sloganDisplay {
-            background-color: #121212;
+            background-color: var(--background);
         }
         .text1 {
-            background-color: #121212;
+            background-color: var(--background);
             font-size: 30px;
         }
         .subRes {

@@ -17,14 +17,14 @@
         text-align: center;
         transform: translateY(1300%); /* Start fra bunnen */
         transition: transform 0.4s;
-        color: #121212;
+        color: var(--background);
         text-shadow: white 0px 0px 10px;
 
     }
 
     .card:hover .cardTopic {
         transform: translateY(750%); /* Flytt til dit den skal */
-        color: #E0E0E0;
+        color: var(--primary-text);
     }
 
     .card-content {
@@ -63,7 +63,7 @@
 
     .card-content {
         display: block;
-        color: #B0B0B0; /* Sørg for at teksten er lesbar på bakgrunnsbildet */
+        color: var(--secondary-text); /* Sørg for at teksten er lesbar på bakgrunnsbildet */
         text-align: center;
         padding: 2rem;
     }

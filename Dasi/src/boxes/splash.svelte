@@ -28,8 +28,8 @@
     .splash {
         height: 100vh;
         width: 100vw;
-        background-color: #121212;
-        color: #E0E0E0;
+        background-color: var(--background);
+        color: var(--primary-text);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -56,7 +56,7 @@
         max-width: 500px;
         margin-top: 2%;
         font-size: 20px;
-        color: #B0B0B0;
+        color: var(--secondary-text);
     }
 
     .buttons {

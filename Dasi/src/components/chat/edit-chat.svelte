@@ -58,7 +58,7 @@
     .edit-chat {
         display: flex;
         flex-direction: column;
-        background-color: #1A1A1A;
+        background-color: var(--border-divider);
         border-radius: 26px;
         padding: 10px;
         z-index: 1;
@@ -68,7 +68,7 @@
     
     .edit-chat p {
         font-size: 26px;
-        color: #E0E0E0;
+        color: var(--primary-text);
         margin-left: 20px;
     }
 

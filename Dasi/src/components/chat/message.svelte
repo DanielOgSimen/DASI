@@ -23,8 +23,8 @@
     .message {
         max-width: 300px;
         height: fit-content;
-        background-color: #242424;
-        color: #E0E0E0;
+        background-color: var(--secondary-border-divider);
+        color: var(--primary-text);
         border-radius: 20px;
         padding: 10px 16px;
     }
@@ -32,7 +32,7 @@
     .bot {
         max-width: 900px;
         height: fit-content;
-        color: #E0E0E0;
+        color: var(--primary-text);
         border-radius: 20px;
         padding: 10px 16px;
         margin-left: auto;

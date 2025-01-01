@@ -103,7 +103,7 @@
         height: 58px;
         padding: 5px;
         display: flex;
-        background-color: #242424;
+        background-color: var(--secondary-border-divider);
     }
     .navbar {
         transition: top 0.3s;
@@ -116,8 +116,8 @@
         align-items: center;
         padding: 0 20px;
         font-size: var(--text-size);
-        color: #E0E0E0;
-        background-color: #121212;
+        color: var(--primary-text);
+        background-color: var(--background);
         z-index: 10000;
     }
 

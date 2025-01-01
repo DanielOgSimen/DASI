@@ -116,7 +116,7 @@
     .chat-title {
         width: 16vw;
         height: 70px;
-        background-color: #242424;
+        background-color: var(--secondary-border-divider);
         border-radius: 20px;
         text-align: center;
         display: flex;
@@ -137,7 +137,7 @@
 
     p, input {
         font-size: 25px;
-        color: #B0B0B0;
+        color: var(--secondary-text);
         background-color: transparent;
         border: none;
         text-align: center;

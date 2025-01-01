@@ -1,7 +1,7 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
     export let label = "Ask a promt";
-    export let color = "#242424";
+    export let color = "var(--secondary-border-divider)";
     export let HideSvg = false;
     export let height = "3rem";
     export let Width = "20rem";
@@ -62,7 +62,7 @@
       font-size: 16px;
       border-radius: 10px;
       border: none;
-      color: #B0B0B0;
+      color: var(--secondary-text);
   }
 
   .input_wrap label {
@@ -74,7 +74,7 @@
       transform: translateY(-50%);
       transition: 0.2s ease all;
       pointer-events: none;
-      color: #B0B0B0;
+      color: var(--secondary-text);
       padding: 0 5px;
   }
 
@@ -83,7 +83,7 @@
       font-size: 12px;
       top: -5px;
       left: 10px;
-      color: #E0E0E0;
+      color: var(--primary-text);
       padding: 0 5px;
   }
 

@@ -15,7 +15,7 @@
 
 <style>
     .bg {
-        background-color: #242424;
+        background-color: var(--secondary-border-divider);
         height: 100vh;
         width: 100vw;
         display: flex;
@@ -26,7 +26,7 @@
 
     .bg h1 {
         font-size: 256px;
-        color: #FF5252;
+        color: var(--error);
     }
 
     .bg p {

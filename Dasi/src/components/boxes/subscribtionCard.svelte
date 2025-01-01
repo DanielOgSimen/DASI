@@ -50,8 +50,8 @@
         margin-bottom: 0.5rem;
     }
     .subCard {
-        background-color: #E0E0E0;
-        color: #242424;
+        background-color: var(--primary-text);
+        color: var(--secondary-border-divider);
         border-radius: 40px;
         width: 400px;
     }
