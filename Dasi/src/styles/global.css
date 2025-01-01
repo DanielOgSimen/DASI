@@ -8,9 +8,13 @@
 	font-style: normal;
 }
 
+body {
+	overflow-x: hidden;
+}
+
 ::selection {
 	color: white;
-	background-color: #00b8d4;
+	background-color: var(--accent);
 }
 
 /* Text Styles */
@@ -55,7 +59,7 @@
 }
 
 .accent-blue {
-	color: #00b8d4;
+	color: var(--accent);
 }
 
 /* Components */
@@ -81,22 +85,22 @@
 }
 
 .button.purple {
-	background-color: #565ade;
-	color: #e0e0e0;
+	background-color: var(--purple);
+	color: var(--primary-text);
 }
 
 .button.purple:hover {
-	background-color: #81c784;
+	background-color: var(--secondary-accent);
 }
 
 .button.error {
-	background-color: #ff5252;
+	background-color: var(--error);
 	text-align: center;
 	text-decoration: none;
 }
 
 .button.error:hover {
-	background-color: #ff8a80;
+	background-color: var(--error-hover);
 }
 
 /*effect-underline*/
