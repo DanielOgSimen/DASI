@@ -84,7 +84,7 @@ let isSmallScreen = false;
 
 <style>
 .blueColor {
-    color: var(--accent-blue);
+    color: var(--accent);
     display: inline;
 }
 
