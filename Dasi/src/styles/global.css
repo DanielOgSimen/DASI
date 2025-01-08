@@ -1,6 +1,6 @@
 @import url("https://use.typekit.net/tzv3rms.css");
 
-:root {
+:root[data-theme="dark"] {
 	--purple: #565ade;
 	--background: #121212;
 	--primary-text: #e0e0e0;
@@ -11,6 +11,19 @@
 	--error-hover: #ff8a80;
 	--border-divider: #1a1a1a;
 	--secondary-border-divider: #242424;
+}
+
+:root[data-theme="light"] {
+	--purple: #565ade;
+	--background: #F2F3F5; /*mørkest*/
+	--primary-text: #1A1A1A;
+	--secondary-text: #4A4A4A;
+	--accent: #00b8d4;
+	--secondary-accent: #81c784;
+	--error: #ff5252;
+	--error-hover: #ff8a80;
+	--border-divider: #F7F8F9; /*lysere*/
+	--secondary-border-divider: #ffffff; /*lysest*/
 }
 
 * {

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { onMount } from 'svelte';
     import { user } from '../store/userStore';
 
@@ -39,8 +39,53 @@
         {name: 'Try Us', href: '/try-us'},
         {name: 'Prices', href: '/Prices'},
         {name: 'About Us', href: '/about'},
+        {name: 'Light', href: '', onclick: () => changeThemeLocalStorage("light")},
+        {name: 'Dark', href: '', onclick: () => changeThemeLocalStorage("dark")}, 
     ];
 
+    // Light mode and dark mode
+    // oppdaterer temaet til light eller dark
+    let theme;
+    const storedTheme = typeof window !== 'undefined' ? localStorage.getItem('theme') : null;
+    // Funksjon for å oppdatere temaet
+    const changeTheme = (newTheme: string) => {
+        theme = newTheme;
+        document.documentElement.setAttribute('data-theme', theme);
+    }
+    const changeThemeLocalStorage = (theme: string) => {
+        localStorage.setItem('theme', theme);
+        changeTheme(theme);
+    }   
+
+    if (storedTheme !== null) {
+        changeTheme(storedTheme);
+    } else {
+         // Funksjon for å sette tema basert på enhetens preferanser
+        const setInitialTheme = () => {
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            changeTheme(theme);
+        }
+
+        // Event listener for å håndtere endringer i enhetens fargeskjema
+        const handleColorSchemeChange = (e: MediaQueryListEvent) => {
+            changeTheme(e.matches ? 'dark' : 'light');
+        }
+
+        onMount(() => {
+            // Sett initialt tema basert på enhetens preferanser
+            setInitialTheme();
+
+            // Legg til event listener for å håndtere endringer i enhetens fargeskjema
+            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            mediaQuery.addEventListener('change', handleColorSchemeChange);
+
+            // Fjern event listener når komponenten demonteres
+            return () => {
+                mediaQuery.removeEventListener('change', handleColorSchemeChange);
+            }
+        });
+
+    }
 </script>
 <div class="navbar" class:hide={!navbarVisible}>
     <a href="/">
@@ -50,12 +95,12 @@
     </a>
     <div class="nav-links thin">
         {#each links as link}
-            <a href={link.href} class="effect-underline">{link.name}</a>
+            <a href={link.href} on:click={link.onclick} class="effect-underline">{link.name}</a>
         {/each}
         {#if !$user.picture}
             <a href="/loggInn" class="effect-underline">Log In</a>
         {:else}
-            <a href="/loggInn"><img src="{$user.picture}" alt="" class="profile-picture"></a>
+            <a href="/loggInn"><img src="{$user.picture}" alt="ProfilePicture" class="profile-picture"></a>
         {/if}
     </div>
 </div>
@@ -70,7 +115,7 @@
             {#if !$user.picture}
                 <li><a href="/loggInn" class="effect-underline">Log In</a></li>
             {:else}
-                <li><a href="/loggInn"><img src="{$user.picture}" alt="" class="profile-picture"></a></li>
+                <li><a href="/loggInn"><img src="{$user.picture}" alt="ProfilePicture" class="profile-picture"></a></li>
             {/if}
             <li><a href="/" class="effect-underline">Home</a></li>
             {#each links as link}
@@ -101,6 +146,7 @@
     .profile-picture {
         border-radius: 50%;
         height: 58px;
+        width: 58px;
         padding: 5px;
         display: flex;
         background-color: var(--secondary-border-divider);
