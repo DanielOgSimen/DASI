@@ -39,7 +39,7 @@
         {name: 'Try Us', href: '/try-us'},
         {name: 'Prices', href: '/Prices'},
         {name: 'About Us', href: '/about'},
-        {name: 'Light', href: '', onclick: () => changeThemeLocalStorage("light")},
+        {name: '<ion-icon name="sunny-outline"></ion-icon>', href: '', onclick: () => changeThemeLocalStorage("light")},
         {name: 'Dark', href: '', onclick: () => changeThemeLocalStorage("dark")}, 
     ];
 
@@ -47,6 +47,7 @@
     // oppdaterer temaet til light eller dark
     let theme;
     const storedTheme = typeof window !== 'undefined' ? localStorage.getItem('theme') : null;
+    let cleanup: () => void;
     // Funksjon for å oppdatere temaet
     const changeTheme = (newTheme: string) => {
         theme = newTheme;
@@ -55,6 +56,9 @@
     const changeThemeLocalStorage = (theme: string) => {
         localStorage.setItem('theme', theme);
         changeTheme(theme);
+        if (cleanup) {
+            cleanup();
+    }
     }   
 
     if (storedTheme !== null) {
@@ -79,12 +83,15 @@
             const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
             mediaQuery.addEventListener('change', handleColorSchemeChange);
 
-            // Fjern event listener når komponenten demonteres
-            return () => {
-                mediaQuery.removeEventListener('change', handleColorSchemeChange);
-            }
-        });
+            // Definerer oppryddingsfunksjonen
+            cleanup = () => { 
+                mediaQuery.removeEventListener('change', handleColorSchemeChange); // Fjerner event listener
+                console.log('cleanup');
+            };
 
+            // Returner oppryddingsfunksjonen
+            return cleanup; // verdien fra cleanup blir returnert fra onMount funksjonen. dette skjer først når komponenten blir demontert altså cleanup har en verdi å returnere  
+        });
     }
 </script>
 <div class="navbar" class:hide={!navbarVisible}>
