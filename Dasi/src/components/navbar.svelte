@@ -39,12 +39,19 @@
         {name: 'Try Us', href: '/try-us'},
         {name: 'Prices', href: '/Prices'},
         {name: 'About Us', href: '/about'},
-        {name: '<ion-icon name="sunny-outline"></ion-icon>', href: '', onclick: () => changeThemeLocalStorage("light")},
-        {name: 'Dark', href: '', onclick: () => changeThemeLocalStorage("dark")}, 
+        {name: `<ion-icon name="sunny-outline"></ion-icon>`, href: '', onclick: () => {changeThemeLocalStorage("light"); changeIcon("light");}},
+        {name: '<ion-icon name="moon-outline"></ion-icon>', href: '', onclick: () => {changeThemeLocalStorage("dark"); changeIcon("dark");}}, 
     ];
 
     // Light mode and dark mode
     // oppdaterer temaet til light eller dark
+    const changeIcon = (iconTheme: string) => {
+        if (iconTheme === "dark") {
+            /* links[5].name = '<ion-icon name="sunny-outline"></ion-icon>'; */
+        } else if (iconTheme === "light") {
+            /* links[4].name = '<ion-icon name="moon-outline"></ion-icon>'; */
+        }
+    }
     let theme;
     const storedTheme = typeof window !== 'undefined' ? localStorage.getItem('theme') : null;
     let cleanup: () => void;
@@ -102,7 +109,10 @@
     </a>
     <div class="nav-links thin">
         {#each links as link}
-            <a href={link.href} on:click={link.onclick} class="effect-underline">{link.name}</a>
+            <a href={link.href} on:click={link.onclick} class="effect-underline">
+                {@html link.name}
+            </a>
+            
         {/each}
         {#if !$user.picture}
             <a href="/loggInn" class="effect-underline">Log In</a>
