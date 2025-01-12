@@ -1,9 +1,7 @@
 <script>
     import SubCard from '../../components/boxes/subscribtionCard.svelte';
-    import Navbar from '../../components/navbar.svelte';
 </script>
 
-<Navbar></Navbar>
 <div class="wrapper">
     <div class="subCards">
         <SubCard SubscriptionContent="hei" Padding="10px"></SubCard>

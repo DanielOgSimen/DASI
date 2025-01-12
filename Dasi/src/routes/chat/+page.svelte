@@ -4,7 +4,6 @@
     import { get } from 'svelte/store';
     import { chatStore } from '../../store/chatStore'; // Importer chatStore
     import ChatTitle from './../../components/chat/chat-title.svelte';
-    import Navbar from "../../components/navbar.svelte";
     import InputPromt from '../../components/input-promt.svelte';
     import Message from '../../components/chat/message.svelte';
     import '../../scripts/Prism.js'
@@ -184,7 +183,6 @@
     });
 </script>
 
-<Navbar />
 <div class="chat-page">
     <div class="chat-titles" class:checked={isChecked}>
         <input type="checkbox" id="toggle" bind:checked={isChecked} />
