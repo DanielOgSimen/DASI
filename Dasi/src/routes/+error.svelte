@@ -1,16 +1,15 @@
 <script>
-   export let error = { message: "Page not found" }; // fallback-verdi
-   export let status = 404; // fallback-status
+    import { page } from '$app/stores';
 </script>
 
 <svelte:head>
-    <title>{status} error, {error.message}</title>
+    <title>{$page.status} error</title>
 </svelte:head>
 
 <div class="bg">
-<h1 class="accent-blue xbold">{status}</h1>
-<p>{error.message}</p>
-<a href="/"><button class="error button">Go back to Home</button></a>
+    <h1 class="accent-blue xbold">{$page.status}</h1>
+    <p>{$page.error.message}</p>
+    <a href="/"><button class="error button">Go back to Home</button></a>
 </div>
 
 <style>
