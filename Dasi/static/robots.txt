@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /api
+Disallow: /chat/*
+
+Made by Daniel Johan Sorby and Simen Evenrud Blien
