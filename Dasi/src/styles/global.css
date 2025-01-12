@@ -43,6 +43,21 @@ body {
 	background-color: var(--accent);
 }
 
+/* Skjuler scrollbaren for WebKit-baserte nettlesere (Chrome, Safari) */
+.rm-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+/* For Firefox */
+.rm-scrollbar {
+	scrollbar-width: none; /* Skjuler scrollbaren */
+}
+
+/* For IE/Edge (eldre versjoner) */
+.rm-scrollbar {
+	-ms-overflow-style: none; /* Skjuler scrollbaren */
+}
+
 /* Text Styles */
 .hair {
 	font-weight: 100;

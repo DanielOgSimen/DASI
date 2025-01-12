@@ -4,7 +4,6 @@
     import { get } from 'svelte/store';
     import { chatStore } from '../../store/chatStore'; // Importer chatStore
     import ChatTitle from './../../components/chat/chat-title.svelte';
-    import Navbar from "../../components/navbar.svelte";
     import InputPromt from '../../components/input-promt.svelte';
     import Message from '../../components/chat/message.svelte';
     import '../../scripts/Prism.js'
@@ -184,13 +183,12 @@
     });
 </script>
 
-<Navbar />
 <div class="chat-page">
     <div class="chat-titles" class:checked={isChecked}>
         <input type="checkbox" id="toggle" bind:checked={isChecked} />
         <label for="toggle" class="arrow">{'>'}</label>
     </div>
-    <div class="chats" class:checked={isChecked}>
+    <div class="chats rm-scrollbar" class:checked={isChecked}>
         {#each Object.keys(chats) as chat, index}
             {#if chat === currentChat}
                 <ChatTitle editTitle={true} currentChat={currentChat} title={chats[chat].title} activeChat={true} on:titleChange={(e) => updateChatTitle(chat, e.detail)} />
@@ -199,7 +197,7 @@
             {/if}
         {/each}
     </div>
-    <div class="chat-space" key={currentChat}>
+    <div class="chat-space rm-scrollbar" key={currentChat}>
         {#if currentChat === "New Chat"}
             <div class="new-chat">
                 {#if isSmallScreen}
@@ -210,8 +208,8 @@
                 <button class="button purple" on:click={handlePrompt}>Send Message</button>
             </div>
         {:else}
-            <div class="normal-chat">
-                <div class="normal-chats">
+            <div class="normal-chat rm-scrollbar">
+                <div class="normal-chats rm-scrollbar">
                     {#each chats[currentChat].messages as message, index}
                             {#if message.sender === "user"}
                                 <div class="user-sent">

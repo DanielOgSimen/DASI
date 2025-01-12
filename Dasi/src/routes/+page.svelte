@@ -9,6 +9,5 @@
     <title>Dasi-GPT | Home</title>
 </svelte:head>
 
-<Navbar/>
 <Splash/>
 <ScrollSelection/>

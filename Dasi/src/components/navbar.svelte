@@ -6,6 +6,12 @@
     let lastScrollTop = 0;
     let navbarVisible = true;
 
+    // Abonner på user-storen
+    let userData;
+    user.subscribe(value => {
+        userData = value;
+    });
+
     // Funksjon for å sjekke brukerens scroll-retning
     const checkScroll = () => {
         // Henter nåværende scroll-posisjon
@@ -65,7 +71,7 @@
         changeTheme(theme);
         if (cleanup) {
             cleanup();
-    }
+        }
     }   
 
     if (storedTheme !== null) {
@@ -101,6 +107,7 @@
         });
     }
 </script>
+
 <div class="navbar" class:hide={!navbarVisible}>
     <a href="/">
         <div class="logo-container">
@@ -114,10 +121,10 @@
             </a>
             
         {/each}
-        {#if !$user.picture}
+        {#if !userData.picture}
             <a href="/loggInn" class="effect-underline">Log In</a>
         {:else}
-            <a href="/loggInn"><img src="{$user.picture}" alt="ProfilePicture" class="profile-picture"></a>
+            <a href="/loggInn"><img src={userData.picture} alt="ProfilePicture" class="profile-picture"></a>
         {/if}
     </div>
 </div>
@@ -129,10 +136,10 @@
         <span></span>
         <span></span>
         <ul class="menuItem">
-            {#if !$user.picture}
+            {#if !userData.picture}
                 <li><a href="/loggInn" class="effect-underline">Log In</a></li>
             {:else}
-                <li><a href="/loggInn"><img src="{$user.picture}" alt="ProfilePicture" class="profile-picture"></a></li>
+                <li><a href="/loggInn"><img src={userData.picture} alt="ProfilePicture" class="profile-picture"></a></li>
             {/if}
             <li><a href="/" class="effect-underline">Home</a></li>
             {#each links as link}

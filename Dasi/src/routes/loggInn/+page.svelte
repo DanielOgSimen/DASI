@@ -7,8 +7,6 @@
     declare const google: any;
 </script>
 <script lang="ts">
-
-    import Navbar from "../../components/navbar.svelte";
     import { onMount } from 'svelte';
 
     onMount(() => {
@@ -70,7 +68,6 @@
         console.log('User signed out.');
     }
 </script>
-<Navbar />
 <div class="contentSignIn">
     <div class="signIn">
         <img class="LoggInLogo" src="src/Images/Dasi logo.png" alt="LogInnLogo">
