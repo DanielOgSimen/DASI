@@ -7,7 +7,7 @@
     let navbarVisible = true;
 
     // Abonner på user-storen
-    let userData;
+    let userData: any;
     user.subscribe(value => {
         userData = value;
     });
