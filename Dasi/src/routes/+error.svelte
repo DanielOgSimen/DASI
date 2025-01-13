@@ -17,7 +17,11 @@
 
 <div class="bg">
     <h1 class="accent-blue xbold">{$page.status}</h1>
-    <p>{$page.error.message}</p>
+    {#if errors[$page.status]}
+        <p>{errors[$page.status].message}</p>
+    {:else}
+        <p>{$page.error.message}</p>
+    {/if}
     <a href="/"><button class="error button">Go back to Home</button></a>
 </div>
 
