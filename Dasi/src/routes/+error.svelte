@@ -37,13 +37,13 @@
     }
 
     .bg h1 {
-        font-size: 256px;
+        font-size: clamp(2rem, 20vw, 25rem);
         color: var(--error);
     }
 
     .bg p {
         color: #CCCCCC;
-        font-size: 100px;
+        font-size: clamp(1rem, 5vw, 20rem);
     }
 
     .bg button {
