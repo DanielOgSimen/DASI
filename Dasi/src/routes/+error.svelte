@@ -1,5 +1,14 @@
 <script>
     import { page } from '$app/stores';
+
+    let errors = {
+        404: {
+            message: 'You\'re lost, go back to the homepage'
+        },
+        500: {
+            message: 'Something went wrong, It\'s not you, it\'s us'
+        }
+    }
 </script>
 
 <svelte:head>
