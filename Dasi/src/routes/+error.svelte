@@ -14,7 +14,7 @@
 
 <style>
     .bg {
-        background-color: var(--secondary-border-divider);
+        background-color: var(--background);
         height: 100vh;
         width: 100vw;
         display: flex;
