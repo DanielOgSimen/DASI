@@ -45,22 +45,25 @@
         {name: 'Try Us', href: '/try-us'},
         {name: 'Prices', href: '/Prices'},
         {name: 'About Us', href: '/about'},
-        {name: `<ion-icon name="sunny-outline"></ion-icon>`, href: '', onclick: () => {changeThemeLocalStorage("light"); changeIcon("light");}},
-        {name: '<ion-icon name="moon-outline"></ion-icon>', href: '', onclick: () => {changeThemeLocalStorage("dark"); changeIcon("dark");}}, 
+        {name: '', href: '', onclick: () => {}}
     ];
 
     // Light mode and dark mode
-    // oppdaterer temaet til light eller dark
-    const changeIcon = (iconTheme: string) => {
+    // oppdaterer temaet til light eller dark og ikon til moon eller sun
+const changeIcon = (iconTheme: string) => {
         if (iconTheme === "dark") {
-            /* links[5].name = '<ion-icon name="sunny-outline"></ion-icon>'; */
+            links[4].name = '<ion-icon name="moon-outline"></ion-icon>';
+            links[4].onclick = () => {changeThemeLocalStorage("light"); changeIcon("light");};
         } else if (iconTheme === "light") {
-            /* links[4].name = '<ion-icon name="moon-outline"></ion-icon>'; */
+            links[4].name = '<ion-icon name="sunny-outline"></ion-icon>';
+            links[4].onclick = () => {changeThemeLocalStorage("dark"); changeIcon("dark");};
         }
     }
+
     let theme;
     const storedTheme = typeof window !== 'undefined' ? localStorage.getItem('theme') : null;
     let cleanup: () => void;
+
     // Funksjon for å oppdatere temaet
     const changeTheme = (newTheme: string) => {
         theme = newTheme;
@@ -76,20 +79,23 @@
 
     if (storedTheme !== null) {
         changeTheme(storedTheme);
+        changeIcon(storedTheme);
     } else {
          // Funksjon for å sette tema basert på enhetens preferanser
         const setInitialTheme = () => {
             theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
             changeTheme(theme);
+            changeIcon(theme);
         }
 
         // Event listener for å håndtere endringer i enhetens fargeskjema
         const handleColorSchemeChange = (e: MediaQueryListEvent) => {
             changeTheme(e.matches ? 'dark' : 'light');
+            changeIcon(e.matches ? 'dark' : 'light');
         }
 
         onMount(() => {
-            // Sett initialt tema basert på enhetens preferanser
+            // Sett initialt tema og ikon basert på enhetens preferanser
             setInitialTheme();
 
             // Legg til event listener for å håndtere endringer i enhetens fargeskjema
