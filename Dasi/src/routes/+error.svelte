@@ -1,5 +1,14 @@
 <script>
     import { page } from '$app/stores';
+
+    let errors = {
+        404: {
+            message: 'You\'re lost, go back to the homepage'
+        },
+        500: {
+            message: 'Something went wrong, It\'s not you, it\'s us'
+        }
+    }
 </script>
 
 <svelte:head>
@@ -8,13 +17,17 @@
 
 <div class="bg">
     <h1 class="accent-blue xbold">{$page.status}</h1>
-    <p>{$page.error.message}</p>
+    {#if errors[$page.status]}
+        <p>{errors[$page.status].message}</p>
+    {:else}
+        <p>{$page.error.message}</p>
+    {/if}
     <a href="/"><button class="error button">Go back to Home</button></a>
 </div>
 
 <style>
     .bg {
-        background-color: var(--secondary-border-divider);
+        background-color: var(--background);
         height: 100vh;
         width: 100vw;
         display: flex;
@@ -24,13 +37,13 @@
     }
 
     .bg h1 {
-        font-size: 256px;
+        font-size: clamp(2rem, 20vw, 25rem);
         color: var(--error);
     }
 
     .bg p {
         color: #CCCCCC;
-        font-size: 100px;
+        font-size: clamp(1rem, 5vw, 20rem);
     }
 
     .bg button {

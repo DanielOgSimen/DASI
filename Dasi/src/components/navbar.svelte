@@ -149,7 +149,7 @@ const changeIcon = (iconTheme: string) => {
             {/if}
             <li><a href="/" class="effect-underline">Home</a></li>
             {#each links as link}
-                <li><a href={link.href} class="effect-underline">{link.name}</a></li>
+                <li><a href={link.href} class="effect-underline">{@html link.name}</a></li>
             {/each}
         </ul>
     </div>
