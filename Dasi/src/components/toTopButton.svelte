@@ -28,6 +28,7 @@
 
     ion-icon {
         font-size: 17px;
+        visibility: visible;
         transition: transform 0.2s; 
     }
 
