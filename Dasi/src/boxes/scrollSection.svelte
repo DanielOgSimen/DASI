@@ -108,7 +108,7 @@ let isSmallScreen = false;
   font-size: 40px;
   font-weight: 700;
   letter-spacing: 8px;
-  background: #1A1A1A;
+  background: var(--border-divider);
   position: relative;
   animation-duration: 4s;
   animation-iteration-count: 1;

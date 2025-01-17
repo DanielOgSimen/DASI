@@ -55,8 +55,9 @@
         width: 100%;
         max-width: 500px;
         margin-top: 2%;
-        font-size: 20px;
+        font-size: 16px;
         color: var(--secondary-text);
+        margin-bottom: 2%;
     }
 
     .buttons {

@@ -3,71 +3,139 @@
     export let SubscriptionPrice = "$10";
     export let buttonText = "Go to Payment";
     export let SubscriptionIntro = "For beginners and normal people";
-    export let SubscriptionContent = `
-    <li>Access to all content</li>
-    <li>Access to all features</li>
-    <li>Access to all updates</li>
-    <li>Basic chatbot functionality</li>
-    <li>Limited customization and integrations</li>
-    <li>Suitable for small websites or simple customer service tasks.</li>
-    <li>Limited number of messages or interactions per month.</li>`;
-    export const Padding = "80px 80px 120px 80px";
+    export let SubscriptionContent = [
+        "Access to all content",
+        "Access to all features",
+        "Access to all updates",
+        "Basic chatbot functionality",
+        "Limited customization and integrations",
+        "Suitable for small websites or simple customer service tasks.",
+        "Limited number of messages or interactions per month."
+    ];
 </script>
 
-<div class="subCard" style="padding: {Padding};">
-    <h1 class="bigText bold">{SubscriptionType}</h1>
-    <p style="font-size: 15px; margin-bottom:0.5rem;">{SubscriptionIntro}</p>
+<div class="subCard">
+    <div class="iconContainer">
+        <ion-icon name="rocket-outline"></ion-icon>
+    </div>
+    <div class="header">
+        <h1 class="bigText bold">{SubscriptionType}</h1>
+        <p class="intro">{SubscriptionIntro}</p>
+    </div>
     <div class="price">
-        <h1 class="bigText bold">{SubscriptionPrice}<span style="font-size: 17px;">.00</span></h1>
-        <p style="font-size:14px;">USD/mo(annually)</p>
+        <h1 class="bigText bold">{SubscriptionPrice}<span class="smallText">.00</span></h1>
+        <p class="priceInfo">USD/mo (annually)</p>
     </div>
     <button class="button purple">{buttonText}</button>
+    <div class="divider"></div>
     <ul class="subCardInfo">
-        {@html SubscriptionContent}
+        {#each SubscriptionContent as item}
+            <li>{item}</li>
+        {/each}
     </ul>
 </div>
 
 <style>
-    .subCardInfo {
-        font-size: 16px;
-    }
-    .bigText {
-        font-size: 40px;
+    .subCard {
+        background-color: var(--primary-text);
+        color: var(--secondary-border-divider);
+        border-radius: 12px;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        padding: 30px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    ul {
+    .subCard:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .iconContainer {
+        color: var(--accent);
         display: flex;
-        margin-top: 1rem;
-        flex-direction: column;
-        list-style-position: inside;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .iconContainer ion-icon {
+        font-size: 70px; /* Ensure the icon size is set correctly */
+        visibility: visible;
+    }
+
+    .header {
+        margin-bottom: 20px;
+    }
+
+    .bigText {
+        font-size: 28px;
+        margin-bottom: 5px;
+    }
+
+    .smallText {
+        font-size: 18px;
+    }
+
+    .intro {
+        font-size: 14px;
+        margin-bottom: 1rem;
+        color: var(--secondary-border-divider);
     }
 
     .price {
         display: flex;
-        flex-direction: row;
         align-items: baseline;
-        gap: 0.7rem;
-        margin-bottom: 0.5rem;
+        gap:0.5rem; 
+        margin-bottom: 1rem;
     }
-    .subCard {
-        background-color: var(--primary-text);
+
+    .priceInfo {
+        font-size: 14px;
         color: var(--secondary-border-divider);
-        border-radius: 40px;
-        width: 400px;
     }
+
+    .divider {
+        height: 1px;
+        background-color: var(--secondary-border-divider);
+        margin: 20px 0;
+    }
+
+    .iconContainer {
+        font-size: 40px;
+        color: var(--accent);
+        margin-bottom: 10px;
+    }
+
+    .subCardInfo {
+        font-size: 14px;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .subCardInfo li {
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .subCardInfo li::before {
+        content: '✔';
+        margin-right: 8px;
+        color: var(--accent);
+    }
+
     @media (max-width: 700px) {
         .subCard {
-            padding: 40px 40px 60px 40px; 
+            padding: 20px;
         }
     }
-    @media (max-width: 940px) {
-        .subCard {
-            margin-left: 0;
-        }
-    }
+
     @media (max-width: 500px) {
         .subCard {
-            max-width: 350px;
+            max-width: 100%;
         }
     }
 </style>
