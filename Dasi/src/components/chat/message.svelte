@@ -14,7 +14,7 @@
     </div>
 {:else}
     <div class="bot">
-        <img src="/src/Images/Dasi logo.png" alt="" id="bot-logo">
+        <img src="/Images/Dasi logo.png" alt="" id="bot-logo">
         <p style="white-space: pre-wrap;">{@html formattedMessage}</p>
     </div>
 {/if}

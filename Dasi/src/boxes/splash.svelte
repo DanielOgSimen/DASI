@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="logo">
-        <img src="/src/Images/Dasi logo.png" alt="DASI-gpt logo">
+        <img src="/Images/Dasi logo.png" alt="DASI-gpt logo">
     </div>
 </div>
 

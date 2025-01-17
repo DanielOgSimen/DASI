@@ -1,5 +1,5 @@
 <script>
-    export let imgUrl = 'src/Images/cards-homepage/Climate-friendly.png';
+    export let imgUrl = '/Images/cards-homepage/Climate-friendly.png';
     export let cardTopic = 'Climate-friendly';
     export let cardContent = 'DASI-GPT saves 50% more water than other systems.';
 </script>
@@ -7,7 +7,7 @@
 <div class="card" style="background-image: url({imgUrl});">
     <h1 class="cardTopic medium">{cardTopic}</h1>
     <div class="card-content display-card">
-        <h3 class="italic regular" style="font-size:16px; margin-bottom:1rem; color:#e0e0e0;">{cardContent}</h3>
+        <h3 class="italic regular" style="font-size:16px; margin-bottom:1rem;">{cardContent}</h3>
         <button class="button purple">Read more</button>
     </div>
 </div>
