@@ -110,28 +110,40 @@ body {
 .button {
 	width: fit-content;
 	min-width: 150px;
-	padding: 10px;
-	max-height: 70px;
-	border-radius: 100px;
+	padding: 15px 30px;
+	border-radius: 50px;
 	font-size: 17px;
 	border: none;
 	cursor: pointer;
-	color: white;
-	background-color: black;
+	color: var(--primary-text);
+	background-image: linear-gradient(45deg, var(--purple), var(--accent));
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+	position: relative;
+	overflow: hidden;
+	background-size: 200% 200%;
 }
 
 .button:hover {
-	transition: 0.3s;
-	transform: translateY(1px);
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 5px var(--secondary-accent);
+	animation: rotateGradient 3s linear infinite;
 }
 
-.button.purple {
-	background-color: var(--purple);
-	color: var(--primary-text);
+.button:active {
+	transform: translateY(0);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.button.purple:hover {
-	background-color: var(--secondary-accent);
+@keyframes rotateGradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .button.error {
