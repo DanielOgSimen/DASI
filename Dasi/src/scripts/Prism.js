@@ -24813,7 +24813,7 @@ Prism.languages.yang = {
 		var settings = getSettings(element);
 
 		var linkCopy = document.createElement("img");
-		linkCopy.setAttribute("src", "src/Images/Copy Icon.svg");
+		linkCopy.setAttribute("src", "/Images/Copy Icon.svg");
 		linkCopy.className = "copy-to-clipboard-button";
 		linkCopy.setAttribute("type", "button");
 		var linkSpan = document.createElement("span");
@@ -24849,7 +24849,7 @@ Prism.languages.yang = {
 
 		function resetText() {
 			setTimeout(function () {
-				linkCopy.setAttribute("src", "src/Images/Copy Icon.svg");
+				linkCopy.setAttribute("src", "/Images/Copy Icon.svg");
 				setState("copy");
 			}, settings["copy-timeout"]);
 		}
