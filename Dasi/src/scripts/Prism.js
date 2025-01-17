@@ -24829,7 +24829,7 @@ Prism.languages.yang = {
 				setState("copy-success");
 				linkCopy.setAttribute(
 					"src",
-					"https://uxwing.com/wp-content/themes/uxwing/download/checkmark-cross/checkmark-white-round-icon.png"
+					"/Images/Checkmark.svg"
 				);
 
 				resetText();
