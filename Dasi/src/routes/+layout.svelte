@@ -4,6 +4,6 @@
     import ToTopButton from "../components/toTopButton.svelte";
 </script>
 
-<Navbar/>
-<ToTopButton></ToTopButton>
+<Navbar />
+<ToTopButton />
 <slot/>

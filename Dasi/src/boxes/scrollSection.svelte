@@ -42,7 +42,7 @@ let isSmallScreen = false;
 </script>
 
 <div class="imgOneClick">
-    <img class="promtImg" src="/src/Images/OneClickPic.png" alt="">  
+    <img class="promtImg" src="Images/OneClickPic.png" alt="">  
     <div class="OneClickText">
         <h1 style="color: #E0E0E0; margin-bottom: 1rem;" class="medium">Available in one<br><span class="accent-blue">click</span></h1>
         <div class="inpPromt">
@@ -55,9 +55,9 @@ let isSmallScreen = false;
         <div class:pin-wrap={!isSmallScreen} class="pin-wrapDefault">
             <div class="selection1">
                 <Cards></Cards>
-                <Cards cardTopic="Efficent" cardContent="DASI-GPT are efficent and gives you the answer quick!" imgUrl="src/Images/cards-homepage/Efficent.png"></Cards>
-                <Cards cardTopic="Clean" cardContent="DASI-GPT gives a clean look, and are easy to navigate." imgUrl="src/Images/cards-homepage/Clean.png"></Cards>
-                <Cards cardTopic="Safe" cardContent="DASI-GPT are 100% safe to use, we care about you saftey." imgUrl="src/Images/cards-homepage/Safe.png"></Cards>
+                <Cards cardTopic="Efficent" cardContent="DASI-GPT are efficent and gives you the answer quick!" imgUrl="Images/cards-homepage/Efficent.png"></Cards>
+                <Cards cardTopic="Clean" cardContent="DASI-GPT gives a clean look, and are easy to navigate." imgUrl="Images/cards-homepage/Clean.png"></Cards>
+                <Cards cardTopic="Safe" cardContent="DASI-GPT are 100% safe to use, we care about you saftey." imgUrl="Images/cards-homepage/Safe.png"></Cards>
             </div>
             <div class="selection2">
                 <div class="subscribtionInfo">
