@@ -70,7 +70,7 @@
 </script>
 <div class="contentSignIn">
     <div class="signIn">
-        <img class="LoggInLogo" src="src/Images/Dasi logo.png" alt="LogInnLogo">
+        <img class="LoggInLogo" src="/Images/Dasi logo.png" alt="LogInnLogo">
         {#if !$user.id}
             <p class="normal" style="color: var(--primary-text); font-size:14px;">Sign inn to get the full experience of DASI-gpt</p>
             <div id="signIn"></div>
