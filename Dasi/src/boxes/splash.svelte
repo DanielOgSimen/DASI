@@ -1,6 +1,7 @@
 <script>
 	import AiAssistant from './../components/ai-assistant.svelte';
     import CtaButton from "../components/cta-button.svelte";
+	import { goto } from '$app/navigation';
 </script>
 
 <div class="splash">
@@ -16,7 +17,7 @@
         whenever you need it.</p>
         <div class="buttons">
             <CtaButton text="Get started"/>
-            <button class="purple button regular">Log in</button>
+            <button on:click={() => goto("/loggInn")} class="purple button regular">Log in</button>
         </div>
     </div>
     <div class="logo">
