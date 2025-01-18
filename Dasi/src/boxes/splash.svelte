@@ -76,17 +76,13 @@
     }
 
     .logo img {
-        height: 30vw;
+        height: clamp(20vw, 30vw, 630px);
         max-height: 630px;
         object-fit: contain;
     }
 
     @media screen and (max-width: 1300px) {
-        .logo img {
-            height: 25vw;
-        }
-
-        .splash h1 {
+         .splash h1 {
             font-size: 40px;
         }
 
@@ -95,7 +91,7 @@
         }
     }
 
-    @media screen and (max-width: 1200px) {
+    @media screen and (max-width: 1100px) {
         .splash {
             justify-content: space-between;
         }
