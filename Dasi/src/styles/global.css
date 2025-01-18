@@ -116,7 +116,6 @@ body {
 	border: none;
 	cursor: pointer;
 	color: var(--primary-text);
-	background-image: linear-gradient(45deg, var(--purple), var(--accent));
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	transition: all 0.3s ease;
 	position: relative;
@@ -125,13 +124,30 @@ body {
 }
 
 .button:hover {
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 5px var(--secondary-accent);
 	animation: rotateGradient 3s linear infinite;
+}
+
+.purple {
+	background-image: linear-gradient(45deg, var(--purple), var(--accent));
+}
+
+.purple:hover {
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 5px var(--secondary-accent);
 }
 
 .button:active {
 	transform: translateY(0);
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button.error {
+	background-image: linear-gradient(45deg, var(--error), var(--error-hover));
+	text-align: center;
+	text-decoration: none;
+}
+
+.button.error:hover {
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 5px var(--secondary-accent);
 }
 
 @keyframes rotateGradient {
@@ -144,16 +160,6 @@ body {
 	100% {
 		background-position: 0% 50%;
 	}
-}
-
-.button.error {
-	background-color: var(--error);
-	text-align: center;
-	text-decoration: none;
-}
-
-.button.error:hover {
-	background-color: var(--error-hover);
 }
 
 /*effect-underline*/
