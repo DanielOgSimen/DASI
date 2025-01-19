@@ -49,12 +49,16 @@
     }
 
     onMount(() => {
-        checkScreenSize();
-        window.addEventListener('resize', checkScreenSize);
+        if (typeof window !== 'undefined') {
+            checkScreenSize();
+            window.addEventListener('resize', checkScreenSize);
+        }
     });
 
     onDestroy(() => {
-        window.removeEventListener('resize', checkScreenSize);
+        if (typeof window !== 'undefined') {
+            window.removeEventListener('resize', checkScreenSize);
+        }
     });
 </script>
 

@@ -18,4 +18,4 @@ Navnet D<span style="color: #3772FF;">A</span>S<span style="color: #3772FF;">I</
 
 ### Jeg har et forslag, hvordan kan jeg komme med dette?
 
-Så hyggelig at du har et forslag for D<span style="color: #3772FF;">A</span>S<span style="color: #3772FF;">I</span>! Du kan gjerne ta kontakt med oss ved å sende en epost til [dasi@danielsorby.no](mailto:dasi@danielsorby.no)
+Så hyggelig at du har et forslag for D<span style="color: #3772FF;">A</span>S<span style="color: #3772FF;">I</span>! Du kan gjerne ta kontakt med oss ved å sende en epost til [tips@dasigpt.com](mailto:tips@dasigpt.com)
