@@ -4,10 +4,41 @@
 
 <div class="wrapper">
     <div class="subCards">
-        <SubCard SubscriptionContent="hei" Padding="10px"></SubCard>
-        <SubCard Padding="10px"></SubCard>
-        <SubCard Padding="10px"></SubCard>
-        <SubCard Padding="10px"></SubCard>
+        <SubCard 
+        SubscriptionType="Starter" 
+        SubscriptionPrice="$10" 
+        buttonText = "Go to Payment" 
+        SubscriptionIntro = "For beginners and normal people" 
+        SubscriptionContent={["Hei","blå"]}
+        IconName="rocket-outline"
+        ></SubCard>
+
+        <SubCard 
+        SubscriptionType="Standard" 
+        SubscriptionPrice="$50" 
+        buttonText = "Go to Payment" 
+        SubscriptionIntro = "For beginners and normal people" 
+        SubscriptionContent={["Hei","blå"]}
+        IconName="briefcase-outline"
+        ></SubCard>
+
+        <SubCard 
+        SubscriptionType="Professional" 
+        SubscriptionPrice="$500" 
+        buttonText = "Go to Payment" 
+        SubscriptionIntro = "For beginners and normal people" 
+        SubscriptionContent={["Hei","blå"]}
+        IconName="business-outline"
+        ></SubCard>
+
+        <SubCard 
+        SubscriptionType="Enterprise" 
+        SubscriptionPrice="$2000" 
+        buttonText = "Contact us" 
+        SubscriptionIntro = "For beginners and normal people" 
+        SubscriptionContent={["Hei","blå"]}
+        IconName="people-outline"
+        ></SubCard>
     </div>
 </div>
 
@@ -26,17 +57,12 @@
         justify-content: center;
         align-items: stretch;
     }
-    @media (max-width: 1733px) {
-        .subCards {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
     @media (max-width: 1350px) {
         .subCards {
             grid-template-columns: repeat(2, 1fr);
         }
     }
-    @media (max-width: 900px) {
+    @media (max-width: 700px) {
         .subCards {
             grid-template-columns: repeat(1, 1fr);
         }

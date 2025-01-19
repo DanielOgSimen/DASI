@@ -1,5 +1,6 @@
 <script>
     export let SubscriptionType = "Starter";
+    export let IconName = "rocket-outline";
     export let SubscriptionPrice = "$10";
     export let buttonText = "Go to Payment";
     export let SubscriptionIntro = "For beginners and normal people";
@@ -13,10 +14,9 @@
         "Limited number of messages or interactions per month."
     ];
 </script>
-
 <div class="subCard">
     <div class="iconContainer">
-        <ion-icon name="rocket-outline"></ion-icon>
+        <ion-icon name={IconName}></ion-icon>
     </div>
     <div class="header">
         <h1 class="bigText bold">{SubscriptionType}</h1>
