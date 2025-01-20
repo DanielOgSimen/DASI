@@ -23,12 +23,12 @@
 
 <div class="edit-chat">
     {#each options as option}
-        <button class="edit-chat-option" on:click={() => handleClick(option.action)}>
+        <button class="edit-chat-option" onclick={() => handleClick(option.action)}>
             <img src="/Images/icons/{option.icon}.svg" alt="{option.title}" />
             <p>{option.title}</p>
         </button>
     {/each}
-    <button class="exit" on:click={() => handleClick('exit')}>
+    <button class="exit" onclick={() => handleClick('exit')}>
         <img src="/Images/icons/cross.svg" alt="X" />
     </button>
 </div>

@@ -1,7 +1,11 @@
-<script>
-    export let imgUrl = '/Images/cards-homepage/Climate-friendly.png';
-    export let cardTopic = 'Climate-friendly';
-    export let cardContent = 'DASI-GPT saves 50% more water than other systems.';
+<script lang="ts">
+    interface Props {
+        imgUrl?: string;
+        cardTopic?: string;
+        cardContent?: string;
+    }
+
+    let { imgUrl = '/Images/cards-homepage/Climate-friendly.png', cardTopic = 'Climate-friendly', cardContent = 'DASI-GPT saves 50% more water than other systems.' }: Props = $props();
 </script>
 
 <div class="card" style="background-image: url({imgUrl});">

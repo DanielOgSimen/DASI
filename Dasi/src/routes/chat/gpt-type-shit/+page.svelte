@@ -1,8 +1,8 @@
 <script lang="ts">
     // Definerer variabler for å lagre brukerens input, meldingen fra serveren og eventuelle feil
-    let prompt = '';
-    let message = '';
-    let error = '';
+    let prompt = $state('');
+    let message = $state('');
+    let error = $state('');
 
     // Async funksjon som håndterer innsending av skjemaet
     async function handleSubmit(event: Event) {
@@ -42,7 +42,7 @@
 </script>
 
 <h1>GPT TYPE SHIT</h1>
-<form on:submit={handleSubmit}>
+<form onsubmit={handleSubmit}>
     <label for="prompt">
         prompt:
     </label>
