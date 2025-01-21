@@ -3,7 +3,7 @@
     <meta name="google-signin-client_id" content="684634493497-2ena2p1qdk7jcfe1ef1hr2b8r3d8ip3r.apps.googleusercontent.com">
     <script src="https://accounts.google.com/gsi/client" async defer></script> 
 </svelte:head>
-<script context="module" lang="ts">
+<script module lang="ts">
     declare const google: any;
 </script>
 <script lang="ts">
@@ -76,7 +76,7 @@
             <div id="signIn"></div>
         {:else}
             <p class="normal" style="color: var(--primary-text); font-size:14px;">Sign out of DASI-gpt</p>
-            <a class="button error" on:click={signOut} href="../">Sign out</a>
+            <a class="button error" onclick={signOut} href="../">Sign out</a>
         {/if}
          
     </div>

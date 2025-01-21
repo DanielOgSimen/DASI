@@ -50,12 +50,12 @@
 
     // Light mode and dark mode
     // oppdaterer temaet til light eller dark og ikon til moon eller sun
-const changeIcon = (iconTheme: string) => {
+    const changeIcon = (iconTheme: string) => {
         if (iconTheme === "dark") {
-            links[4].name = '<ion-icon name="moon-outline"></ion-icon>';
+            links[4].name = 'moon-outline';
             links[4].onclick = () => {changeThemeLocalStorage("light"); changeIcon("light");};
         } else if (iconTheme === "light") {
-            links[4].name = '<ion-icon name="sunny-outline"></ion-icon>';
+            links[4].name = 'sunny-outline';
             links[4].onclick = () => {changeThemeLocalStorage("dark"); changeIcon("dark");};
         }
     }
@@ -123,9 +123,12 @@ const changeIcon = (iconTheme: string) => {
     <div class="nav-links thin">
         {#each links as link}
             <a href={link.href} on:click={link.onclick} class="effect-underline">
-                {@html link.name}
+                {#if link.name === 'moon-outline' || link.name === 'sunny-outline'}
+                    <ion-icon name={link.name}></ion-icon>
+                {:else}
+                    {link.name}
+                {/if}
             </a>
-            
         {/each}
         {#if !userData.picture}
             <a href="/loggInn" class="effect-underline">Log In</a>
@@ -151,7 +154,11 @@ const changeIcon = (iconTheme: string) => {
             {#each links as link}
                 <li>
                     <a href={link.href} on:click={link.onclick} class="effect-underline">
-                        {@html link.name}
+                        {#if link.name === 'moon-outline' || link.name === 'sunny-outline'}
+                            <ion-icon name={link.name}></ion-icon>
+                        {:else}
+                            {link.name}
+                        {/if}
                     </a>
                 </li>
             {/each}

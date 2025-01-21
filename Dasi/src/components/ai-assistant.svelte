@@ -1,5 +1,9 @@
-<script>
-    export let text = "Your AI-Powered Assistant"
+<script lang="ts">
+    interface Props {
+        text?: string;
+    }
+
+    let { text = "Your AI-Powered Assistant" }: Props = $props();
 </script>
 
 <div class="box">

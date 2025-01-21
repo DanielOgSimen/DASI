@@ -1,14 +1,26 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
-    export let label = "Ask a promt";
-    export let color = "var(--secondary-border-divider)";
-    export let HideSvg = false;
-    export let height = "3rem";
-    export let Width = "20rem";
-    export let external = false;
-    export let onEnter: () => void; // Tar inn en funksjon som kjøres når man trykker enter
+  interface Props {
+    label?: string;
+    color?: string;
+    HideSvg?: boolean;
+    height?: string;
+    Width?: string;
+    external?: boolean;
+    onEnter: () => void; // Tar inn en funksjon som kjøres når man trykker enter
+  }
 
-    let inputElement: HTMLInputElement;
+  let {
+    label = "Ask a promt",
+    color = "var(--secondary-border-divider)",
+    HideSvg = false,
+    height = "3rem",
+    Width = "20rem",
+    external = false,
+    onEnter
+  }: Props = $props();
+
+    let inputElement: HTMLInputElement = $state();
 
     export function getPrompt() {
         return inputElement.value;
@@ -26,12 +38,12 @@
 </script>
 
 <div class="input_wrap">
-    <input bind:this={inputElement} style="background-color: {color}; height: {height}; width:{Width};" type="text" id="input" required on:keydown={handleKeyDown} />
-    <!-- svelte-ignore a11y-label-has-associated-control -->
+    <input bind:this={inputElement} style="background-color: {color}; height: {height}; width:{Width};" type="text" id="input" required onkeydown={handleKeyDown} />
+    <!-- svelte-ignore a11y_label_has_associated_control -->
     <label>{label}</label>
-    <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <svg class:display={HideSvg} class=input_icon xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 41.621 41.621" on:click={onEnter}>
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <svg class:display={HideSvg} class=input_icon xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 41.621 41.621" onclick={onEnter}>
         <path id="Icon_feather-send" data-name="Icon feather-send" d="M41,3,20.1,23.9M41,3,27.7,41,20.1,23.9,3,16.3Z" transform="translate(-1.5 -0.879)" fill="none" stroke="#00b8d4" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
       </svg>    
 </div>

@@ -1,10 +1,30 @@
-<script>
-    export let SubscriptionType = "Starter";
-    export let IconName = "rocket-outline";
-    export let SubscriptionPrice = "$10";
-    export let buttonText = "Go to Payment";
-    export let SubscriptionIntro = "For beginners and normal people";
-    export let SubscriptionContent = [
+<script lang="ts">
+    import { createEventDispatcher } from 'svelte';
+
+    interface Props {
+        SubscriptionType?: string;
+        SubscriptionPrice?: string;
+        buttonText?: string;
+        SubscriptionIntro?: string;
+        SubscriptionContent?: any;
+        IconName?: string;
+    }
+
+    interface Props {
+        SubscriptionType?: string;
+        SubscriptionPrice?: string;
+        buttonText?: string;
+        SubscriptionIntro?: string;
+        SubscriptionContent?: any;
+        IconName?: string;
+    }
+
+    let {
+        SubscriptionType = "Starter",
+        SubscriptionPrice = "$10",
+        buttonText = "Go to Payment",
+        SubscriptionIntro = "For beginners and normal people",
+        SubscriptionContent = [
         "Access to all content",
         "Access to all features",
         "Access to all updates",
@@ -12,8 +32,13 @@
         "Limited customization and integrations",
         "Suitable for small websites or simple customer service tasks.",
         "Limited number of messages or interactions per month."
-    ];
+    ],
+        IconName = "star"
+    }: Props = $props();
+
+    const dispatch = createEventDispatcher();
 </script>
+
 <div class="subCard">
     <div class="iconContainer">
         <ion-icon name={IconName}></ion-icon>
@@ -26,7 +51,7 @@
         <h1 class="bigText bold">{SubscriptionPrice}<span class="smallText">.00</span></h1>
         <p class="priceInfo">USD/mo (annually)</p>
     </div>
-    <button class="button purple">{buttonText}</button>
+    <button class="button purple" onclick={() => dispatch('subscribe')}>{buttonText}</button>
     <div class="divider"></div>
     <ul class="subCardInfo">
         {#each SubscriptionContent as item}

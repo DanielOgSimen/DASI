@@ -3,7 +3,7 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
-<button class="toTopButton" on:click={scrollToTop}>
+<button class="toTopButton" onclick={scrollToTop}>
     <ion-icon name="arrow-up-outline"></ion-icon>
 </button>
 <style>

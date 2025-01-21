@@ -1,5 +1,5 @@
-<script>
-    export let text;
+<script lang="ts">
+  let { text } = $props();
 </script>
 
 <button class="shiny-cta">
@@ -163,19 +163,19 @@
       animation: calc(var(--duration) * 1.5) breathe linear infinite;
   }
 
-  .shiny-cta:is(:hover, :focus-visible) {
+  .shiny-cta:is(:global(:hover, :focus-visible)) {
       --gradient-percent: 20%;
       --gradient-angle-offset: 95deg;
       --gradient-shine: var(--shiny-cta-highlight-subtle);
   }
 
-  .shiny-cta:is(:hover, :focus-visible),
-  .shiny-cta:is(:hover, :focus-visible)::before,
-  .shiny-cta:is(:hover, :focus-visible)::after {
+  .shiny-cta:is(:global(:hover, :focus-visible)),
+  .shiny-cta:is(:global(:hover, :focus-visible))::before,
+  .shiny-cta:is(:global(:hover, :focus-visible))::after {
       animation-play-state: running;
   }
 
-  .shiny-cta:is(:hover, :focus-visible) span::before {
+  .shiny-cta:is(:global(:hover, :focus-visible)) span::before {
       opacity: 1;
   }
 

@@ -1,11 +1,15 @@
-<script>
+<script lang="ts">
     import { marked } from "marked";
 
-    export let message = "Message not found";
-    export let messenger = "Unknown";
+    interface Props {
+        message?: string;
+        messenger?: string;
+    }
+
+    let { message = "Message not found", messenger = "Unknown" }: Props = $props();
 
     // Konverter meldingen til HTML ved hjelp av marked
-    $: formattedMessage = marked(message);
+    let formattedMessage = $derived(marked(message));
 </script>
 
 {#if messenger === "user"}

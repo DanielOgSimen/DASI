@@ -25,7 +25,7 @@ onMount(function() {
 function handleKeyDown() {
     console.log(`Hei`)
 }
-let isSmallScreen = false;
+let isSmallScreen = $state(false);
 
     const checkScreenSize = () => {
         isSmallScreen = window.innerWidth < 1050;
