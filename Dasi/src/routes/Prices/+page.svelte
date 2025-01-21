@@ -36,7 +36,7 @@
         SubscriptionPrice="$2000" 
         buttonText = "Contact us" 
         SubscriptionIntro = "For beginners and normal people" 
-        SubscriptionContent={["Hei","blå"]}
+        SubscriptionContent={["Hei","blå","Daniel"]}
         IconName="people-outline"
         ></SubCard>
     </div>
