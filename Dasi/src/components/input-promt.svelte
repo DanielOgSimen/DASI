@@ -70,7 +70,7 @@
   }
 
   .input_wrap input {
-      padding: 14px 50px 14px 14px;
+      padding: 14px 50px 14px 14px; /* legger på ekstra padding på høyre side så teksten ikke går bak ikonet*/
       font-size: 16px;
       border-radius: 10px;
       border: none;
