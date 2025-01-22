@@ -1,5 +1,7 @@
 <script>
     import SubCard from '../../components/boxes/subscribtionCard.svelte';
+    import Coockies from '../../components/coockies/coockies.svelte';
+    import Cookie from "../../components/coockies/coockies.svelte";
 </script>
 
 <div class="wrapper">
@@ -41,7 +43,7 @@
         ></SubCard>
     </div>
 </div>
-
+<Coockies/>
 <style>
     .wrapper {
         display: flex;
