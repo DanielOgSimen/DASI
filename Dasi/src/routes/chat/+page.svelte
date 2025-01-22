@@ -1,4 +1,3 @@
-<!-- @migration-task Error while migrating Svelte code: Can't migrate code with afterUpdate. Please migrate by hand. -->
 <script>
     // @ts-nocheck
     import { onMount, afterUpdate, tick, onDestroy } from 'svelte';
@@ -84,8 +83,6 @@
                 content: msg.message
             }));
 
-            messages.push({ role: "user", content: prompt });
-
             try {
                 waitigForResponse = true;
                 const response = await fetch('/api', {
@@ -93,7 +90,7 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ messages })
+                    body: JSON.stringify({ messages, model: "gpt-3.5-turbo" })
                 });
 
                 const data = await response.json();

@@ -4,19 +4,26 @@ import { env } from "$env/dynamic/private"; // Importerer miljøvariabler fra en
 export async function POST({ request }) {
 	try {
 		// Henter JSON data fra forespørselen
-		const { messages } = await request.json();
+		const { messages, model } = await request.json();
 		// Henter OpenAI API-nøkkelen fra .env
 		const openai_key = env.OPENAI_KEY;
 
-		// Logger meldingshistorikken og API-nøkkelen for debugging
-		console.log(messages);
-		console.log(openai_key);
+		// Logger meldingshistorikken, modellen og API-nøkkelen for debugging
+		console.log("Messages:", messages);
+		console.log("Model:", model);
+		console.log("OpenAI Key:", openai_key);
+
+		// Filtrerer ut meldinger med ugyldig innhold
+		const validMessages = messages.filter((msg) => msg.content);
 
 		// Oppretter body for forespørselen til OpenAI API
 		const body = {
-			model: "gpt-3.5-turbo", // Spesifiserer hvilken modell som skal brukes
-			messages: messages, // Inkluderer meldingshistorikken i forespørselen
+			model: model || "gpt-3.5-turbo", // Bruker spesifisert modell eller standardmodell
+			messages: validMessages, // Inkluderer kun gyldige meldinger i forespørselen
 		};
+
+		// Logger body for debugging
+		console.log("Request Body:", body);
 
 		// Sender forespørselen til OpenAI API
 		const response = await fetch(
@@ -34,7 +41,10 @@ export async function POST({ request }) {
 		// Sjekker om responsen fra OpenAI API er ok
 		if (!response.ok) {
 			// Kaster en feil hvis responsen ikke er ok
-			throw new Error(`OpenAI API error: ${response.statusText}`);
+			const errorText = await response.text();
+			throw new Error(
+				`OpenAI API error: ${response.statusText} - ${errorText}`
+			);
 		}
 
 		// Henter JSON-data fra responsen
@@ -42,7 +52,7 @@ export async function POST({ request }) {
 		// Henter meldingen fra responsen
 		const message = data.choices[0].message.content;
 		// Logger meldingen for debugging
-		console.log(message);
+		console.log("Response Message:", message);
 
 		// Returnerer meldingen som en JSON-respons
 		return new Response(JSON.stringify({ message }), {
