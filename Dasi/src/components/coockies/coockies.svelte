@@ -1,10 +1,49 @@
+<script lang="ts">
+import { onMount } from 'svelte';
+const removeCookieBox = () => {
+    const allContent = document.querySelector('.allContent');
+    if (allContent instanceof HTMLElement) {
+        allContent.style.visibility = 'hidden';
+    }
+}
+    onMount(() => {
+        setTimeout(() => {
+            if (!localStorage.getItem("cookiesAccepted")) {
+                visible = true;
+            }
+        }, 1000);
+    });
+    
+    let visible = false; 
+    localStorage.removeItem("cookiesAccepted"); // fjern etter testing, skaper error med refresh
+    const coockiesAccept = () => {
+        removeCookieBox();
+        localStorage.setItem("cookiesAccepted", "true");
+        setCoockie("cookiesAccepted", "true", 30);
+        
+        
+    }
+
+    const setCoockie = (name: string, value: string, days: number) => {
+        let expires = ""
+        if (days) {
+            const date = new Date(); 
+            date.setTime(date.getTime() + (days*24*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+
+</script>
+{#if visible}
 <div class="allContent">
     <div class="coockieBox">
         <div class="coockieContent">
             <h1>Cookies</h1>
             <p>We use cookies to give you a better experience on our site. By continuing to use our website, you accept the use of cookies.</p>
             <div class="cookieButtons">
-                <button class="cookieButton cookieBlue">Accept</button>
+                <button class="cookieButton cookieBlue" on:click={coockiesAccept}>Accept</button>
                 <button class="cookieButton cookieGray">Customize</button>            
                 <button class="cookieButton cookieGray">Necessary</button>
             </div>
@@ -12,7 +51,7 @@
         <img src="/Images/coockieCoockies.png" alt="">
     </div>
 </div>
-
+{/if}
 <style>
 /*     coockie buttons  */
     .cookieButton {
@@ -47,6 +86,16 @@
         position: fixed;
         bottom: 0;
         right: 0;
+        animation: slide 0.5s;
+    }
+
+    @keyframes slide {
+        0% {
+            transform: translate(110%);
+        }
+        100% {
+            transform: translate(0%);
+        }
     }
 
     h1 {

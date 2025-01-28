@@ -33,7 +33,7 @@
         "Suitable for small websites or simple customer service tasks.",
         "Limited number of messages or interactions per month."
     ],
-        IconName = "star"
+        IconName = "rocket-outline"
     }: Props = $props();
 
     const dispatch = createEventDispatcher();
