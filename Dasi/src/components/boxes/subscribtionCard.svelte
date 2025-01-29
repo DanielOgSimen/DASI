@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { createEventDispatcher } from 'svelte';
+
 
     interface Props {
         SubscriptionType?: string;
@@ -27,7 +27,7 @@
         IconName = "rocket-outline"
     }: Props = $props();
 
-    const dispatch = createEventDispatcher();
+
 </script>
 
 <div class="subCard">
@@ -42,7 +42,7 @@
         <h1 class="bigText bold">{SubscriptionPrice}<span class="smallText">.00</span></h1>
         <p class="priceInfo">USD/mo (annually)</p>
     </div>
-    <button class="button purple" onclick={() => dispatch('subscribe')}>{buttonText}</button>
+    <button class="button purple">{buttonText}</button>
     <div class="divider"></div>
     <ul class="subCardInfo">
         {#each SubscriptionContent as item}
