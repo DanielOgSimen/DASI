@@ -10,15 +10,6 @@
         IconName?: string;
     }
 
-    interface Props {
-        SubscriptionType?: string;
-        SubscriptionPrice?: string;
-        buttonText?: string;
-        SubscriptionIntro?: string;
-        SubscriptionContent?: any;
-        IconName?: string;
-    }
-
     let {
         SubscriptionType = "Starter",
         SubscriptionPrice = "$10",
