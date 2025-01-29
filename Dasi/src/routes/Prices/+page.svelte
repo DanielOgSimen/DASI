@@ -5,10 +5,44 @@
 
 <div class="wrapper">
     <div class="subCards">
-       
+        <SubCard 
+        SubscriptionType="Starter" 
+        SubscriptionPrice="$10" 
+        buttonText = "Go to Payment" 
+        SubscriptionIntro = "For beginners and normal people" 
+        SubscriptionContent={["Hei","blå"]}
+        IconName="rocket-outline"
+        ></SubCard>
+
+        <SubCard 
+        SubscriptionType="Standard" 
+        SubscriptionPrice="$50" 
+        buttonText = "Go to Payment" 
+        SubscriptionIntro = "For beginners and normal people" 
+        SubscriptionContent={["Hei","blå"]}
+        IconName="briefcase-outline"
+        ></SubCard>
+
+        <SubCard 
+        SubscriptionType="Professional" 
+        SubscriptionPrice="$500" 
+        buttonText = "Go to Payment" 
+        SubscriptionIntro = "For beginners and normal people" 
+        SubscriptionContent={["Hei","blå"]}
+        IconName="business-outline"
+        ></SubCard>
+
+        <SubCard 
+        SubscriptionType="Enterprise" 
+        SubscriptionPrice="$2000" 
+        buttonText = "Contact us" 
+        SubscriptionIntro = "For beginners and normal people" 
+        SubscriptionContent={["Hei","blå","Daniel"]}
+        IconName="people-outline"
+        ></SubCard>
     </div>
 </div>
-
+<Coockies/>
 <style>
     .wrapper {
         display: flex;
