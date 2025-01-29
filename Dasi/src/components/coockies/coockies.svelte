@@ -15,7 +15,7 @@ const removeCookieBox = () => {
     });
     
     let visible = false; 
-    localStorage.removeItem("cookiesAccepted"); // fjern etter testing, skaper error med refresh
+
     const coockiesAccept = () => {
         removeCookieBox();
         localStorage.setItem("cookiesAccepted", "true");
