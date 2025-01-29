@@ -1,5 +1,8 @@
 <script lang="ts">
 import { onMount } from 'svelte';
+
+let visible = false; 
+
 const removeCookieBox = () => {
     const allContent = document.querySelector('.allContent');
     if (allContent instanceof HTMLElement) {
@@ -14,17 +17,17 @@ const removeCookieBox = () => {
         }, 1000);
     });
     
-    let visible = false; 
 
-    const coockiesAccept = () => {
+
+    const cookiesAccept = () => {
         removeCookieBox();
         localStorage.setItem("cookiesAccepted", "true");
-        setCoockie("cookiesAccepted", "true", 30);
+        setCookie("cookiesAccepted", "true", 30);
         
         
     }
 
-    const setCoockie = (name: string, value: string, days: number) => {
+    const setCookie = (name: string, value: string, days: number) => {
         let expires = ""
         if (days) {
             const date = new Date(); 
@@ -43,7 +46,7 @@ const removeCookieBox = () => {
             <h1>Cookies</h1>
             <p>We use cookies to give you a better experience on our site. By continuing to use our website, you accept the use of cookies.</p>
             <div class="cookieButtons">
-                <button class="cookieButton cookieBlue" on:click={coockiesAccept}>Accept</button>
+                <button class="cookieButton cookieBlue" on:click={cookiesAccept}>Accept</button>
                 <button class="cookieButton cookieGray">Customize</button>            
                 <button class="cookieButton cookieGray">Necessary</button>
             </div>
