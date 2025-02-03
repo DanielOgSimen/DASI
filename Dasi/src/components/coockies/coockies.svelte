@@ -18,7 +18,7 @@ const removeCookieBox = () => {
     });
     
 
-    localStorage.removeItem("cookiesAccepted");
+    localStorage.removeItem("cookiesAccepted"); // for testing purposes
     const cookiesAccept = () => {
         removeCookieBox();
         localStorage.setItem("cookiesAccepted", "true");
