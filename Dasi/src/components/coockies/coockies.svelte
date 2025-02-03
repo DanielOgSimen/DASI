@@ -16,15 +16,13 @@ const removeCookieBox = () => {
             }
         }, 1000);
     });
-    
 
-    localStorage.removeItem("cookiesAccepted"); // for testing purposes
+/*     localStorage.removeItem("cookiesAccepted"); */ //for testing når man skal få opp coockies boksen igjen
+    
     const cookiesAccept = () => {
         removeCookieBox();
         localStorage.setItem("cookiesAccepted", "true");
         setCookie("cookiesAccepted", "true", 30);
-        
-        
     }
 
     const setCookie = (name: string, value: string, days: number) => {

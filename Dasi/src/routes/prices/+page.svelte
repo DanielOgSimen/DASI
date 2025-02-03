@@ -42,7 +42,7 @@
         ></SubCard>
     </div>
 </div>
-<Coockies/>
+
 <style>
     .wrapper {
         display: flex;
