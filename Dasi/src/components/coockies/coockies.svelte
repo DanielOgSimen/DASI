@@ -4,7 +4,7 @@ import { onMount } from 'svelte';
 let visible = false; 
 
 const removeCookieBox = () => {
-    const allContent = document.querySelector('.allContent');
+    const allContent = document.querySelector('.preventClick');
     if (allContent instanceof HTMLElement) {
         allContent.style.visibility = 'hidden';
     }
@@ -38,18 +38,20 @@ const removeCookieBox = () => {
 
 </script>
 {#if visible}
-<div class="allContent">
-    <div class="coockieBox">
-        <div class="coockieContent">
-            <h1>Cookies</h1>
-            <p>We use cookies to give you a better experience on our site. By continuing to use our website, you accept the use of cookies.</p>
-            <div class="cookieButtons">
-                <button class="cookieButton cookieBlue" on:click={cookiesAccept}>Accept</button>
-                <button class="cookieButton cookieGray">Customize</button>            
-                <button class="cookieButton cookieGray">Necessary</button>
+<div class="preventClick">
+    <div class="allContent">
+        <div class="coockieBox">
+            <div class="coockieContent">
+                <h1>Cookies</h1>
+                <p>We use cookies to give you a better experience on our site. By continuing to use our website, you accept the use of cookies.</p>
+                <div class="cookieButtons">
+                    <button class="cookieButton cookieBlue" on:click={cookiesAccept}>Accept</button>
+                    <button class="cookieButton cookieGray">Customize</button>            
+                    <button class="cookieButton cookieGray">Necessary</button>
+                </div>
             </div>
+            <img src="/Images/coockieCoockies.png" alt="">
         </div>
-        <img src="/Images/coockieCoockies.png" alt="">
     </div>
 </div>
 {/if}
@@ -62,6 +64,19 @@ const removeCookieBox = () => {
         cursor: pointer;
         color: var(--boarder-divider);
         transition: transform 0.3s;
+        animation: buttonFlash 1s 2s infinite;
+    }
+
+    @keyframes buttonFlash {
+        0% {
+            color: blue;
+        }
+        50% {
+            color: red;
+        }
+        100% {
+            color: blue;
+        }
     }
 
     .cookieBlue {
@@ -125,5 +140,14 @@ const removeCookieBox = () => {
         border-radius: 26px;
         gap: 2rem;
     }
-
+    /* Prevents the user from clicking on the page */
+    .preventClick {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
 </style>
