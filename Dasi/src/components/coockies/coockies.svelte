@@ -62,9 +62,9 @@ const removeCookieBox = () => {
         padding: 0.5rem 5px;
         border-radius: 5px;
         cursor: pointer;
-        color: var(--boarder-divider);
+        color: var(--border-divider);
         transition: transform 0.3s;
-        animation: buttonFlash 1s 2s infinite;
+/*         animation: buttonFlash 1s 2s infinite; */
     }
 
     @keyframes buttonFlash {
