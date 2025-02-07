@@ -205,6 +205,10 @@
     });
 </script>
 
+<svelte:head>
+    <title>{chats[currentChat]?.title || "New Chat"} | DasiGPT</title>
+</svelte:head>
+
 <div class="chat-page">
     <div class="chat-titles" class:checked={isChecked}>
         <input type="checkbox" id="toggle" bind:checked={isChecked} />
