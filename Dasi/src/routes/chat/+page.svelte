@@ -289,6 +289,7 @@
         display: flex;
         height: 100vh; /* Sørg for at chat-page fyller hele høyden */
     }
+
     .chats {
         width: var(--chat-width);
         max-width: 366px;
@@ -296,10 +297,11 @@
         background-color: var(--border-divider);
         padding-top: 100px;
         overflow-y: auto; /* Aktiver skrolling når nødvendig */
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 20px; /* Legg til 20px mellomrom mellom alle elementene */
-        justify-items: center; /* Sentrer elementene horisontalt */
+        display: flex; /* Endret fra grid til flex */
+        flex-direction: column; /* Plasser elementene i en kolonne */
+        align-items: center; /* Sentrer elementene horisontalt */
+        justify-content: flex-start; /* Plasser elementene til starten av containeren */
+        gap: 20px; /* Legg til 20px mellomrom mellom alle elementene */
     }
 
     @media (max-width: 1050px) {
@@ -324,6 +326,11 @@
             width: var(--responsive-chat-width);
             z-index: 100;
             transition: left 0.5s ease;
+            display: flex; /* Endret fra grid til flex */
+            flex-direction: column; /* Plasser elementene i en kolonne */
+            align-items: center; /* Sentrer elementene horisontalt */
+            justify-content: flex-start; /* Plasser elementene til starten av containeren */
+            gap: 20px; /* Legg til 20px mellomrom mellom alle elementene */
         }
 
         .chats.checked {
@@ -342,6 +349,7 @@
             overflow-y: scroll;
         }
     }
+
     .chat-space {
         width: calc(100% - var(--chat-width));
         height: 100vh;
@@ -407,6 +415,7 @@
         animation: dot-pulse 1.5s infinite linear;
         animation-delay: 0.25s;
     }
+
     .dot-pulse::before, .dot-pulse::after {
         content: "";
         display: inline-block;
@@ -418,11 +427,13 @@
         background-color: var(--accent);
         color: var(--accent);
     }
+
     .dot-pulse::before {
         left: -15px;
         animation: dot-pulse-before 1.5s infinite linear;
         animation-delay: 0s;
     }
+
     .dot-pulse::after {
         left: 15px;
         animation: dot-pulse-after 1.5s infinite linear;
@@ -440,6 +451,7 @@
             transform: scale(1);
         }
     }
+
     @keyframes dot-pulse {
         0% {
             transform: scale(1);
@@ -451,6 +463,7 @@
             transform: scale(1);
         }
     }
+
     @keyframes dot-pulse-after {
         0% {
             transform: scale(1);
