@@ -3,6 +3,7 @@
     import { onMount, afterUpdate, tick, onDestroy } from 'svelte';
     import { get } from 'svelte/store';
     import { chatStore } from '../../store/chatStore'; // Importer chatStore
+    import { user } from '../../store/userStore'; // Importer userStore
     import ChatTitle from './../../components/chat/chat-title.svelte';
     import InputPromt from '../../components/input-promt.svelte';
     import Message from '../../components/chat/message.svelte';
@@ -13,12 +14,18 @@
     let currentChat = "New Chat";
     let waitigForResponse = false;
     let isChecked = false;
+    let isLoggedIn = false;
 
     // Les data fra store
     let chats;
     chatStore.subscribe(value => {
         chats = value;
         console.log(chats);
+    });
+
+    user.subscribe(value => {
+        isLoggedIn = !!value.id; // Sjekk om brukeren er logget inn basert på om id er satt
+        console.log(value);
     });
 
     // Funksjon for å oppdatere store
@@ -52,6 +59,10 @@
     }
 
     async function handlePrompt() {
+        if (!isLoggedIn) {
+            alert("You need to be logged in to chat");
+            return;
+        };
         let prompt = findPrompt();
         if (currentChat === "New Chat") {
             const newChatTitle = `Chat ${Object.keys(chats).length + 1}`;
