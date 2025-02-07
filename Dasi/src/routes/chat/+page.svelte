@@ -2,6 +2,7 @@
     // @ts-nocheck
     import { onMount, afterUpdate, tick, onDestroy } from 'svelte';
     import { get } from 'svelte/store';
+    import {v4 as uuidv4} from 'uuid';
     import { chatStore } from '../../store/chatStore'; // Importer chatStore
     import { user } from '../../store/userStore'; // Importer userStore
     import ChatTitle from './../../components/chat/chat-title.svelte';
@@ -76,8 +77,10 @@
 
                 const data = await response.json();
                 const newChatTitle = data.title || `Chat ${Object.keys(chats).length + 1}`;
-                currentChat = newChatTitle;
-                chats[newChatTitle] = {
+                let chatID = uuidv4();
+                currentChat = chatID;
+                console.log(newChatTitle, chatID);
+                chats[chatID] = {
                     title: newChatTitle,
                     messages: [],
                     editTitle: false

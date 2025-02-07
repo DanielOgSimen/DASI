@@ -24,6 +24,7 @@
 	"dependencies": {
 		"google-auth-library": "^9.15.0",
 		"marked": "^15.0.2",
-		"prismjs": "^1.29.0"
+		"prismjs": "^1.29.0",
+		"uuid": "^11.0.5"
 	}
 }
