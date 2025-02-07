@@ -127,7 +127,6 @@
     const checkScreenSize = () => {
         if (typeof window !== 'undefined') {
             isSmallScreen = window.innerWidth < 1050;
-            console.log(isSmallScreen);
         }
     };
 
