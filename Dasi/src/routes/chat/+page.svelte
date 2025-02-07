@@ -65,13 +65,27 @@
         };
         let prompt = findPrompt();
         if (currentChat === "New Chat") {
-            const newChatTitle = `Chat ${Object.keys(chats).length + 1}`;
-            currentChat = newChatTitle;
-            chats[newChatTitle] = {
-                title: newChatTitle,
-                messages: [],
-                editTitle: false
-            };
+            try {
+                const response = await fetch('/api/title', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message: prompt })
+                });
+
+                const data = await response.json();
+                const newChatTitle = data.title || `Chat ${Object.keys(chats).length + 1}`;
+                currentChat = newChatTitle;
+                chats[newChatTitle] = {
+                    title: newChatTitle,
+                    messages: [],
+                    editTitle: false
+                };
+            } catch (error) {
+                console.error('Error fetching title from API:', error);
+                return;
+            }
         }
 
         if (currentChat && chats[currentChat]) {
