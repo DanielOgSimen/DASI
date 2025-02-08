@@ -144,9 +144,8 @@
     
                 // Oppdater store
                 updateStore(chats);
-                tick().then(() => {
-                    Prism.highlightAll();
-                });
+                await tick();
+                Prism.highlightAll();
             } catch (error) {
                 console.error('Error fetching data from API:', error);
             }
@@ -169,12 +168,12 @@
             const urlParams = new URLSearchParams(window.location.search);
             const message = urlParams.get('message');
             const chat = urlParams.get('chat');
-
+    
             /* Hvis du vil på chat 12, så er det ?chat=Chat%2012 */
             if (chat) {
                 setCurrentChat(chat);
             }
-
+    
             if (message) {
                 try {
                     const response = await fetch('/api/title', {
@@ -184,7 +183,7 @@
                         },
                         body: JSON.stringify({ message: message })
                     });
-            
+    
                     const data = await response.json();
                     const newChatTitle = data.title || `Chat ${Object.keys(chats).length + 1}`;
                     let chatID = uuidv4();
@@ -199,9 +198,11 @@
                         ],
                         editTitle: false
                     };
-            
+    
                     updateStore(chats);
-                    handlePrompt(true);
+                    await handlePrompt(true);
+                    await tick();
+                    window.location = window.location.origin + window.location.pathname + `?chat=${chatID}`;
                 } catch (error) {
                     console.error('Error fetching title from API:', error);
                 }
