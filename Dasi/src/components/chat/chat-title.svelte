@@ -112,7 +112,7 @@
 
     .chat-title-title {
         width: 90%;
-        height: 100%;
+        height: 70px;
         background-color: transparent;
         border: none;
         display: flex;
