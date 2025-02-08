@@ -59,12 +59,14 @@
         return inputPromtComponent.getPrompt();
     }
 
-    async function handlePrompt() {
+    async function handlePrompt(noFindPrompt = false) {
         if (!isLoggedIn) {
             alert("You need to be logged in to chat");
             return;
         };
-        let prompt = findPrompt();
+    
+        let prompt = noFindPrompt ? "" : findPrompt();
+    
         if (currentChat === "New Chat") {
             try {
                 const response = await fetch('/api/title', {
@@ -74,7 +76,7 @@
                     },
                     body: JSON.stringify({ message: prompt })
                 });
-
+    
                 const data = await response.json();
                 const newChatTitle = data.title || `Chat ${Object.keys(chats).length + 1}`;
                 let chatID = uuidv4();
@@ -90,27 +92,29 @@
                 return;
             }
         }
-
+    
         if (currentChat && chats[currentChat]) {
-            chats = {
-                ...chats,
-                [currentChat]: {
-                    ...chats[currentChat],
-                    messages: [
-                        ...chats[currentChat].messages,
-                        {
-                            sender: "user",
-                            message: prompt
-                        }
-                    ]
-                }
-            };
-
+            if (!noFindPrompt) {
+                chats = {
+                    ...chats,
+                    [currentChat]: {
+                        ...chats[currentChat],
+                        messages: [
+                            ...chats[currentChat].messages,
+                            {
+                                sender: "user",
+                                message: prompt
+                            }
+                        ]
+                    }
+                };
+            }
+    
             const messages = chats[currentChat].messages.map(msg => ({
                 role: msg.sender === "user" ? "user" : "assistant",
                 content: msg.message
             }));
-
+    
             try {
                 waitigForResponse = true;
                 const response = await fetch('/api', {
@@ -120,10 +124,10 @@
                     },
                     body: JSON.stringify({ messages, model: "gpt-3.5-turbo" })
                 });
-
+    
                 const data = await response.json();
                 waitigForResponse = false;
-
+    
                 chats = {
                     ...chats,
                     [currentChat]: {
@@ -137,7 +141,7 @@
                         ]
                     }
                 };
-
+    
                 // Oppdater store
                 updateStore(chats);
                 tick().then(() => {
@@ -197,7 +201,7 @@
                     };
             
                     updateStore(chats);
-                    handlePrompt();
+                    handlePrompt(true);
                 } catch (error) {
                     console.error('Error fetching title from API:', error);
                 }
