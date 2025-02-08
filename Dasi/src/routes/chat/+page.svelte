@@ -172,21 +172,35 @@
             }
 
             if (message) {
-                const newChatTitle = `Chat ${Object.keys(chats).length + 1}`;
-                currentChat = newChatTitle;
-                chats[newChatTitle] = {
-                    title: newChatTitle,
-                    messages: [
-                        {
-                            sender: "user",
-                            message: message
-                        }
-                    ],
-                    editTitle: false
-                };
-
-                updateStore(chats);
-                handlePrompt();
+                try {
+                    const response = await fetch('/api/title', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ message: message })
+                    });
+            
+                    const data = await response.json();
+                    const newChatTitle = data.title || `Chat ${Object.keys(chats).length + 1}`;
+                    let chatID = uuidv4();
+                    currentChat = chatID;
+                    chats[chatID] = {
+                        title: newChatTitle,
+                        messages: [
+                            {
+                                sender: "user",
+                                message: message
+                            }
+                        ],
+                        editTitle: false
+                    };
+            
+                    updateStore(chats);
+                    handlePrompt();
+                } catch (error) {
+                    console.error('Error fetching title from API:', error);
+                }
             }
             await tick();
             Prism.highlightAll();
