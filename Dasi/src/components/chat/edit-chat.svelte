@@ -13,22 +13,27 @@
             action: 'delete'
         },
     ];
-    let dispatch = createEventDispatcher();
 
-    function handleClick(action:string) {
+    // Opprett en typed event dispatcher
+    const dispatch = createEventDispatcher<{
+        share: never;
+        delete: never;
+        exit: never;
+    }>();
+
+    function handleClick(action: 'share' | 'delete' | 'exit') {
         dispatch(action);
     }
-
 </script>
 
 <div class="edit-chat">
-    {#each options as option}
-        <button class="edit-chat-option" onclick={() => handleClick(option.action)}>
-            <img src="/Images/icons/{option.icon}.svg" alt="{option.title}" />
-            <p>{option.title}</p>
+    {#each options as { title, icon, action }}
+        <button class="edit-chat-option" on:click={() => handleClick(action)}>
+            <img src={`/Images/icons/${icon}.svg`} alt={title} />
+            <p>{title}</p>
         </button>
     {/each}
-    <button class="exit" onclick={() => handleClick('exit')}>
+    <button class="exit" on:click={() => handleClick('exit')}>
         <img src="/Images/icons/cross.svg" alt="X" />
     </button>
 </div>
