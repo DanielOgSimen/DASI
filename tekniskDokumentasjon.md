@@ -133,7 +133,7 @@ We welcome contributions to DASI GPT. To contribute, follow these steps:
     ```sh
     git checkout -b feature-branch
     ```
-3. Make your changes and commit them:
+3. Make your changes and commit them, please make a describtion of your changes:
     ```sh
     git commit -m "Description of your changes"
     ```
@@ -144,7 +144,7 @@ We welcome contributions to DASI GPT. To contribute, follow these steps:
 5. Create a pull request.
 
 ## License
-DASI GPT is licensed under the Skibidi Dasi license. See the [LICENSE](LICENSE) file for more information.
+DASI GPT is licensed under the. See the [LICENSE](LICENSE) file for more information.
 
 ## Contact
 For questions or feedback, please contact us at [contact@dasigpt.com](mailto:contact@dasigpt.com).

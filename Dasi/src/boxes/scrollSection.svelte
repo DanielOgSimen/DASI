@@ -57,11 +57,11 @@ let isSmallScreen = $state(false);
                 <Cards></Cards>
                 <Cards cardTopic="Efficent" cardContent="DASI-GPT are efficent and gives you the answer quick!" imgUrl="Images/cards-homepage/Efficent.png"></Cards>
                 <Cards cardTopic="Clean" cardContent="DASI-GPT gives a clean look, and are easy to navigate." imgUrl="Images/cards-homepage/Clean.png"></Cards>
-                <Cards cardTopic="Safe" cardContent="DASI-GPT are 100% safe to use, we care about you saftey." imgUrl="Images/cards-homepage/Safe.png"></Cards>
+                <Cards cardTopic="Safe" cardContent="DASI-GPT are 100% safe to use, we care about your saftey." imgUrl="Images/cards-homepage/Safe.png"></Cards>
             </div>
             <div class="selection2">
                 <div class="subscribtionInfo">
-                    <h1 style="margin-bottom: 1rem; margin-top:2rem;" class="medium"><span class="accent-blue">Explore </span>more of<br>
+                    <h1 style="margin-bottom: 1rem; margin-top:2rem;" class="medium"><span class="accent-blue">Explore</span> more of<br>
                         our amazing<br><span class="accent-blue">subscriptions</span>
                     </h1>
                     <button class="button purple">More subscriptions</button>
