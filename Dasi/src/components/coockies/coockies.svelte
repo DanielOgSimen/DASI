@@ -1,13 +1,14 @@
 <script lang="ts">
 import { onMount } from 'svelte';
-
+let custom = false;
 let visible = false; 
+let necessaryCookies = true;
+let analyticsCookies = false;
+let marketingCookies = false;
+
 
 const removeCookieBox = () => {
-    const allContent = document.querySelector('.preventClick');
-    if (allContent instanceof HTMLElement) {
-        allContent.style.visibility = 'hidden';
-    }
+    visible = false;
 }
     onMount(() => {
         setTimeout(() => {
@@ -35,6 +36,14 @@ const removeCookieBox = () => {
         document.cookie = name + "=" + (value || "") + expires + "; path=/";
         }
 
+    const cookiesCustom = () => {
+        custom = true;
+        removeCookieBox();
+    }
+    const removeCostom = () => {
+        custom = false;
+    }
+
 
 </script>
 {#if visible}
@@ -46,7 +55,7 @@ const removeCookieBox = () => {
                 <p>We use cookies to give you a better experience on our site. By continuing to use our website, you accept the use of cookies.</p>
                 <div class="cookieButtons">
                     <button class="cookieButton cookieBlue" on:click={cookiesAccept}>Accept</button>
-                    <button class="cookieButton cookieGray">Customize</button>            
+                    <button class="cookieButton cookieGray" on:click={cookiesCustom}>Customize</button>            
                     <button class="cookieButton cookieGray">Necessary</button>
                 </div>
             </div>
@@ -55,7 +64,90 @@ const removeCookieBox = () => {
     </div>
 </div>
 {/if}
+{#if custom}
+<div class="customBackground">
+    <div class="allCustom">
+        <div class="boxCustom">
+            <h1 class="customText">Cookie Preferences</h1>
+            <p class="customText">Choose which cookies you want to accept:</p>
+            <div class="cookieOptions">
+                <label>
+                    <input type="checkbox" bind:checked={necessaryCookies} disabled>
+                    Necessary Cookies (always enabled)
+                </label>
+                <label>
+                    <input type="checkbox" bind:checked={analyticsCookies}>
+                    Analytics Cookies
+                </label>
+                <label>
+                    <input type="checkbox" bind:checked={marketingCookies}>
+                    Marketing Cookies
+                </label>
+            </div>
+            <button class="cookieButton cookieBlue" on:click={removeCostom}>Save Preferences</button>
+        </div>
+    </div>
+</div>
+{/if}
 <style>
+/* Cutsom cookie */ 
+.boxCustom {
+    background-color: var(--background);
+    padding: 50px;
+    border-radius: 26px;
+}
+
+label {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+input[type="checkbox"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #4CAF50;
+}
+
+.customText {
+    color: var(--primary-text);
+    margin-bottom: 1rem;
+}
+    
+.cookieOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-text);
+}
+
+.allCustom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    animation: slide 0.5s;
+    z-index: 10000;
+}
+
+.customBackground {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);    
+    z-index: 10000;
+}
+
+
 /*     coockie buttons  */
     .cookieButton {
         border: none;
@@ -145,9 +237,12 @@ const removeCookieBox = () => {
         position: fixed;
         top: 0;
         left: 0;
+        display: flex;
         width: 100%;
+        align-items: center;
+        justify-content: center;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.5);
-        z-index: 1000;
+        z-index: 10000000;
     }
 </style>

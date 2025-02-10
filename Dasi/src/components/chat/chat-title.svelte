@@ -132,10 +132,10 @@
     
 
     .chat-title {
-        width: 16vw;
-        height: 70px;
+        width: 14vw;
+        height: 50px;
         background-color: var(--secondary-border-divider);
-        border-radius: 20px;
+        border-radius: 12px;
         text-align: center;
         display: flex;
         justify-content: center;
