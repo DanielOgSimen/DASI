@@ -38,6 +38,7 @@ const removeCookieBox = () => {
 
     const cookiesCustom = () => {
         custom = true;
+        localStorage.setItem("cookiesAccepted", "true");
         removeCookieBox();
     }
     const removeCostom = () => {
