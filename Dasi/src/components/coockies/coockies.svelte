@@ -1,7 +1,13 @@
 <script lang="ts">
-import { onMount } from 'svelte';
+import { afterUpdate, onMount } from 'svelte';
 let custom = false;
 let visible = false; 
+/* afterUpdate(() => {
+    console.log(necessaryCookies);
+    console.log(analyticsCookies);
+    console.log(marketingCookies);
+    }
+); */
 let necessaryCookies = true;
 let analyticsCookies = false;
 let marketingCookies = false;
@@ -12,20 +18,13 @@ const removeCookieBox = () => {
 }
     onMount(() => {
         setTimeout(() => {
-            if (!localStorage.getItem("cookiesAccepted")) {
+            if (!localStorage.getItem("cookiesChoose")) {
                 visible = true;
             }
         }, 1000);
     });
 
-/*     localStorage.removeItem("cookiesAccepted"); */ //for testing når man skal få opp coockies boksen igjen
-    
-    const cookiesAccept = () => {
-        removeCookieBox();
-        localStorage.setItem("cookiesAccepted", "true");
-        setCookie("cookiesAccepted", "true", 30);
-    }
-
+    /* set cookies */
     const setCookie = (name: string, value: string, days: number) => {
         let expires = ""
         if (days) {
@@ -36,13 +35,52 @@ const removeCookieBox = () => {
         document.cookie = name + "=" + (value || "") + expires + "; path=/";
         }
 
-    const cookiesCustom = () => {
-        custom = true;
-        localStorage.setItem("cookiesAccepted", "true");
+/*     localStorage.removeItem("cookiesChoose"); */ //for testing når man skal få opp coockies boksen igjen
+const deleteCookies = () => {
+    document.cookie.split(";").forEach((c) => {
+        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    });
+}
+
+    /* accept cookies */
+    const cookiesAccept = () => {
+        nessesary();
+        AddAnalyticsCookies();
+        AddMarketingCookies();
+    }
+
+    /* nessesary cookies */
+    const nessesary = () => {
+        setCookie("nessesary", "true", 30);
+        localStorage.setItem("cookiesChoose", "true");
         removeCookieBox();
     }
+    
+    /* custom cookies */
+    const cookiesCustom = () => {
+        custom = true;
+        removeCookieBox();
+    }
+    /* remove custom cookies */
     const removeCostom = () => {
         custom = false;
+        nessesary();
+        if (analyticsCookies && marketingCookies) {
+            AddAnalyticsCookies();
+            AddMarketingCookies();
+        } else if (analyticsCookies) {
+            AddAnalyticsCookies();
+        } else if (marketingCookies) {
+            AddMarketingCookies();
+        }
+        
+    }
+    const AddMarketingCookies = () => {
+        setCookie("marketing", "true", 30);
+    }
+
+    const AddAnalyticsCookies = () => {
+        setCookie("analytics", "true", 30);
     }
 
 
@@ -57,7 +95,7 @@ const removeCookieBox = () => {
                 <div class="cookieButtons">
                     <button class="cookieButton cookieBlue" on:click={cookiesAccept}>Accept</button>
                     <button class="cookieButton cookieGray" on:click={cookiesCustom}>Customize</button>            
-                    <button class="cookieButton cookieGray">Necessary</button>
+                    <button class="cookieButton cookieGray" on:click={nessesary}>Necessary</button>
                 </div>
             </div>
             <img src="/Images/coockieCoockies.png" alt="">
