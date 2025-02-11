@@ -42,9 +42,9 @@
 
     const links = [
         {name: 'Chat', href: '/chat'},
-        {name: 'Try Us', href: '/try-us'},
+        {name: 'Dashboard', href: '/try-us'},
         {name: 'Prices', href: '/prices'},
-        {name: 'About Us', href: '/about'},
+        {name: 'FAQ', href: '/about'},
         {name: '', href: '', onclick: () => {}}
     ];
 

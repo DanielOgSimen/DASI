@@ -53,8 +53,8 @@
 
 <style>
     .subCard {
-        background-color: var(--primary-text);
-        color: var(--secondary-border-divider);
+        background-color: var(--secondary-border-divider);
+        color: var(--secondary-text);
         border-radius: 12px;
         width: 100%;
         max-width: 400px;
@@ -83,6 +83,7 @@
 
     .header {
         margin-bottom: 20px;
+        color: var(--primary-text);
     }
 
     .bigText {
@@ -96,8 +97,7 @@
 
     .intro {
         font-size: 14px;
-        margin-bottom: 1rem;
-        color: var(--secondary-border-divider);
+        color: var(--secondary-text);
     }
 
     .price {
@@ -105,16 +105,17 @@
         align-items: baseline;
         gap:0.5rem; 
         margin-bottom: 1rem;
+        color: var(--primary-text);
     }
 
     .priceInfo {
         font-size: 14px;
-        color: var(--secondary-border-divider);
+        color: var(--secondary-text);
     }
 
     .divider {
         height: 1px;
-        background-color: var(--secondary-border-divider);
+        background-color: var(--secondary-text);
         margin: 20px 0;
     }
 
