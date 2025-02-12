@@ -122,7 +122,7 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ messages, model: "gpt-3.5-turbo" })
+                    body: JSON.stringify({ messages, model: "gpt-4o-mini" })
                 });
     
                 const data = await response.json();
