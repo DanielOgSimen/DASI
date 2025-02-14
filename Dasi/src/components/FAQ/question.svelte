@@ -1,6 +1,6 @@
 <script>
     import { onMount } from 'svelte';
-    
+    let plussMinus = "+";
     export let id; // Unique identifier for each component instance
     
     let answer = false;
@@ -12,8 +12,10 @@
         if (answer) {
             answer = false;
             displayedText = "";
+            plussMinus = "+";
         } else {
             answer = true;
+            plussMinus = "-";
             displayedText = "";
             let i = 0;
             const interval = setInterval(() => {
@@ -47,7 +49,7 @@
 <div class={`allQuestion allQuestion-${id}`}>
     <div class="questionTitlePluss">
         <h3 class="regular">Question title</h3>
-        <div class="pluss">+</div>
+        <div class="pluss">{plussMinus}</div>
     </div>
     {#if answer}
     <div class="questionAnswer">
@@ -64,6 +66,9 @@
 
 .answer {
     color: var(--secondary-text);
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    font-size: 13px;
 }
 
 .questionLine {
@@ -79,5 +84,6 @@
     align-items: baseline;
     color: var(--primary-text);
     margin-bottom: 0.5rem;
+    font-size: 14px;
 }
 </style>
