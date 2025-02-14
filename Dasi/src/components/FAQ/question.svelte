@@ -2,10 +2,12 @@
     import { onMount } from 'svelte';
     let plussMinus = "+";
     export let id; // Unique identifier for each component instance
+    export let title; // Question text
+    export let answerText; // Answer text
     
     let answer = false;
-    let text = "The long June twilight faded into night. Dublin lay enveloped in darkness but for the dim light of the moon that shone through fleecy clouds, casting a pale light as of approaching dawn over the streets and the dark waters of the Liffey. Around the beleaguered Four Courts the heavy guns roared. Here and there through the city, machine guns and rifles broke the silence of the night, spasmodically, like dogs barking on lone farms. Republicans and Free Staters were waging civil war.";
-    let displayedText = "";
+    let text = answerText;   
+    let displayedText = {};
     let intervalDuration = 200 / (text.length / 2); // Calculate interval duration for 0.2 seconds, adding two characters at a time
     
     const toggleAnswer = () => {
@@ -48,7 +50,7 @@
 
 <div class={`allQuestion allQuestion-${id}`}>
     <div class="questionTitlePluss">
-        <h3 class="regular">Question title</h3>
+        <h3 class="regular">{title}</h3>
         <div class="pluss">{plussMinus}</div>
     </div>
     {#if answer}
