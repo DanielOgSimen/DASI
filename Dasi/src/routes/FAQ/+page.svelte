@@ -12,18 +12,18 @@
     const getData = async () => {
         const response = await fetch("/api/faq.json");
         const result = await response.json();
-        return result.questions;
+        return result.questions; //denne funskjonen henter dataen fra json filen og returnerer daten den henter
     };
 
     onMount(async () => {
         data = await getData();
-        console.log(data);
+        console.log(data); // denne funksjonen bruker return verdien fra getData funksjonen og setter data til å være lik den verdien
     });
 </script>
 
 <div class="backgroundSearch">
     <div class="searchSection">
-        <InputPromt Width="30rem" onEnter={search} external={true} />
+        <InputPromt Width="30rem" onEnter={search} external={false} />
     </div>
 </div>  
 <div class="body">
@@ -33,7 +33,7 @@
             <h1 class="medium">YOU<br> MAY BE <br><span class="accent-blue">LOOKING FOR</span></h1>
         </div>
         <div class="questions">
-            {#each data as question,id}
+            {#each data as question,id} <!-- Denne løkken kjører antall objekter i listen ganger og setter hvert objekt til en variabel questions som tilsvarer det nåværende objektet av data  -->
                 <Question title={question.question} id={id} answerText={question.answer} />
             {/each}
         </div>

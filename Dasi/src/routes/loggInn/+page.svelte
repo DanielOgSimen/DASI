@@ -105,5 +105,16 @@
         flex-direction: column;
         align-items: center;
         gap: 2rem;
+        text-align: center;
+    }
+
+    @media (max-width: 600px) {
+        .signIn {
+            padding: 2rem 1rem;
+        }
+        .LoggInLogo {
+            width: 80px;
+            height: 80px;
+        }
     }
 </style>

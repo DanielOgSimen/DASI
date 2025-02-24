@@ -1,7 +1,6 @@
 <script>
     import SubCard from '../../components/boxes/subscribtionCard.svelte';
 </script>
-
 <div class="wrapper">
         <div class="subCards">
             <SubCard 
@@ -46,7 +45,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        margin-top: 80px;
     }
 
     .subCards {

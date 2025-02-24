@@ -1,37 +1,37 @@
 {
     "questions": [
         {
-            "id": 1,
+
             "question": "What is DASI GPT?",
             "answer": "DASI GPT is an AI-powered chatbot designed to assist users with various tasks and provide information on a wide range of topics."
         },
         {
-            "id": 2,
+
             "question": "How does DASI GPT work?",
             "answer": "DASI GPT uses natural language processing (NLP) and machine learning algorithms to understand user queries and provide relevant responses. It can assist with various tasks and answer questions based on the context provided."
         },
         {
-            "id": 3,
+
             "question": "What can DASI GPT help me with?",
             "answer": "DASI GPT can help you with a variety of tasks, including answering questions, providing information, and assisting with specific tasks related to your needs."
         },
         {
-            "id": 4,
+
             "question": "How do I interact with DASI GPT?",
             "answer": "You can interact with DASI GPT by typing your questions or requests into the chat interface. DASI GPT will process your input and provide a relevant response."
         },
         {
-            "id": 5,
+
             "question": "Is DASI GPT available 24/7?",
             "answer": "Yes, DASI GPT is available 24/7 to assist you with any questions or tasks you may have."
         },
         {
-            "id": 6,
+
             "question": "How does DASI GPT improve over time?",
             "answer": "DASI GPT improves over time by learning from user interactions. It uses machine learning algorithms to analyze past interactions and improve its responses and capabilities."
         },
         {
-            "id": 7,
+
             "question": "Is my data safe with DASI GPT?",
             "answer": "Yes, DASI GPT is designed to prioritize user privacy and data security. Your interactions are processed securely, and your data is protected."
         }
