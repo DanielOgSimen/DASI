@@ -4,10 +4,14 @@
     import InputPromt from "../../components/input-promt.svelte";
     
     let inputLabel = ""
-    let inputLabels = ["Ask a question", "Search for a question", "Type your question here"];
+    let inputLabels = ["Ask us a question", "Search for a question", "Type your question here", "What can we help you with?", "What are you looking for?", "Ask us anything", "Search for a question"];
     let data = []; // Denne variabelen er en tom liste som skal fylles med dataen fra json filen
     let allData = [];
     let searchQuery = ""; // Denne variabelen er en tom string som skal fylles med søkeordet fra input feltet
+    let questionsShown = 10;
+    let loadButtonText = "Load more"
+    let showLoadMore = true;
+    let rotationIcon = "360deg";
 
     const getData = async () => {
         const response = await fetch("/api/faq.json");
@@ -26,14 +30,30 @@
         const changeLabels = setInterval(()=> {
             index = (index + 1) % inputLabels.length;
             inputLabel = inputLabels[index];
-        }, 5000);
+        }, 4000);
     });
 
     $: if (searchQuery) {
-        data = allData.filter(item => item.question.toLowerCase().includes(searchQuery.toLowerCase()));;
+        data = allData.filter(item => item.question.toLowerCase().includes(searchQuery.toLowerCase())|| item.answer.toLowerCase().includes(searchQuery.toLowerCase()));;
+        showLoadMore = false;
         // Denne funksjonen filtrerer dataen basert på søkeordet og setter data til å være lik den filtrerte listen
     } else {
-        data = allData;
+        data = allData.slice(0, questionsShown);
+        showLoadMore = true;
+    };
+
+    const loadMore = () => {
+        if (questionsShown >= allData.length) {
+            questionsShown = 10; // reseter antall spørsmål som vises til 10
+            loadButtonText = "Load more";
+            rotationIcon = "360deg";
+        } else {
+            questionsShown += 10; // øker antall spørsmål som vises med 10
+            if (questionsShown >= allData.length) {
+                loadButtonText = "Show less";
+                rotationIcon = "180deg";
+            }
+        }
     };
 </script>
 
@@ -53,10 +73,51 @@
                 <Question title={question.question} id={id} answerText={question.answer} />
             {/each}
         </div>
-    </div>  
+        {#if showLoadMore}
+        <div class="allMore">
+            <button on:click={loadMore} class="loadMoreButton">
+                <div class="loadMore">{loadButtonText}</div>
+                <ion-icon style="rotate: {rotationIcon};" class="moreIcon" name="chevron-down-outline"></ion-icon>
+            </button>
+        </div>
+        {/if}
+    </div>
 </div>
 
 <style>
+.loadMoreButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: transform 0.2s;
+    border: none;
+    background-color: var(--background);
+}
+
+.loadMoreButton:hover {
+    transform: translateY(3px);
+}
+
+.allMore {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5rem;
+
+}
+
+.loadMore {
+
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.moreIcon {
+    visibility: visible;
+    font-size: 16px;
+    cursor: pointer;
+    transition: rotate 0.1s;
+}
+
 .searchSection {
     margin-top: 80px;
 }

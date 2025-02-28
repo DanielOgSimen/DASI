@@ -50,7 +50,7 @@
 
 <div class={`allQuestion allQuestion-${id}`}>
     <div class="questionTitlePluss">
-        <h3 class="regular">{title}</h3>
+        <h3 class="regular title">{title}</h3>
         <div class="pluss">{plussMinus}</div>
     </div>
     {#if answer}
@@ -62,6 +62,10 @@
 </div>
 
 <style>
+.title {
+    font-size: 16px;
+}
+
 .allQuestion {
     cursor: pointer;
 }

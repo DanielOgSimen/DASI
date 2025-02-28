@@ -52,6 +52,31 @@
 </div>
 
 <style>
+    label {
+        animation: labelAnimation 4s infinite;
+    }
+
+    @keyframes labelAnimation {
+        0% {
+            opacity: 0;
+        }
+        20% {
+            opacity: 0;
+        }
+        40% {
+            opacity: 100;
+        }
+        60% {
+            opacity: 100;
+        }
+        80% {
+            opacity: 50;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
     .display {
         display: none;
     }
