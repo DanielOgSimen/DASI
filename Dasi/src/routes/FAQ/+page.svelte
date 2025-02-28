@@ -2,12 +2,12 @@
     import { onMount } from 'svelte';
     import Question from "../../components/FAQ/question.svelte";
     import InputPromt from "../../components/input-promt.svelte";
-
-    let data = [];
-
-    const search = () => {
-        console.log("hei");
-    };
+    
+    let inputLabel = ""
+    let inputLabels = ["Ask a question", "Search for a question", "Type your question here"];
+    let data = []; // Denne variabelen er en tom liste som skal fylles med dataen fra json filen
+    let allData = [];
+    let searchQuery = ""; // Denne variabelen er en tom string som skal fylles med søkeordet fra input feltet
 
     const getData = async () => {
         const response = await fetch("/api/faq.json");
@@ -16,14 +16,30 @@
     };
 
     onMount(async () => {
-        data = await getData();
+        allData = await getData();
+        data = allData;
         console.log(data); // denne funksjonen bruker return verdien fra getData funksjonen og setter data til å være lik den verdien
+
+        //ender labels til de uliek labelene i inputLabels arrayet
+        let index = 0;
+        inputLabel = inputLabels[index];
+        const changeLabels = setInterval(()=> {
+            index = (index + 1) % inputLabels.length;
+            inputLabel = inputLabels[index];
+        }, 5000);
     });
+
+    $: if (searchQuery) {
+        data = allData.filter(item => item.question.toLowerCase().includes(searchQuery.toLowerCase()));;
+        // Denne funksjonen filtrerer dataen basert på søkeordet og setter data til å være lik den filtrerte listen
+    } else {
+        data = allData;
+    };
 </script>
 
 <div class="backgroundSearch">
     <div class="searchSection">
-        <InputPromt Width="30rem" onEnter={search} external={false} />
+        <InputPromt bind:bindValue={searchQuery} label={inputLabel} Width="clamp(20rem, 35vw, 30rem)" external={false} onEnter={() => {}} />
     </div>
 </div>  
 <div class="body">
