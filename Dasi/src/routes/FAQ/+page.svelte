@@ -92,6 +92,7 @@
     transition: transform 0.2s;
     border: none;
     background-color: var(--background);
+    color: var(--primary-text);
 }
 
 .loadMoreButton:hover {
@@ -102,7 +103,6 @@
     display: flex;
     justify-content: center;
     margin-bottom: 5rem;
-
 }
 
 .loadMore {
