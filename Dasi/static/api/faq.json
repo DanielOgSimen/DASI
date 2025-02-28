@@ -1,166 +1,207 @@
 {
     "questions": [
         {
+            "id": 1,
             "question": "What is DASI GPT?",
             "answer": "DASI GPT is an AI-powered chatbot designed to assist users with various tasks and provide information on a wide range of topics."
         },
         {
+            "id": 2,
             "question": "How does DASI GPT work?",
             "answer": "DASI GPT uses natural language processing (NLP) and machine learning algorithms to understand user queries and provide relevant responses. It can assist with various tasks and answer questions based on the context provided."
         },
         {
+            "id": 3,
             "question": "What can DASI GPT help me with?",
             "answer": "DASI GPT can help you with a variety of tasks, including answering questions, providing information, and assisting with specific tasks related to your needs."
         },
         {
+            "id": 4,
             "question": "How do I interact with DASI GPT?",
             "answer": "You can interact with DASI GPT by typing your questions or requests into the chat interface. DASI GPT will process your input and provide a relevant response."
         },
         {
+            "id": 5,
             "question": "Is DASI GPT available 24/7?",
             "answer": "Yes, DASI GPT is available 24/7 to assist you with any questions or tasks you may have."
         },
         {
+            "id": 6,
             "question": "How does DASI GPT improve over time?",
             "answer": "DASI GPT improves over time by learning from user interactions. It uses machine learning algorithms to analyze past interactions and improve its responses and capabilities."
         },
         {
+            "id": 7,
             "question": "Is my data safe with DASI GPT?",
             "answer": "Yes, DASI GPT is designed to prioritize user privacy and data security. Your interactions are processed securely, and your data is protected."
         },
         {
+            "id": 8,
             "question": "Can DASI GPT understand multiple languages?",
             "answer": "Yes, DASI GPT is capable of understanding and responding in multiple languages."
         },
         {
+            "id": 9,
             "question": "How accurate are the responses from DASI GPT?",
             "answer": "DASI GPT strives to provide accurate and relevant responses, but the accuracy can vary depending on the complexity of the query and the context provided."
         },
         {
+            "id": 10,
             "question": "Can DASI GPT handle complex queries?",
             "answer": "Yes, DASI GPT is designed to handle complex queries and provide detailed responses based on the context and information available."
         },
         {
+            "id": 11,
             "question": "Is there a limit to the number of questions I can ask DASI GPT?",
             "answer": "No, there is no limit to the number of questions you can ask DASI GPT. You can interact with it as much as you need."
         },
         {
+            "id": 12,
             "question": "Can DASI GPT provide personalized responses?",
             "answer": "Yes, DASI GPT can provide personalized responses based on the information and context you provide during the interaction."
         },
         {
+            "id": 13,
             "question": "How can I provide feedback on DASI GPT's responses?",
             "answer": "You can provide feedback on DASI GPT's responses through the feedback option available in the chat interface."
         },
         {
+            "id": 14,
             "question": "Can DASI GPT assist with technical support?",
             "answer": "Yes, DASI GPT can assist with technical support by providing information and troubleshooting steps for common issues."
         },
         {
+            "id": 15,
             "question": "Is DASI GPT free to use?",
             "answer": "Yes, DASI GPT is free to use for all users."
         },
         {
+            "id": 16,
             "question": "Can DASI GPT be integrated with other applications?",
             "answer": "Yes, DASI GPT can be integrated with other applications through APIs and custom integrations."
         },
         {
+            "id": 17,
             "question": "How do I reset my password with DASI GPT?",
             "answer": "You can reset your password by following the instructions provided by DASI GPT in the chat interface."
         },
         {
+            "id": 18,
             "question": "Can DASI GPT provide recommendations?",
             "answer": "Yes, DASI GPT can provide recommendations based on your preferences and the context of your query."
         },
         {
+            "id": 19,
             "question": "How do I report an issue with DASI GPT?",
             "answer": "You can report an issue with DASI GPT by contacting support through the chat interface or the support page."
         },
         {
+            "id": 20,
             "question": "Can DASI GPT help with scheduling appointments?",
             "answer": "Yes, DASI GPT can assist with scheduling appointments by providing available times and booking options."
         },
         {
+            "id": 21,
             "question": "Does DASI GPT store my chat history?",
             "answer": "Yes, DASI GPT stores your chat history to improve its responses and provide better assistance in future interactions."
         },
         {
+            "id": 22,
             "question": "Can I delete my chat history with DASI GPT?",
             "answer": "Yes, you can request to delete your chat history by contacting support."
         },
         {
+            "id": 23,
             "question": "How does DASI GPT handle sensitive information?",
             "answer": "DASI GPT handles sensitive information with the utmost care, ensuring that it is processed securely and in compliance with data protection regulations."
         },
         {
+            "id": 24,
             "question": "Can DASI GPT assist with online shopping?",
             "answer": "Yes, DASI GPT can assist with online shopping by providing product recommendations, price comparisons, and purchase options."
         },
         {
+            "id": 25,
             "question": "How do I update my profile information with DASI GPT?",
             "answer": "You can update your profile information by following the instructions provided by DASI GPT in the chat interface."
         },
         {
+            "id": 26,
             "question": "Can DASI GPT help with travel planning?",
             "answer": "Yes, DASI GPT can assist with travel planning by providing information on destinations, flights, accommodations, and activities."
         },
         {
+            "id": 27,
             "question": "How do I unsubscribe from DASI GPT notifications?",
             "answer": "You can unsubscribe from DASI GPT notifications by following the instructions provided in the notification settings."
         },
         {
+            "id": 28,
             "question": "Can DASI GPT provide health advice?",
             "answer": "DASI GPT can provide general health information, but it is not a substitute for professional medical advice. Always consult a healthcare professional for specific health concerns."
         },
         {
+            "id": 29,
             "question": "How do I contact DASI GPT support?",
             "answer": "You can contact DASI GPT support through the chat interface or the support page on the website."
         },
         {
+            "id": 30,
             "question": "Can DASI GPT help with financial planning?",
             "answer": "DASI GPT can provide general financial information and tips, but it is not a substitute for professional financial advice. Always consult a financial advisor for specific financial concerns."
         },
         {
+            "id": 31,
             "question": "How do I change my account settings with DASI GPT?",
             "answer": "You can change your account settings by following the instructions provided by DASI GPT in the chat interface."
         },
         {
+            "id": 32,
             "question": "Can DASI GPT provide educational resources?",
             "answer": "Yes, DASI GPT can provide educational resources and information on a wide range of topics."
         },
         {
+            "id": 33,
             "question": "How do I report a bug with DASI GPT?",
             "answer": "You can report a bug with DASI GPT by contacting support through the chat interface or the support page."
         },
         {
+            "id": 34,
             "question": "Can DASI GPT assist with job searching?",
             "answer": "Yes, DASI GPT can assist with job searching by providing job listings, resume tips, and interview preparation advice."
         },
         {
+            "id": 35,
             "question": "How do I reset my DASI GPT preferences?",
             "answer": "You can reset your DASI GPT preferences by following the instructions provided in the settings menu."
         },
         {
+            "id": 36,
             "question": "Can DASI GPT help with language translation?",
             "answer": "Yes, DASI GPT can assist with language translation for a variety of languages."
         },
         {
+            "id": 37,
             "question": "How do I provide feedback on DASI GPT?",
             "answer": "You can provide feedback on DASI GPT through the feedback option available in the chat interface."
         },
         {
+            "id": 38,
             "question": "Can DASI GPT help with project management?",
             "answer": "Yes, DASI GPT can assist with project management by providing tools and tips for organizing and managing tasks."
         },
         {
+            "id": 39,
             "question": "How do I update my payment information with DASI GPT?",
             "answer": "You can update your payment information by following the instructions provided by DASI GPT in the chat interface."
         },
         {
+            "id": 40,
             "question": "Can DASI GPT provide weather updates?",
             "answer": "Yes, DASI GPT can provide weather updates and forecasts for your location."
         },
         {
+            "id": 41,
             "question": "How do I enable notifications from DASI GPT?",
             "answer": "You can enable notifications from DASI GPT by following the instructions provided in the notification settings."
         }

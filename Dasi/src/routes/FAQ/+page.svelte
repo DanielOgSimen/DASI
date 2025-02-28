@@ -69,8 +69,8 @@
             <h1 class="medium">YOU<br> MAY BE <br><span class="accent-blue">LOOKING FOR</span></h1>
         </div>
         <div class="questions">
-            {#each data as question,id} <!-- Denne løkken kjører antall objekter i listen ganger og setter hvert objekt til en variabel questions som tilsvarer det nåværende objektet av data  -->
-                <Question title={question.question} id={id} answerText={question.answer} />
+            {#each data as question (question.id)} <!-- Denne løkken kjører antall objekter i listen ganger og setter hvert objekt til en variabel questions som tilsvarer det nåværende objektet av data  -->
+                <Question title={question.question} id={question.id} answerText={question.answer} />
             {/each}
         </div>
         {#if showLoadMore}
