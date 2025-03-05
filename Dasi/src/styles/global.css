@@ -111,9 +111,10 @@ body {
 .button {
 	width: fit-content;
 	min-width: 150px;
-	padding: 15px 30px;
+	padding: 10px;
 	border-radius: 50px;
-	font-size: 17px;
+	font-size: 15px;
+	font-weight: 500;
 	border: none;
 	cursor: pointer;
 	color: #e0e0e0;

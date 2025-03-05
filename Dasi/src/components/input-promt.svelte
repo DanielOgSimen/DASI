@@ -7,6 +7,7 @@
         height?: string;
         Width?: string;
         bindValue?: string;
+        labelClass?:string;
         external?: boolean;
         onEnter: () => void; // Tar inn en funksjon som kjøres når man trykker enter
     }
@@ -18,6 +19,7 @@
         height = "3rem",
         Width = "20rem",
         external = false,
+        labelClass="labelAnimation",
         onEnter,
         bindValue = $bindable()
     }: Props = $props();
@@ -43,7 +45,7 @@
 <div class="input_wrap">
     <input bind:value={bindValue} bind:this={inputElement} style="background-color: {color}; height: {height}; width:{Width};" type="text" id="input" required onkeydown={handleKeyDown} />
     <!-- svelte-ignore a11y_label_has_associated_control -->
-    <label for="input">{label}</label>
+    <label class="{labelClass}" for="input">{label}</label>
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <svg class:display={HideSvg} class="input_icon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 41.621 41.621" onclick={onEnter}>
@@ -52,8 +54,12 @@
 </div>
 
 <style>
-    label {
+    .labelAnimation {
         animation: labelAnimation 4s infinite;
+    }
+
+    .noLabelAnimation {
+        visibility: visible;
     }
 
     @keyframes labelAnimation {
