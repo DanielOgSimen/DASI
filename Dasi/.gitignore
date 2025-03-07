@@ -21,5 +21,6 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 # Test
-/src/routes/test/
+/src/routes/test/+page.svelte
+/src/routes/test/+page.js
 /src/components/test.svelte
