@@ -6,6 +6,8 @@
     let elements;
     let cardElement;
     let paymentMessage = "";
+    let name = "";
+    let email = "";
 
     (async () => {
         stripe = await loadStripe("pk_test_51QytqhIoIw0g3p2UVMuFPipkasAdKG5xXQnR1PCFyE8KBKrujUHyjyXg3kF11braBV4pHtTM3u54oCphfYHYVeS500Vqmy8zit");
@@ -43,7 +45,7 @@
         if (error) {
             paymentMessage = error.message;
         } else {
-            const response = await fetch("/api/create-payment-intent.js", {
+            const response = await fetch("/api/create-payment-intent", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ paymentMethodId: paymentMethod.id })
@@ -70,10 +72,10 @@
             </div>
 
             <div class="paymentName">
-                <InputPromt HideSvg={true} labelClass="noLabelAnimation" label="Fornavn" Width="10rem" external={false} onEnter={() => {}} />
+                <InputPromt bind:bindValue={name} HideSvg={true} labelClass="noLabelAnimation" label="Fornavn" Width="10rem" external={false} onEnter={() => {}} />
                 <InputPromt HideSvg={true} labelClass="noLabelAnimation" label="Etternavn" Width="10rem" external={false} onEnter={() => {}} />
             </div>
-            <InputPromt HideSvg={true} labelClass="noLabelAnimation" label="e-post" Width="21rem" external={false} onEnter={() => {}} />
+            <InputPromt bind:bindValue={email} HideSvg={true} labelClass="noLabelAnimation" label="e-post" Width="21rem" external={false} onEnter={() => {}} />
         
             <div id="card-element"></div>
             <p id="payment-message">{paymentMessage}</p>

@@ -1,40 +1,39 @@
-import dotenv from "dotenv";
-import express from "express";
-import Stripe from "stripe";
-import bodyParser from "body-parser";
-import cors from "cors";
+import Stripe from 'stripe';
 
-dotenv.config();
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+if (!stripeSecretKey) {
+    throw new Error("Stripe secret key is not defined in environment variables");
+}
 
-const stripe = new Stripe("sk_test_51QytqhIoIw0g3p2UxY74AxSB7aoviDcgPuzavuRTRnGgPxMv55RkSUM093z1b7VwcatHi6zYAUelcry4ATbCrVvC00chIQHIE1");
+const stripe = new Stripe(stripeSecretKey);
 
-const app = express();
-app.use(bodyParser.json());
-app.use(cors());
+export async function post({ request }) {
+    try {
+        const { paymentMethodId } = await request.json();
 
-// Endpoint for å opprette et Payment Intent
-app.post("/create-payment-intent", async (req, res) => {
-  try {
-    const { paymentMethodId } = req.body;
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: 1000, // Amount in cents
+            currency: 'usd',
+            payment_method: paymentMethodId,
+            confirmation_method: 'manual',
+            confirm: true,
+        });
 
-    // 1️⃣ Opprett betaling i Stripe
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: 5000, // Pris i øre (50 kr)
-      currency: "nok",
-      payment_method: paymentMethodId,
-      confirmation_method: "manual",
-      confirm: true
-    });
-
-    res.json({ success: true, clientSecret: paymentIntent.client_secret });
-  } catch (error) {
-    if (error instanceof Error) {
-      res.json({ error: error.message });
-    } else {
-      res.json({ error: "Unknown error occurred" });
+        return {
+            status: 200,
+            body: { success: true, paymentIntent }
+        };
+    } catch (error) {
+        if (error instanceof Error) {
+            return {
+                status: 400,
+                body: { error: error.message }
+            };
+        } else {
+            return {
+                status: 400,
+                body: { error: "Unknown error occurred" }
+            };
+        }
     }
-  }
-});
-
-// Start serveren
-app.listen(3000, () => console.log("Server kjører på http://localhost:3000"));
+}
