@@ -1,12 +1,11 @@
 <script>
+    import InputPromt from "../../components/input-promt.svelte";
     import { loadStripe } from "@stripe/stripe-js";
 
     let stripe;
     let elements;
     let cardElement;
     let paymentMessage = "";
-    let name = "";
-    let email = "";
 
     (async () => {
         stripe = await loadStripe("pk_test_51QytqhIoIw0g3p2UVMuFPipkasAdKG5xXQnR1PCFyE8KBKrujUHyjyXg3kF11braBV4pHtTM3u54oCphfYHYVeS500Vqmy8zit");
@@ -39,10 +38,6 @@
         const { paymentMethod, error } = await stripe.createPaymentMethod({
             type: "card",
             card: cardElement,
-            billing_details: {
-                name: name,
-                email: email
-            }
         });
 
         if (error) {
@@ -66,7 +61,7 @@
 
 <div class="paymentContent">
     <div class="paymentInfo">
-        <form id="payment-form" class="paymentForm" on:submit={handlePayment}>
+        <form id="payment-form" class="paymentForm" on:submit={handlePayment} >
             <ion-icon class="paymentIcon" name="card-outline"></ion-icon>
             <div class="formTitle">
                 <hr class="questionLine">
@@ -75,13 +70,11 @@
             </div>
 
             <div class="paymentName">
-                <label for="name">Name</label>
-                <input id="name" type="text" bind:value={name} required />
+                <InputPromt HideSvg={true} labelClass="noLabelAnimation" label="Fornavn" Width="10rem" external={false} onEnter={() => {}} />
+                <InputPromt HideSvg={true} labelClass="noLabelAnimation" label="Etternavn" Width="10rem" external={false} onEnter={() => {}} />
             </div>
-            <div class="paymentEmail">
-                <label for="email">Email</label>
-                <input id="email" type="email" bind:value={email} required />
-            </div>
+            <InputPromt HideSvg={true} labelClass="noLabelAnimation" label="e-post" Width="21rem" external={false} onEnter={() => {}} />
+        
             <div id="card-element"></div>
             <p id="payment-message">{paymentMessage}</p>
             <button type="submit">Betal</button>
@@ -109,10 +102,10 @@
         margin: 0 1rem; 
         color: var(--secondary-text);
     }
-    .paymentName, .paymentEmail {
+    .paymentName {
         display: flex;
-        flex-direction: column;
-        margin-bottom: 1rem;
+        flex-direction: row;
+        gap: 1rem;
     }
     .paymentContent {
         height: 100vh;
