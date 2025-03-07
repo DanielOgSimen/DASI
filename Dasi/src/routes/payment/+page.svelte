@@ -83,6 +83,10 @@
 </div>
 
 <style>
+    #card-element {
+        width: 20rem;
+        height: 10rem;
+    }
     .paymentIcon {
         display: flex;
         font-size: 80px;
