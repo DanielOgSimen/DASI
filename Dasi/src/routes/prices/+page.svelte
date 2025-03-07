@@ -55,12 +55,12 @@
         justify-content: center;
         align-items: stretch;
     }
-    @media (max-width: 1350px) {
+    @media (max-width: 1730px) {
         .subCards {
             grid-template-columns: repeat(2, 1fr);
         }
     }
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
         .subCards {
             grid-template-columns: repeat(1, 1fr);
         }

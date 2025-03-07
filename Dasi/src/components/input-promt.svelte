@@ -87,6 +87,11 @@
         display: none;
     }
 
+    .input_wrap:focus-within {
+        border: 1px solid var(--accent);
+        border-radius: 10px;
+    }
+
     .input_wrap .input_icon {
         position: absolute;
         top: 50%;
