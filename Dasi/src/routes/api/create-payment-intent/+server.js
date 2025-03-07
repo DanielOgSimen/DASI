@@ -1,5 +1,6 @@
 import Stripe from 'stripe';
 
+// Ensure the secret key is defined
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 if (!stripeSecretKey) {
     throw new Error("Stripe secret key is not defined in environment variables");
@@ -7,7 +8,7 @@ if (!stripeSecretKey) {
 
 const stripe = new Stripe(stripeSecretKey);
 
-export async function post({ request }) {
+export async function POST({ request }) {
     try {
         const { paymentMethodId } = await request.json();
 
@@ -19,21 +20,28 @@ export async function post({ request }) {
             confirm: true,
         });
 
-        return {
+        return new Response(JSON.stringify({ success: true, paymentIntent }), {
             status: 200,
-            body: { success: true, paymentIntent }
-        };
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
     } catch (error) {
+        // Ensure error is properly typed
         if (error instanceof Error) {
-            return {
+            return new Response(JSON.stringify({ error: error.message }), {
                 status: 400,
-                body: { error: error.message }
-            };
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
         } else {
-            return {
+            return new Response(JSON.stringify({ error: "Unknown error occurred" }), {
                 status: 400,
-                body: { error: "Unknown error occurred" }
-            };
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
         }
     }
 }
