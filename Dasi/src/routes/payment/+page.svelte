@@ -2,77 +2,77 @@
     import InputPromt from "../../components/input-promt.svelte";
     import { loadStripe } from "@stripe/stripe-js";
 
-let stripe;
-let elements;
-let cardElement;
-let paymentMessage = "";
-let name = "";
-let email = "";
+    let stripe;
+    let elements;
+    let cardElement;
+    let paymentMessage = "";
+    let name = "";
+    let email = "";
 
-(async () => {
-    stripe = await loadStripe("pk_test_51QytqhIoIw0g3p2UVMuFPipkasAdKG5xXQnR1PCFyE8KBKrujUHyjyXg3kF11braBV4pHtTM3u54oCphfYHYVeS500Vqmy8zit");
-    if (stripe) {
-        elements = stripe.elements();
+    (async () => {
+        stripe = await loadStripe("pk_test_51QytqhIoIw0g3p2UVMuFPipkasAdKG5xXQnR1PCFyE8KBKrujUHyjyXg3kF11braBV4pHtTM3u54oCphfYHYVeS500Vqmy8zit");
+        if (stripe) {
+            elements = stripe.elements();
 
-        const style = {
-            base: {
-                color: "#32325d",
-                fontSize: "16px",
-                fontFamily: "Arial, sans-serif",
-                "::placeholder": { color: "#aab7c4" }
-            },
-            invalid: { color: "#fa755a" }
-        };
+            const style = {
+                base: {
+                    color: "#32325d",
+                    fontSize: "16px",
+                    fontFamily: "Arial, sans-serif",
+                    "::placeholder": { color: "#aab7c4" }
+                },
+                invalid: { color: "#fa755a" }
+            };
 
-        cardElement = elements.create("card", { style });
-        cardElement.mount("#card-element");
-    }
-})();
-
-async function handlePayment(event) {
-    event.preventDefault();
-
-    if (!stripe || !cardElement) {
-        paymentMessage = "Stripe er ikke lastet inn.";
-        return;
-    }
-
-    const { paymentMethod, error } = await stripe.createPaymentMethod({
-        type: "card",
-        card: cardElement,
-        billing_details: {
-            name: name,
-            email: email
+            cardElement = elements.create("card", { style });
+            cardElement.mount("#card-element");
         }
-    });
+    })();
 
-    if (error) {
-        paymentMessage = error.message;
-    } else {
-        const response = await fetch("/api/create-payment-intent", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ paymentMethodId: paymentMethod.id })
+    async function handlePayment(event) {
+        event.preventDefault();
+
+        if (!stripe || !cardElement) {
+            paymentMessage = "Stripe er ikke lastet inn.";
+            return;
+        }
+
+        const { paymentMethod, error } = await stripe.createPaymentMethod({
+            type: "card",
+            card: cardElement,
+            billing_details: {
+                name: name,
+                email: email
+            }
         });
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            paymentMessage = errorData.error;
+        if (error) {
+            paymentMessage = error.message;
         } else {
-            const data = await response.json();
-            if (data.error) {
-                paymentMessage = data.error;
+            const response = await fetch("./api/create-payment-intent", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ paymentMethodId: paymentMethod.id })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                paymentMessage = errorData.error;
             } else {
-                paymentMessage = "Betaling vellykket!";
+                const data = await response.json();
+                if (data.error) {
+                    paymentMessage = data.error;
+                } else {
+                    paymentMessage = "Betaling vellykket!";
+                }
             }
         }
     }
-}
 </script>
 
 <div class="paymentContent">
     <div class="paymentInfo">
-        <form id="payment-form" class="paymentForm" on:submit={handlePayment} >
+        <form id="payment-form" class="paymentForm" on:submit={handlePayment}>
             <ion-icon class="paymentIcon" name="card-outline"></ion-icon>
             <div class="formTitle">
                 <hr class="questionLine">
