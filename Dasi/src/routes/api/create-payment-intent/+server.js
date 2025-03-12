@@ -1,5 +1,7 @@
+import express from 'express';
 import Stripe from 'stripe';
 
+const app = express();
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 if (!stripeSecretKey) {
     throw new Error("Stripe secret key is not defined in environment variables");
@@ -7,33 +9,27 @@ if (!stripeSecretKey) {
 
 const stripe = new Stripe(stripeSecretKey);
 
-export async function POST({ request }) {
+app.use(express.json());
+
+app.post('/api/payment/create-intent', async (req, res) => {
     try {
-        const { paymentMethodId } = await request.json();
+        const { paymentMethodId } = req.body;
 
         const paymentIntent = await stripe.paymentIntents.create({
-            amount: 10, // Amount in cents
+            amount: 1000, // Amount in cents
             currency: 'usd',
             payment_method: paymentMethodId,
             confirmation_method: 'manual',
             confirm: true,
         });
 
-        return new Response(JSON.stringify({ success: true, paymentIntent }), {
-            status: 200,
-            headers: { 'Content-Type': 'application/json' }
-        });
+        res.status(200).json({ success: true, paymentIntent });
     } catch (error) {
-        if (error instanceof Error) {
-            return new Response(JSON.stringify({ error: error.message }), {
-                status: 400,
-                headers: { 'Content-Type': 'application/json' }
-            });
-        } else {
-            return new Response(JSON.stringify({ error: "Unknown error occurred" }), {
-                status: 400,
-                headers: { 'Content-Type': 'application/json' }
-            });
-        }
+        res.status(400).json({ error: "Daniel tissa i buksa"});
     }
-}
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});

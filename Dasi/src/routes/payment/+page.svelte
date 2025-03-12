@@ -49,7 +49,7 @@
         if (error) {
             paymentMessage = error.message;
         } else {
-            const response = await fetch("./api/create-payment-intent", {
+            const response = await fetch("/api/payment/create-intent", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ paymentMethodId: paymentMethod.id })
