@@ -26,7 +26,6 @@
 
     user.subscribe(value => {
         isLoggedIn = !!value.id; // Sjekk om brukeren er logget inn basert på om id er satt
-        console.log(value);
     });
 
     // Funksjon for å oppdatere store
@@ -122,7 +121,7 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ messages, model: "gpt-4o-mini" })
+                    body: JSON.stringify({ messages, model: "gpt-3.5-turbo" })
                 });
     
                 const data = await response.json();
@@ -162,6 +161,7 @@
     };
 
     onMount(async () => {
+        console.log("onMount triggered");
         if (typeof window !== 'undefined') {
             window.addEventListener('resize', checkScreenSize);
             checkScreenSize();
@@ -171,11 +171,13 @@
     
             /* Hvis du vil på chat 12, så er det ?chat=Chat%2012 */
             if (chat) {
+                console.log("Setting current chat:", chat);
                 setCurrentChat(chat);
             }
     
             if (message) {
                 try {
+                    console.log("Fetching title for message:", message);
                     const response = await fetch('/api/title', {
                         method: 'POST',
                         headers: {
