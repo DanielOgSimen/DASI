@@ -4,7 +4,7 @@
 // Async funksjon for å håndtere utsjekkingsprosessen
 async function checkout(name: string, price: number, amount: number) {
   // Send en POST-forespørsel til "/checkout"-endepunktet
-  const data = await fetch("/checkout", {
+  const data = await fetch("https://dasigpt.com/checkout", {
     method: "POST", // HTTP-metode
     headers: {
       "Content-Type": "application/json", // Angi innholdstypen som JSON
