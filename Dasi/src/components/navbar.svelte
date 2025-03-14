@@ -43,7 +43,7 @@
     const links = [
         {name: 'Chat', href: '/chat'},
         {name: 'Prices', href: '/prices'},
-        {name: 'Dashboard', href: '/payment'},
+        {name: 'Dashboard', href: '/dashboard'},
         {name: 'FAQ', href: '/FAQ'},
         {name: '', href: '', onclick: () => {}}
     ];
