@@ -8,7 +8,9 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"start:server": "node src/routes/api/payment/create-intent/+server.js",
+		"start:all": "run-p start:server dev"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.2.5",
@@ -17,6 +19,7 @@
 		"@types/body-parser": "^1.19.5",
 		"@types/cors": "^2.8.17",
 		"@types/express": "^5.0.0",
+		"npm-run-all": "^4.1.5",
 		"sass": "^1.80.2",
 		"svelte": "^5.19.0",
 		"svelte-check": "^4.0.0",
@@ -28,6 +31,7 @@
 	"dependencies": {
 		"@stripe/stripe-js": "^5.10.0",
 		"body-parser": "^1.20.3",
+		"cors": "^2.8.5",
 		"dotenv": "^16.4.7",
 		"express": "^4.21.2",
 		"firebase": "^11.4.0",

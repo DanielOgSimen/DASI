@@ -1,9 +1,25 @@
 <script lang="ts">
+    import { on } from "svelte/events";
 
+// Async funksjon for å håndtere utsjekkingsprosessen
+async function checkout(name: string, price: number, amount: number) {
+  // Send en POST-forespørsel til "/checkout"-endepunktet
+  const data = await fetch("/checkout", {
+    method: "POST", // HTTP-metode
+    headers: {
+      "Content-Type": "application/json", // Angi innholdstypen som JSON
+    },
+    body: JSON.stringify({
+      // Konverter elementdataene til en JSON-streng
+      items: [{ name, price, amount }],
+    }),
+  }).then((data) => data.json()); // Hent JSON-data fra responsen
+  window.location.replace(data.url); // Omdiriger brukeren til URL-en fra responsen
+};
 
     interface Props {
         SubscriptionType?: string;
-        SubscriptionPrice?: string;
+        SubscriptionPrice?: number;
         buttonText?: string;
         SubscriptionIntro?: string;
         SubscriptionContent?: any;
@@ -12,7 +28,7 @@
 
     let {
         SubscriptionType = "Starter",
-        SubscriptionPrice = "$10",
+        SubscriptionPrice = 10,
         buttonText = "Go to Payment",
         SubscriptionIntro = "For beginners and normal people",
         SubscriptionContent = [
@@ -26,7 +42,6 @@
     ],
         IconName = "rocket-outline"
     }: Props = $props();
-
 
 </script>
 
@@ -42,7 +57,7 @@
         <h1 class="bigText bold">{SubscriptionPrice}<span class="smallText">.00</span></h1>
         <p class="priceInfo">USD/mo (annually)</p>
     </div>
-    <button class="button purple">{buttonText}</button>
+    <button onclick={() => checkout(SubscriptionType, SubscriptionPrice, 1)} class="button purple">{buttonText}</button>
     <div class="divider"></div>
     <ul class="subCardInfo">
         {#each SubscriptionContent as item}
