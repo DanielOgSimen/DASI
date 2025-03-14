@@ -1,1 +1,1 @@
-<h1>Bestilling motatt</h1>
+<h1>Order receved</h1>

@@ -1,1 +1,1 @@
-<h1>CANCELD</h1>
+<h1>The payment was canceled</h1>
