@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { on } from "svelte/events";
-
 // Async funksjon for å håndtere utsjekkingsprosessen
 async function checkout(name: string, price: number, amount: number) {
   // Send en POST-forespørsel til "/checkout"-endepunktet
