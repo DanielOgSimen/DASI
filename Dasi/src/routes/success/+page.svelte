@@ -1,89 +1,44 @@
-<script lang="ts">
-    import { onMount } from 'svelte';
-  
-    interface Item {
-      name: string;
-      quantity: number;
-      price: number;
+<script>
+    import Newsletter from "../../components/newsletter.svelte";
+</script>
+<div class="ordertext">
+    <ion-icon name="bag-check-outline" class="icon"></ion-icon>
+    <h1>Thank you!</h1>
+    <p>Your order has been received and is now being processed. You will receive an email with the details of your purchase shortly.</p>
+    <div class="newsletterSection">
+        <Newsletter />
+    </div>
+</div>
+<style>
+    .ordertext {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - 40px);
+        
     }
-  
-    let sessionId: string | null = ''; // Allow sessionId to be null initially
-    let orderNumber = '';
-    let orderDate = '';
-    let customerEmail = '';
-    let items: Item[] = [];
-    let totalAmount = 0;
-  
-    onMount(async () => {
-      // Fetch the session ID from the URL or some other source
-      const urlParams = new URLSearchParams(window.location.search);
-      sessionId = urlParams.get('session_id');
-  
-      if (sessionId) {
-        const response = await fetch(`/api/session/${sessionId}`);
-        const session = await response.json();
-  
-        orderNumber = session.id;
-        orderDate = new Date(session.created * 1000).toLocaleDateString();
-        customerEmail = session.customer_details.email;
-        items = session.line_items.data.map((item: any) => ({
-          name: item.description,
-          quantity: item.quantity,
-          price: item.amount_total / 100,
-        }));
-        totalAmount = items.reduce((total, item) => total + item.price * item.quantity, 0);
-      }
-    });
-  </script>
-  
-  <h1>Order Received</h1>
-  <p>Thank you for your purchase! Your order has been received and is now being processed. You will receive an email with the details of your purchase shortly.</p>
-  
-  <div class="order-details">
-    <h2>Order Details</h2>
-    <p><strong>Order Number:</strong> {orderNumber}</p>
-    <p><strong>Order Date:</strong> {orderDate}</p>
-    <p><strong>Email:</strong> {customerEmail}</p>
-  
-    <h3>Items Ordered</h3>
-    <ul>
-      {#each items as item}
-        <li>{item.name} (x{item.quantity}) - ${item.price * item.quantity}</li>
-      {/each}
-    </ul>
-  
-    <p><strong>Total Amount:</strong> ${totalAmount}</p>
-  </div>
-  
-  <style>
+
+    .icon {
+        font-size: 50px;
+        visibility: visible;
+        color: var(--accent);
+    }
+
     h1 {
-      margin-top: 120px;
-      text-align: center;
+        font-size: 30px;
+        color: var(--primary-text);
     }
-  
-    .order-details {
-      margin-top: 20px;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      max-width: 600px;
-      margin: 20px auto;
+    .newsletterSection {
+        margin-top: 1rem;
     }
-  
-    .order-details h2, .order-details h3 {
-      margin-top: 0;
+
+    p {
+        font-size: 16px;
+        text-align: center;
+        margin-top: 0.5rem;
+        color: var(--secondary-text);
+        width: 40%;
     }
-  
-    .order-details p, .order-details ul {
-      margin: 10px 0;
-    }
-  
-    .order-details ul {
-      list-style-type: none;
-      padding: 0;
-    }
-  
-    .order-details li {
-      margin: 5px 0;
-    }
-  </style>
+ 
+</style>
