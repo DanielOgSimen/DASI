@@ -53,9 +53,9 @@ async function checkout(name: string, price: number, amount: number) {
     </div>
     <div class="price">
         <h1 class="bigText bold">{SubscriptionPrice}<span class="smallText">.00</span></h1>
-        <p class="priceInfo">USD/mo (annually)</p>
+        <p class="priceInfo">USD/month</p>
     </div>
-    <button onclick={() => checkout(SubscriptionType, SubscriptionPrice, 1)} class="button purple">{buttonText}</button>
+    <button onclick={() => checkout(SubscriptionType, SubscriptionPrice, 1)} class="button purple priceButton">{buttonText}</button>
     <div class="divider"></div>
     <ul class="subCardInfo">
         {#each SubscriptionContent as item}
@@ -65,13 +65,17 @@ async function checkout(name: string, price: number, amount: number) {
 </div>
 
 <style>
+    .priceButton {
+        width: 100%;
+    }
+    
     .subCard {
-        background-color: var(--secondary-border-divider);
         color: var(--secondary-text);
         border-radius: 12px;
         width: 100%;
         max-width: 400px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border: 1px solid var(--accent);
+/*         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
         margin: 20px auto;
         padding: 30px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
