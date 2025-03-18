@@ -251,9 +251,9 @@
         {#if currentChat === "New Chat"}
             <div class="new-chat">
                 {#if isSmallScreen}
-                    <InputPromt bind:this={inputPromtComponent} Width={"90vw"} onEnter={handlePrompt}/>
+                    <InputPromt labelClass="noLabelAnimation" bind:this={inputPromtComponent} Width={"90vw"} onEnter={handlePrompt}/>
                 {:else}
-                    <InputPromt bind:this={inputPromtComponent} Width={"35rem"} onEnter={handlePrompt}/>
+                    <InputPromt labelClass="noLabelAnimation" bind:this={inputPromtComponent} Width={"35rem"} onEnter={handlePrompt}/>
                 {/if}
                 <button class="button purple" on:click={handlePrompt}>Send Message</button>
             </div>
@@ -276,9 +276,9 @@
                     {/if}
                 </div>
                 {#if isSmallScreen}
-                    <InputPromt bind:this={inputPromtComponent} Width={"90vw"} onEnter={handlePrompt}/>
+                    <InputPromt labelClass="noLabelAnimation" bind:this={inputPromtComponent} Width={"90vw"} onEnter={handlePrompt}/>
                 {:else}
-                    <InputPromt bind:this={inputPromtComponent} Width={"35rem"} onEnter={handlePrompt}/>
+                    <InputPromt labelClass="noLabelAnimation" bind:this={inputPromtComponent} Width={"35rem"} onEnter={handlePrompt}/>
                 {/if}
             </div>
         {/if}
@@ -320,7 +320,7 @@
 
     .chats {
         width: var(--chat-width);
-        max-width: 366px;
+        max-width: 230px;
         height: 100%; /* Sørg for at chat-titlene fyller hele høyden */
         background-color: var(--border-divider);
         padding-top: 100px;
@@ -329,7 +329,6 @@
         flex-direction: column; /* Plasser elementene i en kolonne */
         align-items: center; /* Sentrer elementene horisontalt */
         justify-content: flex-start; /* Plasser elementene til starten av containeren */
-        gap: 20px; /* Legg til 20px mellomrom mellom alle elementene */
     }
 
     @media (max-width: 1050px) {
@@ -358,7 +357,6 @@
             flex-direction: column; /* Plasser elementene i en kolonne */
             align-items: center; /* Sentrer elementene horisontalt */
             justify-content: flex-start; /* Plasser elementene til starten av containeren */
-            gap: 20px; /* Legg til 20px mellomrom mellom alle elementene */
         }
 
         .chats.checked {

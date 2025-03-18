@@ -14,7 +14,7 @@
         },
     ];
 
-    // Opprett en typed event dispatcher
+    // Create a typed event dispatcher
     const dispatch = createEventDispatcher<{
         share: never;
         delete: never;
@@ -27,60 +27,68 @@
 </script>
 
 <div class="edit-chat">
+    <button class="exit" on:click={() => handleClick('exit')}>
+        <img src="/Images/icons/cross.svg" alt="X" />
+    </button>
     {#each options as { title, icon, action }}
         <button class="edit-chat-option" on:click={() => handleClick(action)}>
             <img src={`/Images/icons/${icon}.svg`} alt={title} />
             <p>{title}</p>
         </button>
     {/each}
-    <button class="exit" on:click={() => handleClick('exit')}>
-        <img src="/Images/icons/cross.svg" alt="X" />
-    </button>
 </div>
 
 <style>
-    button {
+    .edit-chat {
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        padding: 10px;
+        z-index: 1000;
+        width: 100px;
+        position: relative;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .edit-chat-option {
         background-color: transparent;
         border: none;
         cursor: pointer;
         display: flex;
         align-items: center;
-        margin: 4px;
-        padding: 12px;
+        margin: 4px 0;
+        padding: 8px;
+        width: 100%;
+        text-align: left;
     }
 
-    img {
+    .edit-chat-option img {
         object-fit: contain;
-        height: 20px;
+        height: 24px;
+        margin-right: 10px;
     }
 
-    button:hover {
-        background-color: #2C2C2C;
-        border-radius: 20px;
-        transition: .3s;
-    }
-
-    .edit-chat {
-        display: flex;
-        flex-direction: column;
-        background-color: var(--border-divider);
-        border-radius: 26px;
-        padding: 10px;
-        z-index: 1;
-        width: 260px;
-        position: relative;
-    }
-    
-    .edit-chat p {
+    .edit-chat-option p {
         font-size: 16px;
         color: var(--primary-text);
-        margin-left: 20px;
-        margin-right: 25px;
+        margin: 0;
+    }
+
+    .edit-chat-option:hover {
+        background-color: #2C2C2C;
+        border-radius: 10px;
+        transition: background-color 0.3s;
     }
 
     .exit {
-        position: absolute;
-        top: 10px;
-        right: 10px;
+        align-self: flex-end;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+
+    .exit img {
+        height: 20px;
     }
 </style>
