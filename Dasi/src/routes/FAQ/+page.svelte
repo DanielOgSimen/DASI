@@ -65,7 +65,7 @@
 <div class="body">
     <div class="FAQBody">
         <div class="headerBody">
-            <h3 class="regular accent-blue">FAQ</h3>
+            <h3 class="regular accent-blue"><a class=" effect-underline" href="/">Information/</a><a class=" effect-underline" href="https://dasigpt.com/FAQ">FAQ</a></h3>
             <h1 class="medium">YOU<br> MAY BE <br><span class="accent-blue">LOOKING FOR</span></h1>
         </div>
         <div class="questions">
@@ -85,6 +85,13 @@
 </div>
 
 <style>
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+a::after {
+    height: 0.5em;
+}
 .loadMoreButton {
     display: flex;
     flex-direction: row;
