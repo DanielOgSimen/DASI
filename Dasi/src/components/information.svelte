@@ -9,14 +9,22 @@
 <div class="body">
     <div class="FAQBody">
         <div class="headerBody">
-            <h3 class="regular accent-blue"><a href="https://dasigpt.com/">Information/</a><a href="https://dasigpt.com/{link2}">{link2}</a></h3>
-            <h1 class="medium infotitle">{title}</h1>
+            <h3 class="regular accent-blue"><a class=" effect-underline" href="/">Information/</a><a class=" effect-underline" href="https://dasigpt.com/{link2}">{link2}</a></h3>
+            <h1 class="medium infotitle">{@html title}</h1>
         </div>
         <p>{text}</p>
     </div>
 </div>
 
 <style>
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+a::after {
+    height: 0.5em;
+}
+
 .infotitle {
     color: var(--primary-text);
     margin-bottom: 0.5rem;
