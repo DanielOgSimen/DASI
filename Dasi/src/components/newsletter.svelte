@@ -5,7 +5,7 @@
     <p>Feel free to subscribe to our newsletter down below</p>
     <div class="newsletterButtonInput">
 
-        <InputPromt HideSvg={true} labelClass="noLabelAnimation" inputType="email" label="E-mail" Width="15rem" external={false} onEnter={() => {}} />
+        <InputPromt HideSvg={true} labelClass="nolabelAnimation" label="E-mail" Width=15rem external={false} onEnter={() => {}} />
         <button type="button">Subscribe</button>
     </div>
 </div>

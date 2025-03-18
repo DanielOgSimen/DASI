@@ -3,16 +3,17 @@
         imgUrl?: string;
         cardTopic?: string;
         cardContent?: string;
+        link?: string;
     }
-
-    let { imgUrl = '/Images/cards-homepage/Climate-friendly.png', cardTopic = 'Climate-friendly', cardContent = 'DASI-GPT saves 50% more water than other systems.' }: Props = $props();
+    
+    let { imgUrl = '/Images/cards-homepage/Climate-friendly.png', cardTopic = 'Climate-friendly', cardContent = 'DASI-GPT saves 50% more water than other systems.', link = '' }: Props = $props();
 </script>
 
 <div class="card" style="background-image: url({imgUrl});">
     <h1 class="cardTopic medium">{cardTopic}</h1>
     <div class="card-content display-card">
         <h3 class="italic regular" style="font-size:16px; margin-bottom:1rem;">{cardContent}</h3>
-        <button class="button purple">Read more</button>
+        <a href={link} ><button class="button purple">Read more</button></a>
     </div>
 </div>
 
