@@ -108,7 +108,7 @@
         width: auto;
         height: auto;
         position: relative;
-        border: 1px solid #fff;
+        border: 1px solid transparent;
         border-radius: 10px;
     }
 
