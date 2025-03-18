@@ -51,7 +51,7 @@
 
     img {
         object-fit: contain;
-        height: 40px;
+        height: 20px;
     }
 
     button:hover {
@@ -72,9 +72,10 @@
     }
     
     .edit-chat p {
-        font-size: 26px;
+        font-size: 16px;
         color: var(--primary-text);
         margin-left: 20px;
+        margin-right: 25px;
     }
 
     .exit {
