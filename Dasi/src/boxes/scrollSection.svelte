@@ -54,10 +54,10 @@ let isSmallScreen = $state(false);
     <div class:pin-wrap-sticky={!isSmallScreen}>
         <div class:pin-wrap={!isSmallScreen} class="pin-wrapDefault">
             <div class="selection1">
-                <Cards></Cards>
-                <Cards cardTopic="Efficent" cardContent="DASI-GPT are efficent and gives you the answer quick!" imgUrl="Images/cards-homepage/Efficent.png"></Cards>
-                <Cards cardTopic="Clean" cardContent="DASI-GPT gives a clean look, and are easy to navigate." imgUrl="Images/cards-homepage/Clean.png"></Cards>
-                <Cards cardTopic="Safe" cardContent="DASI-GPT are 100% safe to use, we care about your saftey." imgUrl="Images/cards-homepage/Safe.png"></Cards>
+                <Cards link="/climate-friendly"></Cards>
+                <Cards link="/efficient" cardTopic="Efficent" cardContent="DASI-GPT are efficent and gives you the answer quick!" imgUrl="Images/cards-homepage/Efficent.png"></Cards>
+                <Cards link="/clean" cardTopic="Clean" cardContent="DASI-GPT gives a clean look, and are easy to navigate." imgUrl="Images/cards-homepage/Clean.png"></Cards>
+                <Cards link="/safe" cardTopic="Safe" cardContent="DASI-GPT are 100% safe to use, we care about your saftey." imgUrl="Images/cards-homepage/Safe.png"></Cards>
             </div>
             <div class="selection2">
                 <div class="subscribtionInfo">
