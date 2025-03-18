@@ -24,7 +24,7 @@
         answer your questions, and provide support 
         whenever you need it.</p>
         <div class="buttons">
-            <CtaButton text="Get started"/>
+            <a href="/prices"><CtaButton text="Get started"/></a>
             <button onclick={() => goto(buttonLoggLink)} class="purple button regular">{buttonLoggText}</button>
         </div>
     </div>

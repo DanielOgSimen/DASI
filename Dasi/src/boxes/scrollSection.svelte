@@ -64,11 +64,18 @@ let isSmallScreen = $state(false);
                     <h1 style="margin-bottom: 1rem; margin-top:2rem;" class="medium"><span class="accent-blue">Explore</span> more of<br>
                         our amazing<br><span class="accent-blue">subscriptions</span>
                     </h1>
-                    <button class="button purple">More subscriptions</button>
+                    <a href="/prices"><button class="button purple">More subscriptions</button></a>
                 </div>
                 <div class="subscribtionBox">
                     <div class="subRes">
-                        <SubCards></SubCards>
+                        <SubCards 
+                        SubscriptionType="Starter" 
+                        SubscriptionPrice={10} 
+                        buttonText = "Go to Payment" 
+                        SubscriptionIntro = "Ideal for individuals and small businesses starting with chatbot technology." 
+                        SubscriptionContent={["Basic chatbot functionality", "Limited customization and integrations", "Suitable for small websites or simple customer service tasks.", "Limited number of messages or interactions per month."]}
+                        IconName="rocket-outline"
+                        ></SubCards>
                     </div>
                 </div>
             </div>
