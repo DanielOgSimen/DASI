@@ -8,6 +8,7 @@
         Width?: string;
         bindValue?: string;
         labelClass?:string;
+        inputType?: string;
         external?: boolean;
         onEnter: () => void; // Tar inn en funksjon som kjøres når man trykker enter
     }
@@ -18,6 +19,7 @@
         HideSvg = false,
         height = "3rem",
         Width = "20rem",
+        inputType = "text",
         external = false,
         labelClass="labelAnimation",
         onEnter,
@@ -43,7 +45,7 @@
 </script>
 
 <div class="input_wrap">
-    <input bind:value={bindValue} bind:this={inputElement} style="background-color: {color}; height: {height}; width:{Width};" type="text" id="input" required onkeydown={handleKeyDown} />
+    <input bind:value={bindValue} bind:this={inputElement} style="background-color: {color}; height: {height}; width:{Width};" type={inputType} id="input" required onkeydown={handleKeyDown} />
     <!-- svelte-ignore a11y_label_has_associated_control -->
     <label class="{labelClass}" for="input">{label}</label>
     <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -106,13 +108,15 @@
         width: auto;
         height: auto;
         position: relative;
+        border: 1px solid #fff;
+        border-radius: 10px;
     }
 
     .input_wrap input {
         padding: 14px 50px 14px 14px; /* legger på ekstra padding på høyre side så teksten ikke går bak ikonet*/
         font-size: 16px;
         border-radius: 10px;
-        border: none;
+        border:none;
         color: var(--secondary-text);
     }
 
