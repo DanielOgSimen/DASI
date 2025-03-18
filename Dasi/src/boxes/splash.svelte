@@ -2,6 +2,14 @@
 	import AiAssistant from './../components/ai-assistant.svelte';
     import CtaButton from "../components/cta-button.svelte";
 	import { goto } from '$app/navigation';
+    import { user } from '../store/userStore';
+    
+    let buttonLoggLink = "/loggInn";
+    let buttonLoggText = "Log in"
+    if ($user.id) {
+        buttonLoggText = "Chat with DASI"
+        buttonLoggLink = "/chat";
+    }
 </script>
 
 <div class="splash">
@@ -17,7 +25,7 @@
         whenever you need it.</p>
         <div class="buttons">
             <CtaButton text="Get started"/>
-            <button onclick={() => goto("/loggInn")} class="purple button regular">Log in</button>
+            <button onclick={() => goto(buttonLoggLink)} class="purple button regular">{buttonLoggText}</button>
         </div>
     </div>
     <div class="logo">
