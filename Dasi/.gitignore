@@ -24,3 +24,4 @@ vite.config.ts.timestamp-*
 /src/routes/test/+page.svelte
 /src/routes/test/+page.js
 /src/components/test.svelte
+/src/routest/test/

@@ -117,7 +117,7 @@
 <div class="navbar" class:hide={!navbarVisible}>
     <a href="/">
         <div class="logo-container">
-            <img src="/Images/Dasi logo.png" alt="Home" class="logo" id="logo">
+            <img src="/Images/logo.svg" alt="Home" class="logo" id="logo">
         </div>
     </a>
     <div class="nav-links thin">

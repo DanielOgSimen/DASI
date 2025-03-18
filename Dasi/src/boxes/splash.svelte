@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="logo">
-        <img src="/Images/Dasi logo.png" alt="DASI-gpt logo">
+        <img src="/Images/logo.svg" alt="DASI-gpt logo">
     </div>
 </div>
 
