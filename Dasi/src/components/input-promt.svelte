@@ -1,5 +1,6 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
+    import { onMount } from 'svelte';
     interface Props {
         label?: string;
         color?: string;
@@ -10,6 +11,7 @@
         labelClass?:string;
         inputType?: string;
         external?: boolean;
+        value?: string;
         onEnter: () => void; // Tar inn en funksjon som kjøres når man trykker enter
     }
 
@@ -23,15 +25,17 @@
         external = false,
         labelClass="labelAnimation",
         onEnter,
+        value,
         bindValue = $bindable()
     }: Props = $props();
 
     let inputElement: HTMLInputElement = $state() as HTMLInputElement;
 
+    
     export function getPrompt() {
         return inputElement.value;
     }
-
+    
     // Funksjonen som sjekker om man trykker enter
     async function handleKeyDown(event: KeyboardEvent) {
         if (event.key === 'Enter') {
@@ -42,6 +46,12 @@
             inputElement.value = "";
         }
     }
+
+    onMount(() => {
+        if (value) {
+            inputElement.value = value;
+        }
+    });
 </script>
 
 <div class="input_wrap">
