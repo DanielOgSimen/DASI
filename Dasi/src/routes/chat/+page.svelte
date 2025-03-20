@@ -236,9 +236,16 @@
 <div class="chat-page">
     <div class="chat-titles" class:checked={isChecked}>
         <input type="checkbox" id="toggle" bind:checked={isChecked} />
-        <label for="toggle" class="arrow">{'>'}</label>
+        <label for="toggle" class="arrow chaticons"><ion-icon name="journal-outline"></ion-icon></label>
     </div>
+    {#if isChecked}
+    <div class="newchatIcon">
+        <input type="checkbox" />
+        <label for="" class="newChatIcon chaticons"><ion-icon name="create-outline"></ion-icon></label>
+    </div>  
+    {/if}
     <div class="chats rm-scrollbar" class:checked={isChecked}>
+
         {#each Object.keys(chats) as chat, index}
             {#if chat === currentChat}
                 <ChatTitle editTitle={true} currentChat={currentChat} title={chats[chat].title} activeChat={true} on:titleChange={(e) => updateChatTitle(chat, e.detail)} />
@@ -285,31 +292,43 @@
     </div>
 </div>
 <style>
+    .chaticons {
+        padding: 5px;
+    }
+    .chaticons:hover {
+        background-color: var(--background);
+        border-radius: 5px;
+    }
     :root {
         --chat-width: 20vw;
         --responsive-chat-width: 230px;
-    }
-
-    .chat-titles {
-        display: none;
-    }
-
-    .chat-titles.checked {
-        transform: translateX(var(--responsive-chat-width));
     }
 
     input[type="checkbox"] {
         display: none;
     }
 
-    .arrow {
-        font-size: 2rem;
+    .newChatIcon {
+        position: absolute;
+        left: calc(-1 * var(--chat-width));
+        top: 100px;
+        z-index: 10000;
+        left: 160px;
+        font-size: 30px;
         cursor: pointer;
+        color: var(--secondary-text);
         transition: transform 0.5s ease;
+        
     }
-
-    input[type="checkbox"]:checked + .arrow {
-        transform: rotate(180deg);
+    .arrow {
+        position: absolute;
+        top: 100px;
+        z-index: 10000;
+        left: 35px;
+        font-size: 30px;
+        cursor: pointer;
+        color: var(--secondary-text);
+        transition: transform 0.5s ease;
     }
 
     .chat-page {
@@ -319,16 +338,22 @@
     }
 
     .chats {
+        position: absolute;
         width: var(--chat-width);
         max-width: 230px;
         height: 100%; /* Sørg for at chat-titlene fyller hele høyden */
         background-color: var(--border-divider);
-        padding-top: 100px;
+        padding-top: 180px;
         overflow-y: auto; /* Aktiver skrolling når nødvendig */
+        left: calc(-1 * var(--chat-width));
         display: flex; /* Endret fra grid til flex */
         flex-direction: column; /* Plasser elementene i en kolonne */
         align-items: center; /* Sentrer elementene horisontalt */
         justify-content: flex-start; /* Plasser elementene til starten av containeren */
+        transition: left 0.5s ease;
+    }
+    .chats.checked {
+            left: 0;
     }
 
     @media (max-width: 1050px) {
@@ -336,14 +361,20 @@
             display: block;
             padding: 10px 15px;
             border-radius: 0 0 26px 2px;
-            background-color: var(--accent);
             color: white;
             display: flex;
             align-items: center;
+            visibility: visible;
             position: absolute;
             top: 0;
             left: 0;
             transition: transform 0.5s ease;
+        }
+        .arrow {
+            top: 35px;
+        }
+        .newChatIcon {
+            top: 35px;
         }
 
         .chats {
@@ -377,7 +408,7 @@
     }
 
     .chat-space {
-        width: calc(100% - var(--chat-width));
+        width: 100%;
         height: 100vh;
         padding-top: 100px;
         overflow-y: scroll;

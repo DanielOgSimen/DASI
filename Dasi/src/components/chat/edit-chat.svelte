@@ -4,12 +4,16 @@
     let options = [
         {
             title: 'Share',
-            icon: 'share',
+            icon: 'share-outline',
+            style: 'var(--primary-text)',
+            iconColor: 'var(--secondary-text)',
             action: 'share'
         },
         {
             title: 'Delete',
-            icon: 'trash',
+            icon: 'trash-outline',
+            style: '#ff5252',
+            iconColor: '#ff5252',
             action: 'delete'
         },
     ];
@@ -27,27 +31,33 @@
 </script>
 
 <div class="edit-chat">
-    <button class="exit" on:click={() => handleClick('exit')}>
-        <img src="/Images/icons/cross.svg" alt="X" />
+    <button class="exit" on:click={() => handleClick('exit')} aria-label="Exit">
+        <ion-icon style="color: var(--secondary-text);" class="icon" name="close-outline"></ion-icon>
     </button>
-    {#each options as { title, icon, action }}
+    {#each options as { title, style, iconColor, icon, action }}
         <button class="edit-chat-option" on:click={() => handleClick(action)}>
-            <img src={`/Images/icons/${icon}.svg`} alt={title} />
-            <p>{title}</p>
+            <ion-icon style="color:{iconColor};" class="icon" name="{icon}"></ion-icon>
+            <p style="color: {style};" class="editText {action}">{title}</p>
         </button>
     {/each}
 </div>
 
 <style>
+    .editText {
+        font-size: 14px;
+    }
+    .icon {
+        font-size: 20px;
+    }
     .edit-chat {
         display: flex;
         flex-direction: column;
         border-radius: 10px;
         padding: 10px;
-        z-index: 1000;
-        width: 100px;
-        position: relative;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 10000000000000;
+        width: 150px;
+        position: fixed;
+        background-color: var(--secondary-border-divider);
     }
 
     .edit-chat-option {
@@ -55,17 +65,12 @@
         border: none;
         cursor: pointer;
         display: flex;
+        gap: 5px;
         align-items: center;
         margin: 4px 0;
         padding: 8px;
         width: 100%;
         text-align: left;
-    }
-
-    .edit-chat-option img {
-        object-fit: contain;
-        height: 24px;
-        margin-right: 10px;
     }
 
     .edit-chat-option p {
@@ -75,9 +80,8 @@
     }
 
     .edit-chat-option:hover {
-        background-color: #2C2C2C;
+        background-color: var(--border-divider);
         border-radius: 10px;
-        transition: background-color 0.3s;
     }
 
     .exit {
@@ -86,9 +90,5 @@
         border: none;
         cursor: pointer;
         margin-bottom: 10px;
-    }
-
-    .exit img {
-        height: 20px;
     }
 </style>

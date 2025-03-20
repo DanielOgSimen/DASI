@@ -125,11 +125,6 @@
         cursor: pointer;
     }
 
-    .chat-title.small {
-        width: 200px;
-        height: 70px;
-    }
-
     .chat-title-title {
         width: 90%;
         background-color: transparent;
@@ -174,14 +169,12 @@
 
     .editChat {
         position: absolute;
-        top: 60px;
-        right: 0;
-        z-index: 10;
+        top: 40px;
+        left: 80%;
+        z-index: 100000000000;
         background-color: var(--background);
-        border: 1px solid var(--border-divider);
         border-radius: 5px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 10px;
     }
 
     p {

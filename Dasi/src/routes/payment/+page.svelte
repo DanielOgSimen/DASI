@@ -5,7 +5,7 @@
 <div class="paymentContent">
   <div class="paymentInfo">
     <form id="payment-form" class="paymentForm">
-      <ion-icon class="paymentIcon" name="card-outline"></ion-icon>
+      <ion-icon class="paymentIcon" name="person-outline"></ion-icon>
       <div class="formTitle">
         <hr class="questionLine">
         <h3 style="font-size:13px;" class="regular">Fill Out This Form</h3>
