@@ -1,10 +1,13 @@
 <script lang="ts">
+    import { links } from '$lib/links';
     import { onMount } from 'svelte';
     import { user } from '../store/userStore';
 
     // Initialiserer variabler for å spore siste scroll-posisjon og synligheten til navbar
     let lastScrollTop = 0;
     let navbarVisible = true;
+
+    let navLinks = links;
 
     // Abonner på user-storen
     let userData: any;
@@ -40,27 +43,27 @@
         };
     });
 
-    const links = [
+    /* const links = [
         {name: 'Chat', href: '/chat'},
         {name: 'Prices', href: '/prices'},
         {name: 'Dashboard', href: '/dashboard'},
         {name: 'FAQ', href: '/FAQ'},
         {name: '', href: '', onclick: (event: Event) => { event.preventDefault(); }}
-    ];
+    ]; */
 
     // Light mode and dark mode
     // oppdaterer temaet til light eller dark og ikon til moon eller sun
     const changeIcon = (iconTheme: string) => {
         if (iconTheme === "dark") {
-            links[4].name = 'moon-outline';
-            links[4].onclick = (event: Event) => { 
+            navLinks[4].name = 'moon-outline';
+            navLinks[4].onclick = (event: Event) => { 
                 event.preventDefault();
                 changeThemeLocalStorage("light"); 
                 changeIcon("light"); 
             };
         } else if (iconTheme === "light") {
-            links[4].name = 'sunny-outline';
-            links[4].onclick = (event: Event) => { 
+            navLinks[4].name = 'sunny-outline';
+            navLinks[4].onclick = (event: Event) => { 
                 event.preventDefault();
                 changeThemeLocalStorage("dark"); 
                 changeIcon("dark"); 
@@ -99,6 +102,7 @@
         // Event listener for å håndtere endringer i enhetens fargeskjema
         const handleColorSchemeChange = (e: MediaQueryListEvent) => {
             changeTheme(e.matches ? 'dark' : 'light');
+            console.log(e.matches);
             changeIcon(e.matches ? 'dark' : 'light');
         }
 
@@ -129,7 +133,7 @@
         </div>
     </a>
     <div class="nav-links thin">
-        {#each links as link}
+        {#each navLinks as link}
             <a href={link.href} on:click={link.onclick} class="effect-underline">
                 {#if link.name === 'moon-outline' || link.name === 'sunny-outline'}
                     <ion-icon name={link.name}></ion-icon>
@@ -159,7 +163,7 @@
                 <li><a href="/loggInn"><img src={userData.picture} alt="ProfilePicture" class="profile-picture"></a></li>
             {/if}
             <li><a href="/" class="effect-underline">Home</a></li>
-            {#each links as link}
+            {#each navLinks as link}
                 <li>
                     <a href={link.href} on:click={link.onclick} class="effect-underline">
                         {#if link.name === 'moon-outline' || link.name === 'sunny-outline'}
