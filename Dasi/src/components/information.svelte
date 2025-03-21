@@ -30,7 +30,7 @@ a::after {
     margin-bottom: 0.5rem;
 }
 .backgroundSearch {
-    background: linear-gradient(90deg, var(--accent), var(--primary-text));
+    background: var(--accent-gradient);;
     height: 40vh;
     width: 100vw;
     display: flex;

@@ -26,6 +26,14 @@
 	--secondary-border-divider: #ffffff; /*lysest*/
 }
 
+:root {
+	--accent-gradient: linear-gradient(
+		90deg,
+		var(--accent),
+		var(--primary-text)
+	);
+}
+
 * {
 	margin: 0;
 	padding: 0;
