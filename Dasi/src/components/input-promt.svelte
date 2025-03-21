@@ -55,7 +55,7 @@
 </script>
 
 <div class="input_wrap">
-    <input bind:value={bindValue} bind:this={inputElement} style="background-color: {color}; height: {height}; width:{Width};" type={inputType} id="input" required onkeydown={handleKeyDown} />
+    <input class:inputHide={HideSvg} bind:value={bindValue} bind:this={inputElement} style="background-color: {color}; height: {height}; width:{Width};" type={inputType} id="input" required onkeydown={handleKeyDown} />
     <!-- svelte-ignore a11y_label_has_associated_control -->
     <label class="{labelClass}" for="input">{label}</label>
     <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -73,6 +73,8 @@
     .noLabelAnimation {
         visibility: visible;
     }
+
+
 
     @keyframes labelAnimation {
         0% {
@@ -130,6 +132,10 @@
         color: var(--secondary-text);
     }
 
+    .input_wrap input.inputHide {
+        padding: 14px; /* Adjust padding when the icon is hidden */
+    }
+
     .input_wrap label {
         font-family: arial;
         font-size: 16px;
@@ -155,4 +161,5 @@
     input[type="text"]:focus {
         outline: none;
     }
+
 </style>

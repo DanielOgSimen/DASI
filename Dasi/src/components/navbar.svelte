@@ -45,7 +45,7 @@
         {name: 'Prices', href: '/prices'},
         {name: 'Dashboard', href: '/dashboard'},
         {name: 'FAQ', href: '/FAQ'},
-        {name: '', href: '', onclick: () => {}}
+        {name: '', href: '', onclick: (event: Event) => { event.preventDefault(); }}
     ];
 
     // Light mode and dark mode
@@ -53,10 +53,18 @@
     const changeIcon = (iconTheme: string) => {
         if (iconTheme === "dark") {
             links[4].name = 'moon-outline';
-            links[4].onclick = () => {changeThemeLocalStorage("light"); changeIcon("light");};
+            links[4].onclick = (event: Event) => { 
+                event.preventDefault();
+                changeThemeLocalStorage("light"); 
+                changeIcon("light"); 
+            };
         } else if (iconTheme === "light") {
             links[4].name = 'sunny-outline';
-            links[4].onclick = () => {changeThemeLocalStorage("dark"); changeIcon("dark");};
+            links[4].onclick = (event: Event) => { 
+                event.preventDefault();
+                changeThemeLocalStorage("dark"); 
+                changeIcon("dark"); 
+            };
         }
     }
 
