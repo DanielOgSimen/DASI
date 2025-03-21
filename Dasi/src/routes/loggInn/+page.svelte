@@ -50,7 +50,8 @@
             id: payload.sub,
             name: payload.name,
             email: payload.email,
-            picture: payload.picture
+            picture: payload.picture,
+            method: 'google'
         });
         console.log('Logged in as: ' + payload.name);
     }
@@ -62,7 +63,8 @@
             id: null,
             name: null,
             email: null,
-            picture: null
+            picture: null,
+            method: null
         });
         location.reload();
         console.log('User signed out.');

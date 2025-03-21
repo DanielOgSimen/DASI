@@ -116,7 +116,7 @@
     
             try {
                 waitigForResponse = true;
-                const response = await fetch('/api', {
+                const response = await fetch('/api/text', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
