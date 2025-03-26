@@ -236,7 +236,7 @@
 <div class="chat-page">
     <div class="chat-titles" class:checked={isChecked}>
         <input type="checkbox" id="toggle" bind:checked={isChecked} />
-        <label for="toggle" class="arrow chaticons"><ion-icon name="journal-outline"></ion-icon></label>
+        <label for="toggle" class="arrow chaticons"><img src="Images/icons/sidebar.svg" id="chats-icon" alt="<"></label>
     </div>
     {#if isChecked}
     <div class="newchatIcon">
@@ -292,6 +292,9 @@
     </div>
 </div>
 <style>
+    #chats-icon {
+        height: 35px;
+    }
     .chaticons {
         padding: 5px;
     }
