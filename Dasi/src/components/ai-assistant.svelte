@@ -46,7 +46,7 @@
         gap: 8px;
         background-color: #e0e0e0dd;
         border-radius: 100px;
-        color: #121212;
+        color: #121212 ;
     }
 
     .image {

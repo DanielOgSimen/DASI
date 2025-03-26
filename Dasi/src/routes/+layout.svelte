@@ -6,6 +6,7 @@
     import "/src/styles/global.css";
     import ToTopButton from "../components/toTopButton.svelte";
     import Coockies from "../components/coockies/coockies.svelte";
+    import Footer from "../components/footer.svelte";
 
     interface Props {
         children?: import('svelte').Snippet;
@@ -18,3 +19,4 @@
 <ToTopButton />
 <Coockies/>
 {@render children?.()}
+<Footer />
