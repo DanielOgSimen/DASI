@@ -15,8 +15,24 @@
     let { children }: Props = $props();
 </script>
 
-<Navbar />
-<ToTopButton />
-<Coockies/>
-{@render children?.()}
-<Footer />
+<div class="layout">
+    <Navbar />
+    <ToTopButton />
+    <Coockies />
+    <main class="content">
+        {@render children?.()}
+    </main>
+    <Footer />
+</div>
+
+<style>
+    .layout {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .content {
+        flex: 1;
+    }
+</style>
