@@ -312,4 +312,23 @@ let isSmallScreen = $state(false);
         font-size: 10px;
     }
 }
+@supports (-webkit-hyphens:none) and (not (-ms-ime-align:auto)) {
+    .pin-wrap {
+        width: 100vw; /* Ensure the pin-wrap does not cause horizontal scrolling */
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+        animation: none; /* Remove the animation */
+        height: 100%;
+    }
+    #sectionPin {
+        height: auto; /* Adjust height to fit content */
+        overflow: visible; /* Ensure no overflow */
+    }
+    .pin-wrap-sticky {
+        position: relative; /* Change to relative to avoid sticky behavior */
+        height: auto; /* Adjust height to fit content */
+    }
+}
+
 </style>
