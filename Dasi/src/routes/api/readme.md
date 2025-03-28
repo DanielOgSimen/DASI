@@ -12,9 +12,14 @@ If you have any questions, contact us at [contact@dasigpt.com](mailto:contact@da
 api/
 ├── database/   # Database
 │   └── user/   # Users in the database
-│       ├── generate-id # Generate user ID
-│       ├── create  # Create user in the database
-│       └── get-id  # Put in the external ID to get the Dasi ID
+│   │   ├── generate-id # Generate user ID
+│   │   ├── create  # Create user in the database
+│   │   ├── user-info  # Saves neccesary user info when you create a user
+│   │   └── get-id  # Put in the external ID to get the Dasi ID
+│   └── chat/   # Users in the database
+│       ├── save # Saves the chat to the database
+│       ├── get  # Gets the chat from the database
+│       └── delete  # Deletes the chat from the database
 ├── title   # Title generation
 ├── image/  # Image AI
 │   └── generation  # Image generation
