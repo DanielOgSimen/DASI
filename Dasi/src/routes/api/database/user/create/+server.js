@@ -36,6 +36,7 @@ export async function POST({ request }) {
 
 		// Skriver brukerdata til Firebase-databasen
 		await writeUserData(userID, name, email, imageUrl);
+		console.log(userID, name, email, imageUrl);
 
 		// Returnerer en suksessrespons
 		return new Response(

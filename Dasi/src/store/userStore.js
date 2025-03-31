@@ -32,4 +32,5 @@ export const user = createPersistedStore("user", {
 	email: null,
 	picture: null,
 	method: null,
+	dasiId: null,
 });
