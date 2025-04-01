@@ -98,10 +98,6 @@ async function checkout(name: string, price: number, amount: number) {
         stroke: var(--accent);
     }
 
-    :global(.iconContainer svg path) {
-        fill: currentColor;
-    }
-
     .header {
         margin-bottom: 20px;
         color: var(--primary-text);

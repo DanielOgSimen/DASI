@@ -2,6 +2,7 @@
     import { links } from '$lib/links';
     import { onMount } from 'svelte';
     import { user } from '../store/userStore';
+    let linkSvg = ""
 
     // Initialiserer variabler for å spore siste scroll-posisjon og synligheten til navbar
     let lastScrollTop = 0;
@@ -56,6 +57,7 @@
     const changeIcon = (iconTheme: string) => {
         if (iconTheme === "dark") {
             navLinks[4].name = 'moon-outline';
+            linkSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path d="M160,136c0-30.62,4.51-61.61,16-88C99.57,81.27,48,159.32,48,248c0,119.29,96.71,216,216,216,88.68,0,166.73-51.57,200-128-26.39,11.49-57.38,16-88,16C256.71,352,160,255.29,160,136Z" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/></svg>'
             navLinks[4].onclick = (event: Event) => { 
                 event.preventDefault();
                 changeThemeLocalStorage("light"); 
@@ -63,6 +65,7 @@
             };
         } else if (iconTheme === "light") {
             navLinks[4].name = 'sunny-outline';
+            linkSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><line x1="256" y1="48" x2="256" y2="96" style="fill:none;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"/><line x1="256" y1="416" x2="256" y2="464" style="fill:none;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"/><line x1="403.08" y1="108.92" x2="369.14" y2="142.86" style="fill:none;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"/><line x1="142.86" y1="369.14" x2="108.92" y2="403.08" style="fill:none;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"/><line x1="464" y1="256" x2="416" y2="256" style="fill:none;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"/><line x1="96" y1="256" x2="48" y2="256" style="fill:none;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"/><line x1="403.08" y1="403.08" x2="369.14" y2="369.14" style="fill:none;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"/><line x1="142.86" y1="142.86" x2="108.92" y2="108.92" style="fill:none;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"/><circle cx="256" cy="256" r="80" style="fill:none;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"/></svg>'
             navLinks[4].onclick = (event: Event) => { 
                 event.preventDefault();
                 changeThemeLocalStorage("dark"); 
@@ -134,9 +137,9 @@
     </a>
     <div class="nav-links thin">
         {#each navLinks as link}
-            <a href={link.href} on:click={link.onclick} class="effect-underline">
+            <a href={link.href} on:click={link.onclick} class="effect-underline linkSvg">
                 {#if link.name === 'moon-outline' || link.name === 'sunny-outline'}
-                    <ion-icon name={link.name}></ion-icon>
+                    {@html linkSvg}
                 {:else}
                     {link.name}
                 {/if}
@@ -165,9 +168,9 @@
             <li><a href="/" class="effect-underline">Home</a></li>
             {#each navLinks as link}
                 <li>
-                    <a href={link.href} on:click={link.onclick} class="effect-underline">
+                    <a href={link.href} on:click={link.onclick} class="effect-underline hamburgerLinkSvg">
                         {#if link.name === 'moon-outline' || link.name === 'sunny-outline'}
-                            <ion-icon name={link.name}></ion-icon>
+                            {@html linkSvg}
                         {:else}
                             {link.name}
                         {/if}
@@ -179,6 +182,17 @@
 </nav>
 
 <style>
+    :global(.linkSvg svg) {
+            height: 20px;
+            width: 20px;
+            stroke: var(--primary-text);
+        }
+
+        :global(.hamburgerLinkSvg svg) {
+            height: 20px;
+            width: 20px;
+            stroke: #232323;
+        }
     /* Variables */
     :root {
         --nav-heigt: 80px;
