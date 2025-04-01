@@ -45,7 +45,7 @@ async function checkout(name: string, price: number, amount: number) {
 
 <div class="subCard">
     <div class="iconContainer">
-        <img src="../../../src/IoniconsDesignerPack/{IconName}.svg" alt="{IconName}" class="icon" />
+        <img src="../../IoniconsDesignerPack/{IconName}.svg" alt="{IconName}" class="icon" />
     </div>
     <div class="header">
         <h1 class="bigText bold">{SubscriptionType}</h1>
