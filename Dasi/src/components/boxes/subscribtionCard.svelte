@@ -21,7 +21,7 @@ async function checkout(name: string, price: number, amount: number) {
         buttonText?: string;
         SubscriptionIntro?: string;
         SubscriptionContent?: any;
-        IconName?: string;
+        IconSvg?: string;
     }
 
     let {
@@ -38,15 +38,16 @@ async function checkout(name: string, price: number, amount: number) {
         "Suitable for small websites or simple customer service tasks.",
         "Limited number of messages or interactions per month."
     ],
-        IconName = "rocket-outline"
+        IconSvg = ""
     }: Props = $props();
 
 </script>
 
 <div class="subCard">
     <div class="iconContainer">
-        <img src="../../IoniconsDesignerPack/{IconName}.svg" alt="{IconName}" class="icon" />
+        {@html IconSvg}
     </div>
+    
     <div class="header">
         <h1 class="bigText bold">{SubscriptionType}</h1>
         <p class="intro">{SubscriptionIntro}</p>
@@ -92,9 +93,13 @@ async function checkout(name: string, price: number, amount: number) {
         margin-bottom: 10px;
     }
 
-    .iconContainer .icon {
-        height: 80px; /* Ensure the icon size is set correctly */
-        visibility: visible;
+    :global(.iconContainer svg) {
+        height: 80px;
+        stroke: var(--accent);
+    }
+
+    :global(.iconContainer svg path) {
+        fill: currentColor;
     }
 
     .header {
