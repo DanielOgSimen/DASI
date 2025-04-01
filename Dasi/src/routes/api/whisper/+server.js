@@ -3,13 +3,14 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import textToSpeech from "@google-cloud/text-to-speech";
+import { env } from "$env/dynamic/private"; // Importerer miljøvariabler
 
 // Resolve __dirname for ES modules
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Initialize OpenAI client
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // Use an environment variable
+  apiKey: env.OPENAI_KEY // Use an environment variable
 });
 
 const ttsClient = new textToSpeech.TextToSpeechClient();
