@@ -1,4 +1,4 @@
-import { OpenAI } from 'openai';
+/* import { OpenAI } from 'openai';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -93,4 +93,4 @@ export async function POST({ request }) {
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }
-}
+} */
