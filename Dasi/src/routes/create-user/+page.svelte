@@ -31,42 +31,42 @@
     const whyChoices = {
         school: {
             text: "School",
-            icon: '<ion-icon name="school-outline"></ion-icon>'
+            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><polygon points="32 192 256 64 480 192 256 320 32 192" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><polyline points="112 240 112 368 256 448 400 368 400 240" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><line x1="480" y1="368" x2="480" y2="192" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><line x1="256" y1="320" x2="256" y2="448" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/></svg>'
         },
         work: {
             text: "Work",
-            icon: '<ion-icon name="briefcase-outline"></ion-icon>'
+            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><rect x="32" y="128" width="448" height="320" rx="48" ry="48" style="fill:none;stroke-linejoin:round;stroke-width:32px"/><path d="M144,128V96a32,32,0,0,1,32-32H336a32,32,0,0,1,32,32v32" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><line x1="480" y1="240" x2="32" y2="240" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M320,240v24a8,8,0,0,1-8,8H200a8,8,0,0,1-8-8V240" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/></svg>'
         },
         personal: {
             text: "Personal",
-            icon: '<ion-icon name="person-outline"></ion-icon>'
+            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path d="M344,144c-3.92,52.87-44,96-88,96s-84.15-43.12-88-96c-4-55,35-96,88-96S348,90,344,144Z" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M256,304c-87,0-175.3,48-191.64,138.6C62.39,453.52,68.57,464,80,464H432c11.44,0,17.62-10.48,15.65-21.4C431.3,352,343,304,256,304Z" style="fill:none;stroke-miterlimit:10;stroke-width:32px"/></svg>'
         },
         other: {
             text: "Other",
-            icon: '<ion-icon name="ellipsis-horizontal-outline"></ion-icon>'
+            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><circle cx="256" cy="256" r="32" style="fill:none;stroke-miterlimit:10;stroke-width:32px"/><circle cx="416" cy="256" r="32" style="fill:none;stroke-miterlimit:10;stroke-width:32px"/><circle cx="96" cy="256" r="32" style="fill:none;stroke-miterlimit:10;stroke-width:32px"/></svg>'
         }
     }
 
     const howDidYouFindUs = {
         google: {
             text: "Google",
-            icon: '<ion-icon name="logo-google"></ion-icon>'
+            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path d="M473.16,221.48l-2.26-9.59H262.46v88.22H387c-12.93,61.4-72.93,93.72-121.94,93.72-35.66,0-73.25-15-98.13-39.11a140.08,140.08,0,0,1-41.8-98.88c0-37.16,16.7-74.33,41-98.78s61-38.13,97.49-38.13c41.79,0,71.74,22.19,82.94,32.31l62.69-62.36C390.86,72.72,340.34,32,261.6,32h0c-60.75,0-119,23.27-161.58,65.71C58,139.5,36.25,199.93,36.25,256S56.83,369.48,97.55,411.6C141.06,456.52,202.68,480,266.13,480c57.73,0,112.45-22.62,151.45-63.66,38.34-40.4,58.17-96.3,58.17-154.9C475.75,236.77,473.27,222.12,473.16,221.48Z"/></svg>'
         },
         friend: {
             text: "Friend",
-            icon: '<ion-icon name="people-outline"></ion-icon>'
+            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path d="M402,168c-2.93,40.67-33.1,72-66,72s-63.12-31.32-66-72c-3-42.31,26.37-72,66-72S405,126.46,402,168Z" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M336,304c-65.17,0-127.84,32.37-143.54,95.41-2.08,8.34,3.15,16.59,11.72,16.59H467.83c8.57,0,13.77-8.25,11.72-16.59C463.85,335.36,401.18,304,336,304Z" style="fill:none;stroke-miterlimit:10;stroke-width:32px"/><path d="M200,185.94C197.66,218.42,173.28,244,147,244S96.3,218.43,94,185.94C91.61,152.15,115.34,128,147,128S202.39,152.77,200,185.94Z" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M206,306c-18.05-8.27-37.93-11.45-59-11.45-52,0-102.1,25.85-114.65,76.2C30.7,377.41,34.88,384,41.72,384H154" style="fill:none;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"/></svg>'
         },
         socialMedia: {
             text: "Social Media",
-            icon: '<ion-icon name="chatbubble-outline"></ion-icon>'
+            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path d="M87.49,380c1.19-4.38-1.44-10.47-3.95-14.86A44.86,44.86,0,0,0,81,361.34a199.81,199.81,0,0,1-33-110C47.65,139.09,140.73,48,255.83,48,356.21,48,440,117.54,459.58,209.85A199,199,0,0,1,464,251.49c0,112.41-89.49,204.93-204.59,204.93-18.3,0-43-4.6-56.47-8.37s-26.92-8.77-30.39-10.11a31.09,31.09,0,0,0-11.12-2.07,30.71,30.71,0,0,0-12.09,2.43L81.51,462.78A16,16,0,0,1,76.84,464a9.6,9.6,0,0,1-9.57-9.74,15.85,15.85,0,0,1,.6-3.29Z" style="fill:none;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"/></svg>'
         },
         ads: {
             text: "Ads",
-            icon: '<ion-icon name="newspaper-outline"></ion-icon>'
+            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path d="M368,415.86V72a24.07,24.07,0,0,0-24-24H72A24.07,24.07,0,0,0,48,72V424a40.12,40.12,0,0,0,40,40H416" style="fill:none;stroke-linejoin:round;stroke-width:32px"/><path d="M416,464h0a48,48,0,0,1-48-48V128h72a24,24,0,0,1,24,24V416A48,48,0,0,1,416,464Z" style="fill:none;stroke-linejoin:round;stroke-width:32px"/><line x1="240" y1="128" x2="304" y2="128" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><line x1="240" y1="192" x2="304" y2="192" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><line x1="112" y1="256" x2="304" y2="256" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><line x1="112" y1="320" x2="304" y2="320" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><line x1="112" y1="384" x2="304" y2="384" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M176,208H112a16,16,0,0,1-16-16V128a16,16,0,0,1,16-16h64a16,16,0,0,1,16,16v64A16,16,0,0,1,176,208Z"/></svg>'
         },
         other: {
             text: "Other",
-            icon: '<ion-icon name="ellipsis-horizontal-outline"></ion-icon>'
+            icon: '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><circle cx="256" cy="256" r="32" style="fill:none;stroke-miterlimit:10;stroke-width:32px"/><circle cx="416" cy="256" r="32" style="fill:none;stroke-miterlimit:10;stroke-width:32px"/><circle cx="96" cy="256" r="32" style="fill:none;stroke-miterlimit:10;stroke-width:32px"/></svg>'
         }
     };
 
