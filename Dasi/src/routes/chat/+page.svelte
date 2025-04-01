@@ -279,7 +279,9 @@
                             {/if}
                     {/each}
                     {#if waitigForResponse}
-                        <div class="dot-pulse"></div>
+                        <div class="loading">
+                            <div class="dot-pulse"></div>
+                        </div>
                     {/if}
                 </div>
                 {#if isSmallScreen}
@@ -292,6 +294,9 @@
     </div>
 </div>
 <style>
+    .loading {
+        margin: 50px;
+    }
     #chats-icon {
         height: 35px;
     }
