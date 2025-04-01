@@ -270,11 +270,11 @@
                     {#each chats[currentChat].messages as message, index}
                             {#if message.sender === "user"}
                                 <div class="user-sent">
-                                    <Message message={message.message} messenger={message.sender}/>
+                                    <Message message={message.message} messenger={message.sender} smallScreen={isSmallScreen}/>
                                 </div>
                             {:else}
                                 <div class="bot-sent">
-                                    <Message message={message.message} messenger={message.sender}/>
+                                    <Message message={message.message} messenger={message.sender} smallScreen={isSmallScreen}/>
                                 </div>
                             {/if}
                     {/each}
