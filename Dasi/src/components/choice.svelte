@@ -62,8 +62,12 @@
         transition: all .3s;
     }
 
-    .choice.selected .icon {
-        color: white;
+    :global(.icon svg) {
+        stroke: var(--accent);
+        fill: var(--accent);
+        display: flex;
+        width: 16px;
+        height: 16px;
         font-size: 1.2em;
         transition: all .3s;
     }
