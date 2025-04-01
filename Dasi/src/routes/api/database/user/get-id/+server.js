@@ -16,14 +16,16 @@ const firebaseConfig = {
 };
 
 // Initialiserer Firebase-appen
-const app = initializeApp(firebaseConfig);
+if (!getApps().length) {
+	initializeApp(firebaseConfig);
+}
 
 const loginMethods = ["google"];
 
 // Funksjon som henter id
 function findId(id, method) {
 	const db = getDatabase();
-	return get(ref(db, "id/" + method + "/" + id));
+	return get(ref(db, `id/${method}/${id}`));
 }
 
 // Funksjon som håndterer POST-forespørsler
@@ -32,6 +34,10 @@ export async function POST({ request }) {
 		// Henter JSON data fra forespørselen
 		const { id, method } = await request.json();
 
+		console.log("ID:", id);
+		console.log("Method:", method);
+
+		// Validerer login-metoden
 		if (!loginMethods.includes(method)) {
 			return new Response(
 				JSON.stringify({ error: "Invalid login method" }),
@@ -49,7 +55,10 @@ export async function POST({ request }) {
 
 		// Returnerer en suksessrespons
 		return new Response(
-			JSON.stringify({ message: "ID Found successfully", id: userID }),
+			JSON.stringify({
+				message: "ID Found successfully",
+				id: userID.val(),
+			}),
 			{
 				status: 200, // HTTP-statuskode for suksess
 				headers: {

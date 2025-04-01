@@ -45,7 +45,7 @@ async function checkout(name: string, price: number, amount: number) {
 
 <div class="subCard">
     <div class="iconContainer">
-        <ion-icon name={IconName}></ion-icon>
+        <img src="../../../src/IoniconsDesignerPack/{IconName}.svg" alt="{IconName}" class="icon" />
     </div>
     <div class="header">
         <h1 class="bigText bold">{SubscriptionType}</h1>
@@ -87,14 +87,13 @@ async function checkout(name: string, price: number, amount: number) {
     }
 
     .iconContainer {
-        color: var(--accent);
         display: flex;
         justify-content: center;
         margin-bottom: 10px;
     }
 
-    .iconContainer ion-icon {
-        font-size: 70px; /* Ensure the icon size is set correctly */
+    .iconContainer .icon {
+        height: 80px; /* Ensure the icon size is set correctly */
         visibility: visible;
     }
 

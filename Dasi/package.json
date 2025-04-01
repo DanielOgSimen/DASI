@@ -29,16 +29,21 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@google-cloud/text-to-speech": "^6.0.1",
 		"@stripe/stripe-js": "^5.10.0",
 		"body-parser": "^1.20.3",
 		"cors": "^2.8.5",
 		"dotenv": "^16.4.7",
 		"express": "^4.21.2",
 		"firebase": "^11.4.0",
+		"fs": "^0.0.1-security",
 		"google-auth-library": "^9.15.0",
 		"marked": "^15.0.2",
+		"multer": "^1.4.5-lts.2",
+		"openai": "^4.89.1",
 		"prismjs": "^1.29.0",
 		"stripe": "^17.7.0",
-		"uuid": "^11.0.5"
+		"uuid": "^11.0.5",
+		"ws": "^8.18.1"
 	}
 }

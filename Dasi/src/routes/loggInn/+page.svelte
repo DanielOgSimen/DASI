@@ -33,8 +33,48 @@
             { theme: 'outline', size: 'large' }  // Tilpasningsalternativer
         );
     }
-    // Callback-funksjonen som kjøres etter vellykket innlogging
     import { user } from "../../store/userStore";
+    let userData: any;
+    user.subscribe(value => {
+        userData = value;
+    });
+    // Funksjon for å sjekke om brukerens id ligger i databasen
+    async function checkUser(id, method) {
+        // Sjekker brukerens ID
+        try {
+            const response = await fetch('/api/database/user/get-id', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: id, 
+                    method: method
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            console.log('API Response:', data);
+            // hvis brukeren finnes lagrer den Dasi ID i Svelte store, og sender brukeren til chat.
+            // hvis ikke blir brukeren sendt til opprett bruker siden
+            if (data.id != null) {
+                user.update(currentUser => ({
+                    ...currentUser,
+                    dasiId: data.id
+                }));
+                window.location.href = '/chat';
+            } else {
+                window.location.href = '/create-user';
+            }
+        } catch (error) {
+            console.error('Error getting data:', error);
+        }
+    }
+    // Callback-funksjonen som kjøres etter vellykket innlogging
     // @ts-ignore
     function onSignIn(response) {
         const id_token = response.credential;
@@ -54,6 +94,7 @@
             method: 'google'
         });
         console.log('Logged in as: ' + payload.name);
+        checkUser(payload.sub, 'google');
     }
      // Funksjon for å logge ut av Google-kontoen
      function signOut(event: Event) {
@@ -64,7 +105,8 @@
             name: null,
             email: null,
             picture: null,
-            method: null
+            method: null,
+            dasiId: null
         });
         location.reload();
         console.log('User signed out.');
