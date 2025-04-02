@@ -270,16 +270,18 @@
                     {#each chats[currentChat].messages as message, index}
                             {#if message.sender === "user"}
                                 <div class="user-sent">
-                                    <Message message={message.message} messenger={message.sender}/>
+                                    <Message message={message.message} messenger={message.sender} smallScreen={isSmallScreen}/>
                                 </div>
                             {:else}
                                 <div class="bot-sent">
-                                    <Message message={message.message} messenger={message.sender}/>
+                                    <Message message={message.message} messenger={message.sender} smallScreen={isSmallScreen}/>
                                 </div>
                             {/if}
                     {/each}
                     {#if waitigForResponse}
-                        <div class="dot-pulse"></div>
+                        <div class="loading">
+                            <div class="dot-pulse"></div>
+                        </div>
                     {/if}
                 </div>
                 {#if isSmallScreen}
@@ -292,6 +294,9 @@
     </div>
 </div>
 <style>
+    .loading {
+        margin: 50px;
+    }
     #chats-icon {
         height: 35px;
     }

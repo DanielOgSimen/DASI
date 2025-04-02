@@ -4,9 +4,10 @@
     interface Props {
         message?: string;
         messenger?: string;
+        smallScreen?: boolean;
     }
 
-    let { message = "Message not found", messenger = "Unknown" }: Props = $props();
+    let { message = "Message not found", messenger = "Unknown", smallScreen = false }: Props = $props();
 
     // Konverter meldingen til HTML ved hjelp av marked
     let formattedMessage = $derived(marked(message));
@@ -18,12 +19,19 @@
     </div>
 {:else}
     <div class="bot">
-        <img src="/Images/Dasi logo.png" alt="" id="bot-logo">
+        {#if !smallScreen}
+            <img src="/Images/Dasi logo.png" alt="" id="bot-logo">
+        {/if}
         <p style="white-space: pre-wrap;">{@html formattedMessage}</p>
     </div>
 {/if}
 
 <style>
+    @media screen and (max-width: 768px) {
+        #bot-logo {
+            display: nonek;
+        }
+    }
     .message {
         max-width: 300px;
         height: fit-content;
