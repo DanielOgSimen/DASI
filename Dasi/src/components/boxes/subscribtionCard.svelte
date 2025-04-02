@@ -169,7 +169,7 @@ async function checkout(name: string, price: number, amount: number) {
 
     @media (max-width: 500px) {
         .subCard {
-            max-width: 100%;
+            max-width: 100vw;
         }
     }
 </style>
