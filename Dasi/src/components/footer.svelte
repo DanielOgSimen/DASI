@@ -47,7 +47,7 @@
               <a href="/"><i class="socialIcon fa-facebook-f">{@html facebookSvg}</i></a>
               <a href="/"><i class="socialIcon fa-twitter">{@html twitterSvg}</i></a>
               <a href="/"><i class="socialIcon fa-instagram">{@html instagramSvg}</i></a>
-              <a href="/"><i class="socialIcon fa-instagram">{@html linkedInSvg}</i></a>
+              <a href="https://www.linkedin.com/company/danielogsimen/?viewAsMember=true"><i class="socialIcon fa-linkedIn">{@html linkedInSvg}</i></a>
             </div>
         </div>
     </div>
