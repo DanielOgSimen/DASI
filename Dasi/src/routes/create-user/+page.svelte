@@ -18,7 +18,7 @@
     let firstName = nameList.slice(0, -1).join(" ") || "";
     let lastName = nameList[nameList.length - 1] || "";
 
-    let page = 4;
+    let page = 1;
     let totalPages = 4;
 
     const questions = [
