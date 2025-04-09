@@ -3,6 +3,7 @@
     import { onMount } from 'svelte';
     import ImageMessage from './../../components/chat/image-message.svelte';
     import { on } from 'svelte/events';
+    import { user } from '../../store/userStore';
 
     let generatedImageUrl: string | null = null;
     let prompt = "";
@@ -201,6 +202,30 @@
     onMount(() => {
         chatDataPromise = getChat(); // Tildeler en Promise til chatDataPromise
     });
+
+    
+    async function newsletter() {
+        try {
+            const response = await fetch('../api/database/user/user-info', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    where: "Hadde lyst",
+                    why: "daniel",
+                    id : "b5c5889a-f239-419d-92a6-9847aa931416",
+                    news: true,
+                })
+            });
+            const data = await response.json();
+            console.log('API Response:', data);
+        }
+        catch (error) {
+            console.error('Error creating user info:', error);
+        }
+
+    }
 </script>
 
 <div class="body">
@@ -219,6 +244,7 @@
 <button class="button purple" on:click={saveChat}>Save Chat</button>
 <button class="button purple" on:click={getChat}>Get Chat</button>
 <button class="button purple" on:click={removeChat}>Delete Chat</button>
+<button class="button purple" on:click={newsletter}>Newsletter and create user</button>
 
 {#await chatDataPromise}
     <p>waiting</p>
