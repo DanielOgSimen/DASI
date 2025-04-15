@@ -15,6 +15,19 @@ To create a robust web application that delivers a seamless user experience thro
     -   Adults looking for affordable and reliable AI assistance
 -   Secondary users: [To be defined]
 
+### 1.3 PRD Maintenance
+
+The PRD should be regularly updated to reflect:
+
+-   New features and requirements
+-   Changes in existing functionality
+-   Updated technical specifications
+-   Modified user requirements
+-   Changes in dependencies or services
+-   Security and privacy updates
+
+The chat interface includes a reminder to update the PRD when necessary, ensuring that documentation stays current with the project's evolution.
+
 ## 2. Technical Requirements
 
 ### 2.1 Technology Stack
