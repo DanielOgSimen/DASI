@@ -1,5 +1,6 @@
-/Dasi/src/routes/test
+# Development test files
+Dasi/src/routes/test/
 Dasi/src/routes/test/+page.svelte
+
+# System files
 .DS_Store
-.DS_Store
-Dasi/src/routes/test/+page.svelte
