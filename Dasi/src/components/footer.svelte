@@ -38,7 +38,6 @@
             <div class="line"></div>
             <div class="numberAndMail">
                 <ul>
-                    <li><a href="tel:+47 983 18 885">Phone: +47 983 18 885</a></li>
                     <li><a href="mailto:contact@dasigpt.com">Mail: contact@dasigpt.com</a></li>
                 </ul>
             </div>
