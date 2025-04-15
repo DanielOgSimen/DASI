@@ -72,6 +72,56 @@ The chat interface includes a reminder to update the PRD when necessary, ensurin
 -   Scale effects for hover states
 -   Shadow effects for depth
 
+#### Styling Rules
+
+-   **CSS Variables**:
+
+    -   Theme-based color variables for dark/light modes
+    -   Consistent naming convention for variables
+    -   Global accessibility through CSS custom properties
+
+-   **Typography**:
+
+    -   Font family: "darkmode-on-cc", sans-serif
+    -   Font weights: 100 (hair) to 900 (black)
+    -   Consistent text styles across components
+    -   Proper text contrast ratios for accessibility
+
+-   **Component Styling**:
+
+    -   Consistent border-radius (26px for standard elements)
+    -   Standardized padding and margins
+    -   Box-shadow effects for depth
+    -   Smooth transitions (0.3s duration)
+    -   Hover and active state animations
+
+-   **Layout**:
+
+    -   Responsive design principles
+    -   Mobile-first approach
+    -   Flexible grid systems
+    -   Consistent spacing scales
+
+-   **Accessibility**:
+
+    -   High contrast color combinations
+    -   Focus states for interactive elements
+    -   Screen reader friendly markup
+    -   Keyboard navigation support
+
+-   **Global Styles**:
+
+    -   Box-sizing: border-box
+    -   Reset default margins and padding
+    -   Consistent scrollbar styling
+    -   Selection color customization
+
+-   **Responsive Design**:
+    -   Mobile-responsive breakpoints
+    -   Fluid typography
+    -   Adaptive layouts
+    -   Touch-friendly interactions
+
 ### 2.2 Authentication & API Integration
 
 -   **Authentication**:
