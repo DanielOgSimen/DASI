@@ -1,3 +1,7 @@
+<svelte:head>
+    <title>Payment Canceled | Dasi-GPT</title>
+</svelte:head>
+
 <div class="ordertext">
     <ion-icon class="icon" name="sad-outline"></ion-icon>
     <h1>Ops!</h1>

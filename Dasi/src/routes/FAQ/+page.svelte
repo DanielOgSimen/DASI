@@ -57,6 +57,10 @@
     };
 </script>
 
+<svelte:head>
+    <title>FAQ | Dasi-GPT</title>
+</svelte:head>
+
 <div class="backgroundSearch">
     <div class="searchSection">
         <InputPromt bind:bindValue={searchQuery} label={inputLabel} Width="clamp(20rem, 35vw, 30rem)" external={false} onEnter={() => {}} />

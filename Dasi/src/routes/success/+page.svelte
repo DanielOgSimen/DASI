@@ -1,6 +1,11 @@
 <script>
     import Newsletter from "../../components/newsletter.svelte";
 </script>
+
+<svelte:head>
+    <title>Payment Success | Dasi-GPT</title>
+</svelte:head>
+
 <div class="ordertext">
     <ion-icon name="bag-check-outline" class="icon"></ion-icon>
     <h1>Thank you!</h1>

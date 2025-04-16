@@ -2,6 +2,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="684634493497-2ena2p1qdk7jcfe1ef1hr2b8r3d8ip3r.apps.googleusercontent.com">
     <script src="https://accounts.google.com/gsi/client" async defer></script> 
+    <title>LoggInn | Dasi-GPT</title>
 </svelte:head>
 <script module lang="ts">
     declare const google: any;

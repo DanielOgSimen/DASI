@@ -168,6 +168,10 @@
     }
 </script>
 
+<svelte:head>
+    <title>Create User | Dasi-GPT</title>
+</svelte:head>
+
 <div class="body">
 {#if !userData.picture}
     <div class="not-logged-in"><p class="text">Looks like you're not logged in</p><a href="/loggInn"><button class="button purple">Log in</button></a></div>

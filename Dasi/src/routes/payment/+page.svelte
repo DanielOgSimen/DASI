@@ -2,6 +2,10 @@
     import InputPromt from "../../components/input-promt.svelte";
 </script>
 
+<svelte:head>
+    <title>Payment | Dasi-GPT</title>
+</svelte:head>
+
 <div class="paymentContent">
   <div class="paymentInfo">
     <form id="payment-form" class="paymentForm">

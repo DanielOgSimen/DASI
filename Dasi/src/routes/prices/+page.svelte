@@ -1,6 +1,11 @@
 <script>
     import SubCard from '../../components/boxes/subscribtionCard.svelte';
 </script>
+
+<svelte:head>
+    <title>Pricing | Dasi-GPT</title>
+</svelte:head>
+
 <div class="wrapper">
         <div class="subCards">
             <SubCard 

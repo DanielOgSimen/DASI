@@ -2,6 +2,10 @@
     import Information from "../../components/information.svelte";
 </script>
 
+<svelte:head>
+    <title>Safety | Dasi-GPT</title>
+</svelte:head>
+
 <Information text="DASI-GPT is a state-of-the-art tool designed with safety as a top priority, ensuring it is safe to use for everyone. Leveraging advanced AI technology, DASI-GPT provides a secure and reliable platform that can be trusted across various applications. Whether you are using it for personal projects, educational purposes, or within a professional setting, DASI-GPT is built to maintain the highest standards of safety and security.
 
 One of the key features of DASI-GPT is its robust data privacy measures. In an era where data breaches and privacy concerns are prevalent, DASI-GPT employs advanced encryption and security protocols to protect user data. This ensures that all interactions and data processed by DASI-GPT remain confidential and secure, giving users peace of mind.

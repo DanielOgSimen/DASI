@@ -2,6 +2,10 @@
     import Information from "../../components/information.svelte";
 </script>
 
+<svelte:head>
+    <title>Efficient | Dasi-GPT</title>
+</svelte:head>
+
 <Information text="DASI-GPT is a revolutionary tool designed to enhance efficiency in various domains. Leveraging advanced AI technology, DASI-GPT streamlines processes, reduces time consumption, and optimizes resource utilization. Whether you are in the field of research, content creation, customer service, or data analysis, DASI-GPT offers unparalleled efficiency that transforms the way you work.
             
             One of the key features of DASI-GPT is its ability to process and generate content at an astonishing speed. Traditional methods of content creation can be time-consuming and labor-intensive. However, with DASI-GPT, you can generate high-quality content in a fraction of the time. This not only boosts productivity but also allows you to focus on more strategic tasks that require human creativity and decision-making.

@@ -2,6 +2,10 @@
     import Information from "../../components/information.svelte";
 </script>
 
+<svelte:head>
+    <title>Climate Friendly | Dasi-GPT</title>
+</svelte:head>
+
 <Information text="DASI-GPT is a groundbreaking tool designed to promote climate-friendly practices across various industries. By leveraging advanced AI technology, DASI-GPT helps organizations reduce their environmental footprint, conserve resources, and implement sustainable solutions. Whether you are involved in agriculture, manufacturing, energy, or any other sector, DASI-GPT offers innovative approaches to enhance your environmental sustainability.
 
 One of the standout features of DASI-GPT is its ability to optimize resource usage. Traditional methods often lead to significant waste and inefficiency. However, with DASI-GPT, you can analyze and manage resources more effectively, ensuring minimal waste and maximum utilization. This not only benefits the environment but also reduces operational costs, making your business more sustainable and profitable.
