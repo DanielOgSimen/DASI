@@ -1,5 +1,5 @@
 <script>
-    import Information from "../../components/information.svelte";
+    import Information from "../../../components/information.svelte";
 </script>
 
 <svelte:head>
