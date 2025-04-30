@@ -6,6 +6,9 @@ const validUrls: string[] = [
 	"http://dasigpt.com",
 	"https://www.dasigpt.com",
 	"http://www.dasigpt.com",
+	...(process.env.NODE_ENV === "development"
+		? ["http://localhost:5173", "http://127.0.0.1:5173"]
+		: []),
 ] as const;
 
 export const handle: Handle = async ({ event, resolve }) => {
