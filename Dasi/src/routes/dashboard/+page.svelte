@@ -1,5 +1,5 @@
 <script>
-    import Mail from "../../components/mail.svelte";
+    import Mail from "../admin/newsletter/mail.svelte";
     import { user } from "../../store/userStore";
 
     export let data;
