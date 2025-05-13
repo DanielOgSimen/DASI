@@ -9,5 +9,5 @@
 
 <h1>DASHBOARD</h1>
 {#if $user.dasiId === DANIEL_DASI_ID || $user.dasiId === SIMEN_DASI_ID}
-    <Mail />
+    <h1>MAIL SKAL VISES</h1>
 {/if}
