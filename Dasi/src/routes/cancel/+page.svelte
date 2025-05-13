@@ -4,7 +4,7 @@
 
 <div class="ordertext">
     <ion-icon class="icon" name="sad-outline"></ion-icon>
-    <h1>Ops!</h1>
+    <h1>OOOOps!</h1>
     <p>Unfortunately, your payment could not be processed. Please try again or contact support if the issue persists.</p>
     <a href="https://dasigpt.com/"><button class="button purple backButton">Back</button></a>
 </div>
