@@ -68,6 +68,7 @@
                     dasiId: data.id
                 }));
                 window.location.href = '/chat';
+                console.log(data.id);
             } else {
                 window.location.href = '/create-user';
             }

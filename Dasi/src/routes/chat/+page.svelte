@@ -61,6 +61,7 @@
     async function handlePrompt(noFindPrompt = false) {
         if (!isLoggedIn) {
             alert("You need to be logged in to chat");
+            window.location.href = "../loggInn";
             return;
         };
     
