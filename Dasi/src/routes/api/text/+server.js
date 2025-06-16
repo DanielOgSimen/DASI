@@ -61,6 +61,7 @@ export async function POST({ request }) {
 		const data = await response.json();
 		// Henter meldingen fra responsen
 		const message = data.choices[0].message.content;
+
 		// Logger meldingen for debugging
 		console.log("Response Message:", message);
 
