@@ -1,23 +1,12 @@
 import { initializeApp, getApps } from "firebase/app";
 import { getDatabase, ref, set, get } from "firebase/database";
-import { env } from "$env/dynamic/private"; // Importerer miljøvariabler fra en privat fil
+import { firebaseConfig } from "$lib/db";
 import { v4 as uuidv4 } from "uuid";
 
-// Initialiserer Firebase-konfigurasjonen
-const firebaseConfig = {
-	apiKey: env.FB_API_KEY,
-	authDomain: env.FB_AUTH_DOMAIN,
-	databaseURL:
-		"https://dasi-gpt-b2beb-default-rtdb.europe-west1.firebasedatabase.app",
-	projectId: env.FB_PROJECT_ID,
-	storageBucket: env.FB_STORAGE_BUCKET,
-	messagingSenderId: env.FB_MESSAGING_SENDER_ID,
-	appId: env.FB_APP_ID,
-	measurementId: env.FB_MEASUREMENT_ID,
-};
-
 // Initialiserer Firebase-appen
-const app = initializeApp(firebaseConfig);
+if (!getApps().length) {
+	initializeApp(firebaseConfig);
+}
 
 // Funksjon som skriver brukerdata til Firebase-databasen
 function generateUserId() {
